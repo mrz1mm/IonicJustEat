@@ -16,9 +16,9 @@ import { AppComponent } from './app/app.component';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { environment } from './environments/environment.prod';
 import { enableProdMode, importProvidersFrom } from '@angular/core';
-import { AuthInterceptor } from './app/pages/auth/interceptors/AuthInterceptor.interceptor';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { TranslateModules } from './assets/i18n/library/TranslateModule';
+import { AuthInterceptor } from './app/areas/auth/interceptors/AuthInterceptor.interceptor';
 
 if (environment.production) enableProdMode();
 
@@ -28,7 +28,6 @@ bootstrapApplication(AppComponent, {
     JwtHelperService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
-    // -- preimpostato -- provideRouter(routes, withPreloading(PreloadAllModules)),
     provideRouter(routes, withComponentInputBinding()),
     provideHttpClient(withInterceptors([AuthInterceptor])),
     importProvidersFrom(TranslateModules),

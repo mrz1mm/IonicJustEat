@@ -8,8 +8,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { LoginRequest } from '../../interfaces/LoginRequest';
-import { AuthService } from '../../services/AuthService.service';
+import { LoginRequest } from '../../../interfaces/LoginRequest';
+import { AuthService } from '../../../services/AuthService.service';
 
 @Component({
   selector: 'app-login-form',

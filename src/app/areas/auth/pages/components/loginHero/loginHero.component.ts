@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthPage } from '../../pages/auth.page';
+import { AuthPage } from '../../auth.page';
 
 @Component({
   selector: 'app-login-hero',
