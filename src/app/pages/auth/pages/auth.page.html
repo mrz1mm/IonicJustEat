@@ -1,0 +1,15 @@
+<body id="AuthPage" class="pt-10">
+  <div
+    class="container"
+    [ngClass]="{ 'right-panel-active': rightPanelActive() }"
+  >
+    <app-login-form></app-login-form>
+    <app-register-form></app-register-form>
+    <section class="overlay-container">
+      <div class="overlay">
+        <app-register-hero></app-register-hero>
+        <app-login-hero></app-login-hero>
+      </div>
+    </section>
+  </div>
+</body>

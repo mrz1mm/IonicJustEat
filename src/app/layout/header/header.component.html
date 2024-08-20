@@ -1,0 +1,112 @@
+<header>
+  <nav class="d-flex justify-content-between align-items-center px-3">
+    <div>
+      <img
+        class="logo"
+        src="../../.././assets/img/utilities/logo.svg"
+        [alt]="'Header.LOGO_ALT' | translate"
+      />
+    </div>
+    <div class="d-flex justify-content-end align-items-center">
+      <button
+        class="btn1 d-flex justify-content-center align-items-center px-3 py-2 d-none d-md-block"
+        [attr.aria-label]="'Header.ORDER_BUSINESS' | translate"
+      >
+        <img
+          src="../../.././assets/img/utilities/building.svg"
+          [alt]="'Header.BUILDING_ALT' | translate"
+        />
+        <span class="ms-2">{{ 'Header.ORDER_BUSINESS' | translate }}</span>
+      </button>
+
+      <button
+        class="btn1 d-flex justify-content-center align-items-center px-3 py-2 d-none d-md-block"
+        [attr.aria-label]="'Header.BECOME_RIDER' | translate"
+      >
+        <img
+          src="../../.././assets/img/utilities/moped.svg"
+          [alt]="'Header.MOPED_ALT' | translate"
+        />
+        <span class="ms-1">{{ 'Header.BECOME_RIDER' | translate }}</span>
+      </button>
+
+      <button
+        class="btn1 dropdown-toggle d-flex justify-content-center align-items-center px-3 py-2"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        [attr.aria-label]="'Header.FLAG_ALT' | translate"
+      >
+        <img
+          [src]="currentFlag"
+          [alt]="'Header.FLAG_ALT' | translate"
+          class="me-2"
+        />
+      </button>
+
+      <ul class="dropdown-menu">
+        <li
+          (click)="changeLanguage(IT)"
+          class="btn1 d-flex justify-content-between align-items-center px-3 py-2"
+          [attr.aria-label]="'Header.LANGUAGE_ITALY' | translate"
+        >
+          <div class="d-flex align-items-center">
+            <img
+              src="../../../assets/img/utilities/it.svg"
+              [alt]="'Header.ITALY_FLAG_ALT' | translate"
+            />
+            <span class="ms-2">{{ 'Header.LANGUAGE_ITALY' | translate }}</span>
+          </div>
+          <img
+            *ngIf="currentFlag === '../../../assets/img/utilities/it.svg'"
+            src="../../../assets/img/utilities/check.svg"
+            [alt]="'Header.CHECK_ALT' | translate"
+          />
+        </li>
+        <li
+          (click)="changeLanguage(EN)"
+          class="btn1 d-flex justify-content-between align-items-center px-3 py-2"
+          [attr.aria-label]="'Header.LANGUAGE_ENGLISH' | translate"
+        >
+          <div class="d-flex align-items-center">
+            <img
+              src="../../../assets/img/utilities/en.svg"
+              [alt]="'Header.UK_FLAG_ALT' | translate"
+            />
+            <span class="ms-2"
+              >{{ 'Header.LANGUAGE_ENGLISH' | translate }}</span
+            >
+          </div>
+          <img
+            *ngIf="currentFlag === '../../../assets/img/utilities/en.svg'"
+            src="../../../assets/img/utilities/check.svg"
+            [alt]="'Header.CHECK_ALT' | translate"
+          />
+        </li>
+      </ul>
+
+      <button
+        class="btn1 d-flex justify-content-center align-items-center px-3 py-2"
+        [attr.aria-label]="'Header.LOGIN' | translate"
+      >
+        <img
+          src="../../.././assets/img/utilities/user.svg"
+          [alt]="'Header.USER_ALT' | translate"
+        />
+        <span class="ms-2 d-none d-sm-block"
+          >{{ 'Header.LOGIN' | translate }}</span
+        >
+      </button>
+
+      <button
+        class="btn1 d-flex justify-content-center align-items-center px-3 py-2"
+        [attr.aria-label]="'Header.LIST_ALT' | translate"
+      >
+        <img
+          src="../../.././assets/img/utilities/list.svg"
+          [alt]="'Header.LIST_ALT' | translate"
+        />
+      </button>
+    </div>
+  </nav>
+</header>

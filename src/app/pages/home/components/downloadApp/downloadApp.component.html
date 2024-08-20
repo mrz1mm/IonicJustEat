@@ -1,0 +1,32 @@
+<section id="DownloadApp" class="container-fluid">
+  <div class="row row-cols-1 row-cols-md-2">
+    <div
+      class="col d-flex flex-column justify-content-center align-items-center align-items-md-start ps-5 ps-md-10 pe-5 pe-md-10"
+    >
+      <div class="mb-5 mt-10 mt-md-0">
+        <h2 class="text-center mb-4">{{ 'DownloadApp.TITLE' | translate }}</h2>
+        <p>{{ 'DownloadApp.SUBTITLE' | translate }}</p>
+      </div>
+      <div>
+        <img
+          class="me-3"
+          src="../../../../assets/img/home/appStore.png"
+          alt="{{ 'DownloadApp.APP_STORE_ALT' | translate }}"
+          [attr.aria-label]="'DownloadApp.APP_STORE_ALT' | translate"
+        />
+        <img
+          src="../../../../assets/img/home/googlePlay.png"
+          alt="{{ 'DownloadApp.GOOGLE_PLAY_ALT' | translate }}"
+          [attr.aria-label]="'DownloadApp.GOOGLE_PLAY_ALT' | translate"
+        />
+      </div>
+    </div>
+    <div class="col d-flex justify-content-center align-items-center pt-5">
+      <img
+        class="img-fluid"
+        src="../../../../assets/img/home/banner.png"
+        alt="{{ 'DownloadApp.APP_IMAGE_ALT' | translate }}"
+      />
+    </div>
+  </div>
+</section>

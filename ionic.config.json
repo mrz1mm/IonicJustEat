@@ -1,0 +1,7 @@
+{
+  "name": "ionicJustEat",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,89 @@
+{
+  "Header": {
+    "LOGO_ALT": "Logo",
+    "BUILDING_ALT": "Building",
+    "MOPED_ALT": "Moped",
+    "FLAG_ALT": "Flag",
+    "ITALY_FLAG_ALT": "Italian flag",
+    "UK_FLAG_ALT": "UK flag",
+    "CHECK_ALT": "Selected",
+    "USER_ALT": "User",
+    "LIST_ALT": "List",
+    "ORDER_BUSINESS": "Order for business",
+    "BECOME_RIDER": "Become a rider",
+    "LANGUAGE_ITALY": "Italy",
+    "LANGUAGE_ENGLISH": "English",
+    "LOGIN": "Login",
+    "ARIA_LABEL_ORDER_BUSINESS": "Order for business",
+    "ARIA_LABEL_BECOME_RIDER": "Become a rider",
+    "ARIA_LABEL_FLAG": "Select flag",
+    "ARIA_LABEL_LOGIN": "Login",
+    "ARIA_LABEL_LIST": "Open list"
+  },
+  "Footer": {
+    "COPYRIGHT": "All rights reserved",
+    "PRIVACY_POLICY": "Privacy Policy",
+    "TERMS_OF_SERVICE": "Terms of Service"
+  },
+  "DownloadApp": {
+    "TITLE": "Download the app",
+    "SUBTITLE": "Available on App Store and Google Play",
+    "APP_STORE_ALT": "Download from App Store",
+    "GOOGLE_PLAY_ALT": "Download from Google Play",
+    "APP_IMAGE_ALT": "App image",
+    "ARIA_LABEL_APP_STORE": "Download from App Store",
+    "ARIA_LABEL_GOOGLE_PLAY": "Download from Google Play"
+  },
+  "Hero": {
+    "TITLE": "Welcome to our service",
+    "SUBTITLE": "The best way to start",
+    "PLACEHOLDER": "Search here...",
+    "SEARCH_BUTTON": "Search",
+    "ALT_TEXT": "Representative image",
+    "ARIA_LABEL_SEARCH": "Search"
+  },
+  "HowItWorks": {
+    "TITLE": "How it works",
+    "SUBTITLE": "Follow these simple steps",
+    "STEP_ALT": "Step icon",
+    "STEP1_TITLE": "Find your location",
+    "STEP1_DESCRIPTION": "Use the map to locate yourself.",
+    "STEP2_TITLE": "Choose your meal",
+    "STEP2_DESCRIPTION": "Choose from a variety of restaurants.",
+    "STEP3_TITLE": "Enjoy your meal",
+    "STEP3_DESCRIPTION": "Receive your order directly at home.",
+    "ARIA_LABEL_SLIDE1": "Slide 1",
+    "ARIA_LABEL_SLIDE2": "Slide 2",
+    "ARIA_LABEL_SLIDE3": "Slide 3"
+  },
+  "WhatDoYouWant": {
+    "TITLE": "What do you want?",
+    "SUBTITLE": "Our promises",
+    "FIDELITY_ALT": "Fidelity icon",
+    "FIDELITY_TITLE": "Loyalty Program",
+    "FIDELITY_DESCRIPTION": "Earn points with every purchase.",
+    "PROMISE_ALT": "Promise icon",
+    "PROMISE_TITLE": "Our promises",
+    "PROMISE_DESCRIPTION1": "Fast and reliable service.",
+    "PROMISE_DESCRIPTION2": "Guaranteed quality.",
+    "ADVANTAGES_ALT": "Advantages icon",
+    "ADVANTAGES_TITLE": "Exclusive advantages",
+    "ADVANTAGES_DESCRIPTION1": "Special offers for members.",
+    "ADVANTAGES_DESCRIPTION2": "Dedicated customer support.",
+    "ADVANTAGES_DESCRIPTION3": "Free deliveries for orders over 50€.",
+    "ARIA_LABEL_SLIDE1": "Slide 1",
+    "ARIA_LABEL_SLIDE2": "Slide 2",
+    "ARIA_LABEL_SLIDE3": "Slide 3"
+  },
+  "RegisterValidation": {
+    "NAME_REQUIRED": "Name is required.",
+    "EMAIL_REQUIRED": "Email is required.",
+    "EMAIL_FORMAT": "Invalid email format.",
+    "PASSWORD_REQUIRED": "Password is required.",
+    "PASSWORD_MINLENGTH": "Password must be at least 6 characters long.",
+    "PASSWORD_FORMAT": "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character.",
+    "CONFIRM_PASSWORD_REQUIRED": "Please confirm your password.",
+    "CONFIRM_PASSWORD_MATCH": "Passwords do not match.",
+    "ROLE_REQUIRED": "Role is required."
+  }
+}

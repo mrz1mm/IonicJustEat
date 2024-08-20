@@ -1,0 +1,96 @@
+{
+  "Header": {
+    "LOGO_ALT": "Logo",
+    "BUILDING_ALT": "Edificio",
+    "MOPED_ALT": "Motorino",
+    "FLAG_ALT": "Bandiera",
+    "ITALY_FLAG_ALT": "Bandiera italiana",
+    "UK_FLAG_ALT": "Bandiera del Regno Unito",
+    "CHECK_ALT": "Selezionato",
+    "USER_ALT": "Utente",
+    "LIST_ALT": "Lista",
+    "ORDER_BUSINESS": "Ordina per affari",
+    "BECOME_RIDER": "Diventa un rider",
+    "LANGUAGE_ITALY": "Italia",
+    "LANGUAGE_ENGLISH": "Inglese",
+    "LOGIN": "Accedi",
+    "ARIA_LABEL_ORDER_BUSINESS": "Ordina per affari",
+    "ARIA_LABEL_BECOME_RIDER": "Diventa un rider",
+    "ARIA_LABEL_FLAG": "Seleziona bandiera",
+    "ARIA_LABEL_LOGIN": "Accedi",
+    "ARIA_LABEL_LIST": "Apri lista"
+  },
+  "Footer": {
+    "COPYRIGHT": "Tutti i diritti riservati",
+    "PRIVACY_POLICY": "Politica sulla privacy",
+    "TERMS_OF_SERVICE": "Termini di servizio"
+  },
+  "DownloadApp": {
+    "TITLE": "Scarica l'app",
+    "SUBTITLE": "Disponibile su App Store e Google Play",
+    "APP_STORE_ALT": "Scarica dall'App Store",
+    "GOOGLE_PLAY_ALT": "Scarica da Google Play",
+    "APP_IMAGE_ALT": "Immagine dell'app",
+    "ARIA_LABEL_APP_STORE": "Scarica dall'App Store",
+    "ARIA_LABEL_GOOGLE_PLAY": "Scarica da Google Play"
+  },
+  "Hero": {
+    "TITLE": "Benvenuti nel nostro servizio",
+    "SUBTITLE": "Il modo migliore per iniziare",
+    "PLACEHOLDER": "Cerca qui...",
+    "SEARCH_BUTTON": "Cerca",
+    "ALT_TEXT": "Immagine rappresentativa",
+    "ARIA_LABEL_SEARCH": "Cerca"
+  },
+  "HowItWorks": {
+    "TITLE": "Come funziona",
+    "SUBTITLE": "Segui questi semplici passi",
+    "STEP_ALT": "Icona del passo",
+    "STEP1_TITLE": "Trova la tua posizione",
+    "STEP1_DESCRIPTION": "Utilizza la mappa per localizzarti.",
+    "STEP2_TITLE": "Scegli il tuo pasto",
+    "STEP2_DESCRIPTION": "Scegli tra una varietà di ristoranti.",
+    "STEP3_TITLE": "Goditi il tuo pasto",
+    "STEP3_DESCRIPTION": "Ricevi il tuo ordine direttamente a casa.",
+    "ARIA_LABEL_SLIDE1": "Slide 1",
+    "ARIA_LABEL_SLIDE2": "Slide 2",
+    "ARIA_LABEL_SLIDE3": "Slide 3"
+  },
+  "WhatDoYouWant": {
+    "TITLE": "Cosa desideri?",
+    "SUBTITLE": "Le nostre promesse",
+    "FIDELITY_ALT": "Icona della fedeltà",
+    "FIDELITY_TITLE": "Programma Fedeltà",
+    "FIDELITY_DESCRIPTION": "Ottieni punti ad ogni acquisto.",
+    "PROMISE_ALT": "Icona della promessa",
+    "PROMISE_TITLE": "Le nostre promesse",
+    "PROMISE_DESCRIPTION1": "Servizio veloce e affidabile.",
+    "PROMISE_DESCRIPTION2": "Qualità garantita.",
+    "ADVANTAGES_ALT": "Icona dei vantaggi",
+    "ADVANTAGES_TITLE": "Vantaggi esclusivi",
+    "ADVANTAGES_DESCRIPTION1": "Offerte speciali per i membri.",
+    "ADVANTAGES_DESCRIPTION2": "Supporto clienti dedicato.",
+    "ADVANTAGES_DESCRIPTION3": "Consegne gratuite per ordini superiori a 50€.",
+    "ARIA_LABEL_SLIDE1": "Slide 1",
+    "ARIA_LABEL_SLIDE2": "Slide 2",
+    "ARIA_LABEL_SLIDE3": "Slide 3"
+  },
+  "LoginValidation": {
+    "EMAIL_REQUIRED": "Email is required.",
+    "EMAIL_FORMAT": "Invalid email format.",
+    "PASSWORD_REQUIRED": "Password is required.",
+    "PASSWORD_MINLENGTH": "Password must be at least 6 characters long.",
+    "PASSWORD_FORMAT": "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character."
+  },
+  "RegisterValidation": {
+    "NAME_REQUIRED": "Il nome è obbligatorio.",
+    "EMAIL_REQUIRED": "L'email è obbligatoria.",
+    "EMAIL_FORMAT": "Formato email non valido.",
+    "PASSWORD_REQUIRED": "La password è obbligatoria.",
+    "PASSWORD_MINLENGTH": "La password deve essere lunga almeno 6 caratteri.",
+    "PASSWORD_FORMAT": "La password deve contenere almeno una lettera minuscola, una lettera maiuscola, un numero e un carattere speciale.",
+    "CONFIRM_PASSWORD_REQUIRED": "Per favore, conferma la tua password.",
+    "CONFIRM_PASSWORD_MATCH": "Le password non corrispondono.",
+    "ROLE_REQUIRED": "Il ruolo è obbligatorio."
+  }
+}
