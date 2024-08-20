@@ -8,6 +8,8 @@ import {
   IonButton,
   IonImg,
   IonIcon,
+  IonHeader,
+  IonToolbar,
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -16,6 +18,8 @@ import {
   styleUrls: ['hero.component.scss'],
   standalone: true,
   imports: [
+    IonToolbar,
+    IonHeader,
     TranslateModule,
     IonContent,
     IonGrid,
