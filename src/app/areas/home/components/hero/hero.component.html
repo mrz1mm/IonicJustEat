@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true" id="Hero">
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        size="12"
+        size-lg="6"
+        class="ion-justify-content-center ion-align-items-start"
+      >
+        <div class="ion-margin-bottom">
+          <h1 class="ion-margin-bottom">
+            <b>{{ "Hero.TITLE" | translate }}</b>
+          </h1>
+          <h2>
+            <b>{{ "Hero.SUBTITLE" | translate }}</b>
+          </h2>
+        </div>
+        <div id="inputWrapper" class="ion-margin-top">
+          <input
+            type="text"
+            placeholder="{{ 'Hero.PLACEHOLDER' | translate }}"
+          />
+          <ion-icon name="close-circle-outline"></ion-icon>
+          <ion-button
+            fill="clear"
+            class="btn2"
+            [attr.aria-label]="'Hero.ARIA_LABEL_SEARCH' | translate"
+          >
+            {{ "Hero.SEARCH_BUTTON" | translate }}
+          </ion-button>
+        </div>
+      </ion-col>
+      <ion-col
+        size="12"
+        size-lg="6"
+        class="ion-justify-content-center ion-align-items-center ion-padding"
+      >
+        <ion-img
+          src="../../../../assets/img/home/hero.png"
+          alt="{{ 'Hero.ALT_TEXT' | translate }}"
+        />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,31 @@
+.btn1 {
+  background-color: transparent;
+  border: none;
+  border-radius: 1rem;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #efedea;
+  }
+}
+
+.btn2 {
+  color: white;
+  font-size: 1.25rem;
+  border-radius: 1rem;
+  background-color: #ff8000;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: #f15d00;
+  }
+}
+
+.valid-input {
+  border-color: green;
+  background-color: #eaffea;
+}
+
+.invalid-input {
+  border-color: red;
+  background-color: #ffeaea;
+}
