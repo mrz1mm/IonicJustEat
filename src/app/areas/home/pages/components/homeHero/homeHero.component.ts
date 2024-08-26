@@ -14,9 +14,9 @@ import {
 } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-hero',
-  templateUrl: './hero.component.html',
-  styleUrls: ['../../../../../app.component.scss', 'hero.component.scss'],
+  selector: 'app-home-hero',
+  templateUrl: './homeHero.component.html',
+  styleUrls: ['../../../../../app.component.scss', 'homeHero.component.scss'],
   standalone: true,
   imports: [
     IonInput,

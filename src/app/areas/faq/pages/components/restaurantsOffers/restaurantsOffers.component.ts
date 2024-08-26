@@ -3,29 +3,32 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
   IonAccordionGroup,
   IonAccordion,
-  IonLabel,
   IonItem,
+  IonLabel,
   IonGrid,
   IonRow,
   IonCol,
 } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-payments',
-  templateUrl: './payments.component.html',
-  styleUrls: ['../../../../../app.component.scss', 'payments.component.scss'],
+  selector: 'app-restaurants-offers',
+  templateUrl: './restaurantsOffers.component.html',
+  styleUrls: [
+    '../../../../../app.component.scss',
+    'restaurantsOffers.component.scss',
+  ],
   standalone: true,
   imports: [
     IonGrid,
     IonRow,
     IonCol,
-    IonItem,
     IonLabel,
+    IonItem,
     IonAccordion,
     IonAccordionGroup,
     TranslateModule,
   ],
 })
-export class PaymentsComponent {
+export class RestaurantsOffersComponent {
   constructor() {}
 }

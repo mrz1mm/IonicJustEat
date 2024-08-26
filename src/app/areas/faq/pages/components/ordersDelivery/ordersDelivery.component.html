@@ -1,0 +1,75 @@
+<ion-grid id="OrdersDelivery">
+  <ion-row>
+    <ion-col size="12">
+      <h2>{{ "OrdersDelivery.TITLE" | translate }}</h2>
+    </ion-col>
+    <ion-col size="12">
+      <ion-accordion-group>
+        <ion-accordion value="place-order">
+          <ion-item slot="header">
+            <ion-label>{{
+              "OrdersDelivery.QUESTIONS.PLACE_ORDER" | translate
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p>
+              {{ "OrdersDelivery.QUESTIONS.PLACE_ORDER" | translate }}
+            </p>
+          </div>
+        </ion-accordion>
+
+        <ion-accordion value="delivery-times">
+          <ion-item slot="header">
+            <ion-label>{{
+              "OrdersDelivery.QUESTIONS.DELIVERY_TIMES" | translate
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p>
+              {{ "OrdersDelivery.QUESTIONS.DELIVERY_TIMES" | translate }}
+            </p>
+          </div>
+        </ion-accordion>
+
+        <ion-accordion value="schedule-order">
+          <ion-item slot="header">
+            <ion-label>{{
+              "OrdersDelivery.QUESTIONS.SCHEDULE_ORDER" | translate
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p>
+              {{ "OrdersDelivery.QUESTIONS.SCHEDULE_ORDER" | translate }}
+            </p>
+          </div>
+        </ion-accordion>
+
+        <ion-accordion value="order-late">
+          <ion-item slot="header">
+            <ion-label>{{
+              "OrdersDelivery.QUESTIONS.ORDER_LATE" | translate
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p>
+              {{ "OrdersDelivery.QUESTIONS.ORDER_LATE" | translate }}
+            </p>
+          </div>
+        </ion-accordion>
+
+        <ion-accordion value="modify-order">
+          <ion-item slot="header">
+            <ion-label>{{
+              "OrdersDelivery.QUESTIONS.MODIFY_ORDER" | translate
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p>
+              {{ "OrdersDelivery.QUESTIONS.MODIFY_ORDER" | translate }}
+            </p>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </ion-col>
+  </ion-row>
+</ion-grid>

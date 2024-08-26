@@ -85,5 +85,53 @@
     "CONFIRM_PASSWORD_REQUIRED": "Please confirm your password.",
     "CONFIRM_PASSWORD_MATCH": "Passwords do not match.",
     "ROLE_REQUIRED": "Role is required."
+  },
+  "FaqHero": {
+    "TITLE": "Frequently Asked Questions",
+    "SUBTITLE": "Your questions answered, all in one place."
+  },
+  "AccountPreferences": {
+    "TITLE": "Account and Preferences",
+    "QUESTIONS": {
+      "CREATE_ACCOUNT": "How can I create an account?",
+      "RECOVER_PASSWORD": "How can I recover my password?",
+      "SAVE_FAVORITE_RESTAURANTS": "Can I save my favorite restaurants?",
+      "UPDATE_PERSONAL_INFORMATION": "How can I update my personal information?"
+    }
+  },
+  "OrdersDelivery": {
+    "TITLE": "Orders and Delivery",
+    "QUESTIONS": {
+      "PLACE_ORDER": "How can I place an order?",
+      "DELIVERY_TIMES": "What are the delivery times?",
+      "SCHEDULE_ORDER": "Can I schedule an order for a specific time?",
+      "ORDER_LATE": "What happens if my order is late?",
+      "MODIFY_ORDER": "Can I modify or cancel an order after placing it?"
+    }
+  },
+  "Payments": {
+    "TITLE": "Payments",
+    "QUESTIONS": {
+      "PAYMENT_METHODS": "What payment methods do you accept?",
+      "PAYMENT_SECURITY": "Is it safe to make payments on your site?",
+      "DISCOUNT_CODES": "Can I use vouchers or discount codes?",
+      "PAYMENT_NOT_ACCEPTED": "What should I do if my payment is not accepted?"
+    }
+  },
+  "RestaurantsOffers": {
+    "TITLE": "Restaurants and Offers",
+    "QUESTIONS": {
+      "FIND_RESTAURANTS": "How can I find new restaurants in my area?",
+      "SPECIAL_OFFERS": "How can I take advantage of special offers?",
+      "SUGGEST_RESTAURANT": "Can I suggest a restaurant to be added on Just Eat?"
+    }
+  },
+  "SupportAssistance": {
+    "TITLE": "Support and Assistance",
+    "QUESTIONS": {
+      "CONTACT_CUSTOMER_SERVICE": "How can I contact customer service?",
+      "ORDER_PROBLEM": "What should I do if I have a problem with my order?",
+      "LEAVE_REVIEW": "How can I leave a review?"
+    }
   }
 }

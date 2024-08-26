@@ -1,31 +1,34 @@
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import {
-  IonAccordionGroup,
   IonAccordion,
-  IonLabel,
   IonItem,
+  IonLabel,
+  IonAccordionGroup,
   IonGrid,
   IonRow,
   IonCol,
 } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-payments',
-  templateUrl: './payments.component.html',
-  styleUrls: ['../../../../../app.component.scss', 'payments.component.scss'],
+  selector: 'app-support-assistance',
+  templateUrl: './supportAssistance.component.html',
+  styleUrls: [
+    '../../../../../app.component.scss',
+    'supportAssistance.component.scss',
+  ],
   standalone: true,
   imports: [
     IonGrid,
     IonRow,
     IonCol,
-    IonItem,
-    IonLabel,
-    IonAccordion,
     IonAccordionGroup,
+    IonLabel,
+    IonItem,
+    IonAccordion,
     TranslateModule,
   ],
 })
-export class PaymentsComponent {
+export class SupportAssistanceComponent {
   constructor() {}
 }

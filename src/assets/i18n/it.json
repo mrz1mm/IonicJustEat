@@ -92,5 +92,82 @@
     "CONFIRM_PASSWORD_REQUIRED": "Per favore, conferma la tua password.",
     "CONFIRM_PASSWORD_MATCH": "Le password non corrispondono.",
     "ROLE_REQUIRED": "Il ruolo è obbligatorio."
+  },
+  "FaqHero": {
+    "TITLE": "Domande Frequenti",
+    "SUBTITLE": "Le tue domande trovano risposta, tutto in un unico posto."
+  },
+  "AccountPreferences": {
+    "TITLE": "Account e Preferenze",
+    "QUESTIONS": {
+      "CREATE_ACCOUNT": "Come posso creare un account?",
+      "RECOVER_PASSWORD": "Come posso recuperare la mia password?",
+      "SAVE_FAVORITE_RESTAURANTS": "Posso salvare i miei ristoranti preferiti?",
+      "UPDATE_PERSONAL_INFORMATION": "Come posso aggiornare le mie informazioni personali?"
+    },
+    "ANSWERS": {
+      "CREATE_ACCOUNT": "Puoi creare un account cliccando su 'Registrati' nella homepage e inserendo le tue informazioni personali e di contatto.",
+      "RECOVER_PASSWORD": "Se hai dimenticato la tua password, clicca su 'Password dimenticata?' nella pagina di login e segui le istruzioni per reimpostarla.",
+      "SAVE_FAVORITE_RESTAURANTS": "Sì, puoi salvare i tuoi ristoranti preferiti cliccando sull'icona del cuore accanto al nome del ristorante. Questi saranno accessibili nel tuo profilo.",
+      "UPDATE_PERSONAL_INFORMATION": "Puoi aggiornare le tue informazioni personali accedendo al tuo account e modificando le sezioni corrispondenti."
+    }
+  },
+  "OrdersDelivery": {
+    "TITLE": "Ordini e Consegne",
+    "QUESTIONS": {
+      "PLACE_ORDER": "Come posso effettuare un ordine?",
+      "DELIVERY_TIMES": "Quali sono i tempi di consegna?",
+      "SCHEDULE_ORDER": "Posso programmare un ordine per un orario specifico?",
+      "ORDER_LATE": "Cosa succede se il mio ordine è in ritardo?",
+      "MODIFY_ORDER": "Posso modificare o cancellare un ordine dopo averlo inviato?"
+    },
+    "ANSWERS": {
+      "PLACE_ORDER": "Puoi effettuare un ordine cercando il tuo ristorante preferito sul nostro sito o tramite l'app mobile, selezionare i piatti desiderati e procedere al pagamento.",
+      "DELIVERY_TIMES": "I tempi di consegna variano a seconda del ristorante e della distanza. Troverai una stima del tempo di consegna nella pagina del ristorante durante l'ordine.",
+      "SCHEDULE_ORDER": "Sì, puoi programmare un ordine per un orario futuro selezionando l'opzione 'Ordina per dopo' durante il processo di checkout.",
+      "ORDER_LATE": "Se il tuo ordine è in ritardo, puoi contattare il servizio clienti tramite la nostra app o il sito web per ricevere assistenza.",
+      "MODIFY_ORDER": "Le modifiche o cancellazioni sono possibili solo per un breve periodo dopo aver inviato l'ordine. Contatta il ristorante o il servizio clienti il prima possibile per richiedere una modifica."
+    }
+  },
+  "Payments": {
+    "TITLE": "Pagamenti",
+    "QUESTIONS": {
+      "PAYMENT_METHODS": "Quali metodi di pagamento accettate?",
+      "PAYMENT_SECURITY": "È sicuro effettuare pagamenti sul vostro sito?",
+      "DISCOUNT_CODES": "Posso utilizzare buoni o codici sconto?",
+      "PAYMENT_NOT_ACCEPTED": "Cosa devo fare se il mio pagamento non viene accettato?"
+    },
+    "ANSWERS": {
+      "PAYMENT_METHODS": "Accettiamo pagamenti tramite carta di credito, carta di debito, PayPal, Apple Pay e Google Pay. Alcuni ristoranti accettano anche pagamenti in contanti alla consegna.",
+      "PAYMENT_SECURITY": "Sì, utilizziamo protocolli di sicurezza avanzati per garantire che tutte le transazioni siano sicure e protette.",
+      "DISCOUNT_CODES": "Sì, durante il processo di pagamento puoi inserire il codice sconto nel campo apposito. Se il codice è valido, lo sconto verrà applicato automaticamente.",
+      "PAYMENT_NOT_ACCEPTED": "Se il tuo pagamento non viene accettato, verifica di aver inserito correttamente i dati della carta e che il saldo sia sufficiente. Se il problema persiste, contatta il servizio clienti."
+    }
+  },
+  "RestaurantsOffers": {
+    "TITLE": "Ristoranti e Offerte",
+    "QUESTIONS": {
+      "FIND_RESTAURANTS": "Come posso trovare nuovi ristoranti nella mia zona?",
+      "SPECIAL_OFFERS": "Come posso approfittare delle offerte speciali?",
+      "SUGGEST_RESTAURANT": "Posso suggerire un ristorante da aggiungere su Just Eat?"
+    },
+    "ANSWERS": {
+      "FIND_RESTAURANTS": "Puoi esplorare i nuovi ristoranti selezionando la tua posizione sulla nostra homepage e sfogliando le categorie o utilizzando la barra di ricerca.",
+      "SPECIAL_OFFERS": "Le offerte speciali sono visibili nella sezione 'Offerte' del nostro sito e vengono anche evidenziate nelle pagine dei ristoranti partecipanti.",
+      "SUGGEST_RESTAURANT": "Sì, puoi suggerire un ristorante inviando un'email al nostro team di supporto o utilizzando il modulo di suggerimento disponibile sul sito."
+    }
+  },
+  "SupportAssistance": {
+    "TITLE": "Supporto e Assistenza",
+    "QUESTIONS": {
+      "CONTACT_CUSTOMER_SERVICE": "Come posso contattare il servizio clienti?",
+      "ORDER_PROBLEM": "Cosa devo fare se ho un problema con il mio ordine?",
+      "LEAVE_REVIEW": "Come posso lasciare una recensione?"
+    },
+    "ANSWERS": {
+      "CONTACT_CUSTOMER_SERVICE": "Puoi contattare il servizio clienti tramite la nostra chat online, inviando un'email o chiamando il numero di assistenza indicato nella sezione 'Contatti' del nostro sito.",
+      "ORDER_PROBLEM": "Se riscontri un problema con il tuo ordine, contatta immediatamente il servizio clienti o il ristorante per risolvere la questione.",
+      "LEAVE_REVIEW": "Dopo aver ricevuto il tuo ordine, ti invieremo un'email con un link per lasciare una recensione del ristorante e del servizio."
+    }
   }
 }

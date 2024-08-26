@@ -1,0 +1,49 @@
+<ion-grid id="RestaurantsOffers">
+  <ion-row>
+    <ion-col size="12">
+      <h2>{{ "RestaurantsOffers.TITLE" | translate }}</h2>
+    </ion-col>
+    <ion-col size="12">
+      <ion-accordion-group>
+        <ion-accordion value="find-restaurants">
+          <ion-item slot="header">
+            <ion-label>{{
+              "RestaurantsOffers.QUESTIONS.FIND_RESTAURANTS" | translate
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p>
+              {{ "RestaurantsOffers.QUESTIONS.FIND_RESTAURANTS" | translate }}
+            </p>
+          </div>
+        </ion-accordion>
+
+        <ion-accordion value="special-offers">
+          <ion-item slot="header">
+            <ion-label>{{
+              "RestaurantsOffers.QUESTIONS.SPECIAL_OFFERS" | translate
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p>
+              {{ "RestaurantsOffers.QUESTIONS.SPECIAL_OFFERS" | translate }}
+            </p>
+          </div>
+        </ion-accordion>
+
+        <ion-accordion value="suggest-restaurant">
+          <ion-item slot="header">
+            <ion-label>{{
+              "RestaurantsOffers.QUESTIONS.SUGGEST_RESTAURANT" | translate
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p>
+              {{ "RestaurantsOffers.QUESTIONS.SUGGEST_RESTAURANT" | translate }}
+            </p>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </ion-col>
+  </ion-row>
+</ion-grid>

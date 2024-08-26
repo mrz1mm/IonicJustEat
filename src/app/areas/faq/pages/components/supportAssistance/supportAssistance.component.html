@@ -1,0 +1,52 @@
+<ion-grid id="SupportAssistance">
+  <ion-row>
+    <ion-col size="12">
+      <h2>{{ "SupportAssistance.TITLE" | translate }}</h2>
+    </ion-col>
+    <ion-col size="12">
+      <ion-accordion-group>
+        <ion-accordion value="contact-customer-service">
+          <ion-item slot="header">
+            <ion-label>{{
+              "SupportAssistance.QUESTIONS.CONTACT_CUSTOMER_SERVICE" | translate
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p>
+              {{
+                "SupportAssistance.QUESTIONS.CONTACT_CUSTOMER_SERVICE"
+                  | translate
+              }}
+            </p>
+          </div>
+        </ion-accordion>
+
+        <ion-accordion value="order-problem">
+          <ion-item slot="header">
+            <ion-label>{{
+              "SupportAssistance.QUESTIONS.ORDER_PROBLEM" | translate
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p>
+              {{ "SupportAssistance.QUESTIONS.ORDER_PROBLEM" | translate }}
+            </p>
+          </div>
+        </ion-accordion>
+
+        <ion-accordion value="leave-review">
+          <ion-item slot="header">
+            <ion-label>{{
+              "SupportAssistance.QUESTIONS.LEAVE_REVIEW" | translate
+            }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <p>
+              {{ "SupportAssistance.QUESTIONS.LEAVE_REVIEW" | translate }}
+            </p>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </ion-col>
+  </ion-row>
+</ion-grid>

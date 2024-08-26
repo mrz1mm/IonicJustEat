@@ -1,58 +1,66 @@
-<ion-grid id="Payments">
+<ion-grid id="AccountPreferences">
   <ion-row>
     <ion-col size="12">
-      <h2>{{ "Payments.TITLE" | translate }}</h2>
+      <h2>{{ "AccountPreferences.TITLE" | translate }}</h2>
     </ion-col>
     <ion-col size="12">
       <ion-accordion-group>
-        <ion-accordion value="payment-methods">
+        <ion-accordion value="create-account">
           <ion-item slot="header">
             <ion-label>{{
-              "Payments.QUESTIONS.PAYMENT_METHODS" | translate
+              "AccountPreferences.QUESTIONS.CREATE_ACCOUNT" | translate
             }}</ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
             <p>
-              {{ "Payments.QUESTIONS.PAYMENT_METHODS" | translate }}
+              {{ "AccountPreferences.QUESTIONS.CREATE_ACCOUNT" | translate }}
             </p>
           </div>
         </ion-accordion>
 
-        <ion-accordion value="payment-security">
+        <ion-accordion value="recover-password">
           <ion-item slot="header">
             <ion-label>{{
-              "Payments.QUESTIONS.PAYMENT_SECURITY" | translate
+              "AccountPreferences.QUESTIONS.RECOVER_PASSWORD" | translate
             }}</ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
             <p>
-              {{ "Payments.QUESTIONS.PAYMENT_SECURITY" | translate }}
+              {{ "AccountPreferences.QUESTIONS.RECOVER_PASSWORD" | translate }}
             </p>
           </div>
         </ion-accordion>
 
-        <ion-accordion value="discount-codes">
+        <ion-accordion value="save-favorite-restaurants">
           <ion-item slot="header">
             <ion-label>{{
-              "Payments.QUESTIONS.DISCOUNT_CODES" | translate
+              "AccountPreferences.QUESTIONS.SAVE_FAVORITE_RESTAURANTS"
+                | translate
             }}</ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
             <p>
-              {{ "Payments.QUESTIONS.DISCOUNT_CODES" | translate }}
+              {{
+                "AccountPreferences.QUESTIONS.SAVE_FAVORITE_RESTAURANTS"
+                  | translate
+              }}
             </p>
           </div>
         </ion-accordion>
 
-        <ion-accordion value="payment-not-accepted">
+        <ion-accordion value="update-personal-information">
           <ion-item slot="header">
             <ion-label>{{
-              "Payments.QUESTIONS.PAYMENT_NOT_ACCEPTED" | translate
+              "AccountPreferences.QUESTIONS.UPDATE_PERSONAL_INFORMATION"
+                | translate
             }}</ion-label>
           </ion-item>
           <div class="ion-padding" slot="content">
             <p>
-              {{ "Payments.QUESTIONS.PAYMENT_NOT_ACCEPTED" | translate }}
+              {{
+                "AccountPreferences.QUESTIONS.UPDATE_PERSONAL_INFORMATION"
+                  | translate
+              }}
             </p>
           </div>
         </ion-accordion>
