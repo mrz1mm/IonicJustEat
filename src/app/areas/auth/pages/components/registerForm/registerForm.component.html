@@ -14,18 +14,25 @@
         formControlName="email"
         type="email"
         [ngClass]="{
-               'valid-input': registerForm.get('email')?.valid && registerForm.get('email')?.touched,
-               'invalid-input': registerForm.get('email')?.invalid && registerForm.get('email')?.touched
-             }"
+          'valid-input':
+            registerForm.get('email')?.valid &&
+            registerForm.get('email')?.touched,
+          'invalid-input':
+            registerForm.get('email')?.invalid &&
+            registerForm.get('email')?.touched
+        }"
       />
       <div
-        *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid"
+        *ngIf="
+          registerForm.get('email')?.touched &&
+          registerForm.get('email')?.invalid
+        "
       >
         <small *ngIf="registerForm.get('email')?.errors?.['required']">
-          {{ 'RegisterValidation.EMAIL_REQUIRED' | translate }}
+          {{ "RegisterValidation.EMAIL_REQUIRED" | translate }}
         </small>
         <small *ngIf="registerForm.get('email')?.errors?.['email']">
-          {{ 'RegisterValidation.EMAIL_FORMAT' | translate }}
+          {{ "RegisterValidation.EMAIL_FORMAT" | translate }}
         </small>
       </div>
     </div>
@@ -36,21 +43,28 @@
         formControlName="password"
         type="password"
         [ngClass]="{
-               'valid-input': registerForm.get('password')?.valid && registerForm.get('password')?.touched,
-               'invalid-input': registerForm.get('password')?.invalid && registerForm.get('password')?.touched
-             }"
+          'valid-input':
+            registerForm.get('password')?.valid &&
+            registerForm.get('password')?.touched,
+          'invalid-input':
+            registerForm.get('password')?.invalid &&
+            registerForm.get('password')?.touched
+        }"
       />
       <div
-        *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+        *ngIf="
+          registerForm.get('password')?.touched &&
+          registerForm.get('password')?.invalid
+        "
       >
         <small *ngIf="registerForm.get('password')?.errors?.['required']">
-          {{ 'RegisterValidation.PASSWORD_REQUIRED' | translate }}
+          {{ "RegisterValidation.PASSWORD_REQUIRED" | translate }}
         </small>
         <small *ngIf="registerForm.get('password')?.errors?.['minlength']">
-          {{ 'RegisterValidation.PASSWORD_MINLENGTH' | translate }}
+          {{ "RegisterValidation.PASSWORD_MINLENGTH" | translate }}
         </small>
         <small *ngIf="registerForm.get('password')?.errors?.['pattern']">
-          {{ 'RegisterValidation.PASSWORD_FORMAT' | translate }}
+          {{ "RegisterValidation.PASSWORD_FORMAT" | translate }}
         </small>
       </div>
     </div>
@@ -61,20 +75,27 @@
         formControlName="confirmPassword"
         type="password"
         [ngClass]="{
-               'valid-input': registerForm.get('confirmPassword')?.valid && registerForm.get('confirmPassword')?.touched,
-               'invalid-input': registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched
-             }"
+          'valid-input':
+            registerForm.get('confirmPassword')?.valid &&
+            registerForm.get('confirmPassword')?.touched,
+          'invalid-input':
+            registerForm.get('confirmPassword')?.invalid &&
+            registerForm.get('confirmPassword')?.touched
+        }"
       />
       <div
-        *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid"
+        *ngIf="
+          registerForm.get('confirmPassword')?.touched &&
+          registerForm.get('confirmPassword')?.invalid
+        "
       >
         <small
           *ngIf="registerForm.get('confirmPassword')?.errors?.['required']"
         >
-          {{ 'RegisterValidation.CONFIRM_PASSWORD_REQUIRED' | translate }}
+          {{ "RegisterValidation.CONFIRM_PASSWORD_REQUIRED" | translate }}
         </small>
         <small *ngIf="registerForm.get('confirmPassword')?.errors?.['match']">
-          {{ 'RegisterValidation.CONFIRM_PASSWORD_MATCH' | translate }}
+          {{ "RegisterValidation.CONFIRM_PASSWORD_MATCH" | translate }}
         </small>
       </div>
     </div>
@@ -84,17 +105,23 @@
         id="role"
         formControlName="role"
         [ngClass]="{
-               'valid-input': registerForm.get('role')?.valid && registerForm.get('role')?.touched,
-               'invalid-input': registerForm.get('role')?.invalid && registerForm.get('role')?.touched
-             }"
+          'valid-input':
+            registerForm.get('role')?.valid &&
+            registerForm.get('role')?.touched,
+          'invalid-input':
+            registerForm.get('role')?.invalid &&
+            registerForm.get('role')?.touched
+        }"
       >
         <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
       </select>
       <div
-        *ngIf="registerForm.get('role')?.touched && registerForm.get('role')?.invalid"
+        *ngIf="
+          registerForm.get('role')?.touched && registerForm.get('role')?.invalid
+        "
       >
         <small *ngIf="registerForm.get('role')?.errors?.['required']">
-          {{ 'RegisterValidation.ROLE_REQUIRED' | translate }}
+          {{ "RegisterValidation.ROLE_REQUIRED" | translate }}
         </small>
       </div>
     </div>

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { IonFooter } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-footer',
-  templateUrl: './Footer.component.html',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.scss'],
   standalone: true,
-  imports: [],
+  imports: [IonFooter],
 })
 export class FooterComponent {}

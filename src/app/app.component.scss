@@ -29,3 +29,18 @@
   border-color: red;
   background-color: #ffeaea;
 }
+
+.modal {
+  --border-radius: 1rem;
+
+  @media (min-width: 768px) {
+    --max-height: 22rem;
+  }
+}
+
+.modalHeader {
+}
+
+.btn {
+  --border-radius: 1rem;
+}

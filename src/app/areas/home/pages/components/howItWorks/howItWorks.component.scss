@@ -1,0 +1,41 @@
+#HowItWorks {
+  padding: 0;
+  swiper-container {
+    --swiper-pagination-bullet-inactive-color: #3c4c4f;
+    --swiper-pagination-color: #ff8000;
+    --swiper-pagination-bullet-size: 1rem;
+    --swiper-pagination-bullet-horizontal-gap: 0.5rem;
+  }
+  swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  ion-row:first-child {
+    h2 {
+      font-size: 1.5rem;
+      font-weight: normal;
+    }
+    h3 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+  }
+  ion-row:nth-child(2) {
+    .col {
+      h5 {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+      p {
+        max-width: 22rem;
+        font-weight: lighter;
+      }
+    }
+  }
+  img {
+    width: 80px;
+    height: 80px;
+  }
+}

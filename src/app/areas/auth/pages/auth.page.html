@@ -1,8 +1,5 @@
-<body id="AuthPage" class="pt-10">
-  <div
-    class="container"
-    [ngClass]="{ 'right-panel-active': rightPanelActive() }"
-  >
+<ion-content id="AuthPage" class="pt-10">
+  <ion-grid [ngClass]="{ 'right-panel-active': rightPanelActive() }">
     <app-login-form></app-login-form>
     <app-register-form></app-register-form>
     <section class="overlay-container">
@@ -11,5 +8,5 @@
         <app-login-hero></app-login-hero>
       </div>
     </section>
-  </div>
-</body>
+  </ion-grid>
+</ion-content>

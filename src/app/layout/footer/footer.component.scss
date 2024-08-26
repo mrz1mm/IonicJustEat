@@ -1,0 +1,10 @@
+ion-footer {
+  display: flex;
+  flex-direction: column;
+  height: 22vh;
+  .logo {
+    width: 199px;
+    aspect-ratio: auto 199 / 48;
+    height: 48px;
+  }
+}

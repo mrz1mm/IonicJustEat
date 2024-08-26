@@ -14,18 +14,22 @@
         type="email"
         placeholder="Email"
         [ngClass]="{
-               'valid-input': loginForm.get('email')?.valid && loginForm.get('email')?.touched,
-               'invalid-input': loginForm.get('email')?.invalid && loginForm.get('email')?.touched
-             }"
+          'valid-input':
+            loginForm.get('email')?.valid && loginForm.get('email')?.touched,
+          'invalid-input':
+            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+        }"
       />
       <div
-        *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
+        *ngIf="
+          loginForm.get('email')?.touched && loginForm.get('email')?.invalid
+        "
       >
         <small *ngIf="loginForm.get('email')?.errors?.['required']">
-          {{ 'LoginValidation.EMAIL_REQUIRED' | translate }}
+          {{ "LoginValidation.EMAIL_REQUIRED" | translate }}
         </small>
         <small *ngIf="loginForm.get('email')?.errors?.['email']">
-          {{ 'LoginValidation.EMAIL_FORMAT' | translate }}
+          {{ "LoginValidation.EMAIL_FORMAT" | translate }}
         </small>
       </div>
     </div>
@@ -36,21 +40,28 @@
         type="password"
         placeholder="Password"
         [ngClass]="{
-               'valid-input': loginForm.get('password')?.valid && loginForm.get('password')?.touched,
-               'invalid-input': loginForm.get('password')?.invalid && loginForm.get('password')?.touched
-             }"
+          'valid-input':
+            loginForm.get('password')?.valid &&
+            loginForm.get('password')?.touched,
+          'invalid-input':
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+        }"
       />
       <div
-        *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid"
+        *ngIf="
+          loginForm.get('password')?.touched &&
+          loginForm.get('password')?.invalid
+        "
       >
         <small *ngIf="loginForm.get('password')?.errors?.['required']">
-          {{ 'LoginValidation.PASSWORD_REQUIRED' | translate }}
+          {{ "LoginValidation.PASSWORD_REQUIRED" | translate }}
         </small>
         <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
-          {{ 'LoginValidation.PASSWORD_MINLENGTH' | translate }}
+          {{ "LoginValidation.PASSWORD_MINLENGTH" | translate }}
         </small>
         <small *ngIf="loginForm.get('password')?.errors?.['pattern']">
-          {{ 'LoginValidation.PASSWORD_FORMAT' | translate }}
+          {{ "LoginValidation.PASSWORD_FORMAT" | translate }}
         </small>
       </div>
     </div>

@@ -1,152 +1,110 @@
-<section id="HowItWorks" class="container-fluid d-none d-lg-block">
-  <div class="row row-cols-1 pt-10 pb-4h4">
-    <div
-      class="col d-flex flex-column justify-content-around align-items-center"
+<ion-grid id="HowItWorks" class="ion-hide-lg-up">
+  <ion-row class="ion-padding-top">
+    <ion-col
+      class="ion-justify-content-around ion-align-items-center ion-text-center"
     >
-      <h2>{{ 'HowItWorks.TITLE' | translate }}</h2>
-      <h3 class="text-primary">{{ 'HowItWorks.SUBTITLE' | translate }}</h3>
-    </div>
-  </div>
-  <div class="row row-cols3 pb-10 mx-10">
-    <div class="col d-flex flex-column align-items-center">
+      <h2>{{ "HowItWorks.TITLE" | translate }}</h2>
+      <h3>{{ "HowItWorks.SUBTITLE" | translate }}</h3>
+    </ion-col>
+  </ion-row>
+  <swiper-container
+    slides-per-view="1"
+    autoplay-delay="3000"
+    autoplay-disable-on-interaction="false"
+    pagination="true"
+    pagination-clickable="true"
+    speed="1000"
+  >
+    <swiper-slide>
+      <ion-col class="ion-text-center ion-margin-vertical">
+        <img
+          src="../../../../assets/img/utilities/position.svg"
+          alt="{{ 'HowItWorks.STEP1_ALT' | translate }}"
+        />
+        <h4 class="ion-text-center ion-margin-vertical">
+          {{ "HowItWorks.STEP1_TITLE" | translate }}
+        </h4>
+        <p class="ion-text-center ion-padding-bottom">
+          {{ "HowItWorks.STEP1_DESCRIPTION" | translate }}
+        </p>
+      </ion-col>
+    </swiper-slide>
+    <swiper-slide>
+      <ion-col class="ion-text-center ion-margin-vertical">
+        <img
+          src="../../../../assets/img/utilities/sandwich.svg"
+          alt="{{ 'HowItWorks.STEP2_ALT' | translate }}"
+        />
+        <h4 class="ion-text-center ion-margin-vertical">
+          {{ "HowItWorks.STEP2_TITLE" | translate }}
+        </h4>
+        <p class="ion-text-center ion-padding-bottom">
+          {{ "HowItWorks.STEP2_DESCRIPTION" | translate }}
+        </p>
+      </ion-col>
+    </swiper-slide>
+    <swiper-slide>
+      <ion-col class="ion-text-center ion-margin-vertical">
+        <img
+          src="../../../../assets/img/utilities/cloche.svg"
+          alt="{{ 'HowItWorks.STEP3_ALT' | translate }}"
+        />
+        <h4 class="ion-text-center ion-margin-vertical">
+          {{ "HowItWorks.STEP3_TITLE" | translate }}
+        </h4>
+        <p class="ion-text-center ion-padding-bottom">
+          {{ "HowItWorks.STEP3_DESCRIPTION" | translate }}
+        </p>
+      </ion-col>
+    </swiper-slide>
+  </swiper-container>
+</ion-grid>
+
+<ion-grid id="HowItWorks" class="ion-hide-lg-down">
+  <ion-row class="ion-padding-vertical">
+    <ion-col
+      class="ion-justify-content-around ion-align-items-center ion-text-center"
+    >
+      <h2>{{ "HowItWorks.TITLE" | translate }}</h2>
+      <h3>{{ "HowItWorks.SUBTITLE" | translate }}</h3>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-text-center ion-padding-bottom ion-margin-horizontal">
+    <ion-col class="ion-text-center ion-margin-vertical" size="4">
       <img
         src="../../../../assets/img/utilities/position.svg"
         alt="{{ 'HowItWorks.STEP_ALT' | translate }}"
       />
-      <h4 class="text-center my-4">
-        {{ 'HowItWorks.STEP1_TITLE' | translate }}
+      <h4 class="ion-text-center ion-margin-vertical">
+        {{ "HowItWorks.STEP1_TITLE" | translate }}
       </h4>
-      <p class="text-center">
-        {{ 'HowItWorks.STEP1_DESCRIPTION' | translate }}
+      <p class="ion-text-center">
+        {{ "HowItWorks.STEP1_DESCRIPTION" | translate }}
       </p>
-    </div>
-    <div class="col d-flex flex-column align-items-center mx-4h4">
+    </ion-col>
+    <ion-col class="ion-text-center ion-margin-vertical" size="4">
       <img
         src="../../../../assets/img/utilities/sandwich.svg"
         alt="{{ 'HowItWorks.STEP_ALT' | translate }}"
       />
-      <h4 class="text-center my-4">
-        {{ 'HowItWorks.STEP2_TITLE' | translate }}
+      <h4 class="ion-text-center ion-margin-vertical">
+        {{ "HowItWorks.STEP2_TITLE" | translate }}
       </h4>
-      <p class="text-center">
-        {{ 'HowItWorks.STEP2_DESCRIPTION' | translate }}
+      <p class="ion-text-center">
+        {{ "HowItWorks.STEP2_DESCRIPTION" | translate }}
       </p>
-    </div>
-    <div class="col d-flex flex-column align-items-center">
+    </ion-col>
+    <ion-col class="ion-text-center ion-margin-vertical" size="4">
       <img
         src="../../../../assets/img/utilities/cloche.svg"
         alt="{{ 'HowItWorks.STEP_ALT' | translate }}"
       />
-      <h4 class="text-center my-4">
-        {{ 'HowItWorks.STEP3_TITLE' | translate }}
+      <h4 class="ion-text-center ion-margin-vertical">
+        {{ "HowItWorks.STEP3_TITLE" | translate }}
       </h4>
-      <p class="text-center">
-        {{ 'HowItWorks.STEP3_DESCRIPTION' | translate }}
+      <p class="ion-text-center">
+        {{ "HowItWorks.STEP3_DESCRIPTION" | translate }}
       </p>
-    </div>
-  </div>
-</section>
-
-<section id="HowItWorks" class="container-fluid d-lg-none">
-  <div class="row row-cols-1 pt-10 pb-4h4">
-    <div
-      class="col-12 d-flex flex-column justify-content-around align-items-center"
-    >
-      <h2>{{ 'HowItWorks.TITLE' | translate }}</h2>
-      <h3 class="text-primary">{{ 'HowItWorks.SUBTITLE' | translate }}</h3>
-    </div>
-  </div>
-
-  <div
-    id="carouselHowItWorks"
-    class="carousel slide pb-10 mx-10"
-    data-bs-ride="carousel"
-  >
-    <div class="carousel-indicators">
-      <button
-        type="button"
-        data-bs-target="#carouselHowItWorks"
-        data-bs-slide-to="0"
-        class="active"
-        aria-current="true"
-        [attr.aria-label]="'HowItWorks.ARIA_LABEL_SLIDE1' | translate"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselHowItWorks"
-        data-bs-slide-to="1"
-        [attr.aria-label]="'HowItWorks.ARIA_LABEL_SLIDE2' | translate"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselHowItWorks"
-        data-bs-slide-to="2"
-        [attr.aria-label]="'HowItWorks.ARIA_LABEL_SLIDE3' | translate"
-      ></button>
-    </div>
-
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="col d-flex flex-column align-items-center">
-          <img
-            src="../../../../assets/img/utilities/position.svg"
-            alt="{{ 'HowItWorks.STEP_ALT' | translate }}"
-          />
-          <h4 class="text-center my-4">
-            {{ 'HowItWorks.STEP1_TITLE' | translate }}
-          </h4>
-          <p class="text-center">
-            {{ 'HowItWorks.STEP1_DESCRIPTION' | translate }}
-          </p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="col d-flex flex-column align-items-center">
-          <img
-            src="../../../../assets/img/utilities/sandwich.svg"
-            alt="{{ 'HowItWorks.STEP_ALT' | translate }}"
-          />
-          <h4 class="text-center my-4">
-            {{ 'HowItWorks.STEP2_TITLE' | translate }}
-          </h4>
-          <p class="text-center">
-            {{ 'HowItWorks.STEP2_DESCRIPTION' | translate }}
-          </p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="col d-flex flex-column align-items-center">
-          <img
-            src="../../../../assets/img/utilities/cloche.svg"
-            alt="{{ 'HowItWorks.STEP_ALT' | translate }}"
-          />
-          <h4 class="text-center my-4">
-            {{ 'HowItWorks.STEP3_TITLE' | translate }}
-          </h4>
-          <p class="text-center">
-            {{ 'HowItWorks.STEP3_DESCRIPTION' | translate }}
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselHowItWorks"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselHowItWorks"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</section>
+    </ion-col>
+  </ion-row>
+</ion-grid>

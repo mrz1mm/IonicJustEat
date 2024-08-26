@@ -1,112 +1,175 @@
-<header>
-  <nav class="d-flex justify-content-between align-items-center px-3">
-    <div>
-      <img
-        class="logo"
-        src="../../.././assets/img/utilities/logo.svg"
-        [alt]="'Header.LOGO_ALT' | translate"
-      />
-    </div>
-    <div class="d-flex justify-content-end align-items-center">
-      <button
-        class="btn1 d-flex justify-content-center align-items-center px-3 py-2 d-none d-md-block"
-        [attr.aria-label]="'Header.ORDER_BUSINESS' | translate"
+<ion-header>
+  <ion-toolbar>
+    <ion-grid class="ion-align-items-center">
+      <ion-row
+        class="ion-justify-content-between ion-align-items-center ion-padding-horizontal"
       >
-        <img
-          src="../../.././assets/img/utilities/building.svg"
-          [alt]="'Header.BUILDING_ALT' | translate"
-        />
-        <span class="ms-2">{{ 'Header.ORDER_BUSINESS' | translate }}</span>
-      </button>
-
-      <button
-        class="btn1 d-flex justify-content-center align-items-center px-3 py-2 d-none d-md-block"
-        [attr.aria-label]="'Header.BECOME_RIDER' | translate"
-      >
-        <img
-          src="../../.././assets/img/utilities/moped.svg"
-          [alt]="'Header.MOPED_ALT' | translate"
-        />
-        <span class="ms-1">{{ 'Header.BECOME_RIDER' | translate }}</span>
-      </button>
-
-      <button
-        class="btn1 dropdown-toggle d-flex justify-content-center align-items-center px-3 py-2"
-        type="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        [attr.aria-label]="'Header.FLAG_ALT' | translate"
-      >
-        <img
-          [src]="currentFlag"
-          [alt]="'Header.FLAG_ALT' | translate"
-          class="me-2"
-        />
-      </button>
-
-      <ul class="dropdown-menu">
-        <li
-          (click)="changeLanguage(IT)"
-          class="btn1 d-flex justify-content-between align-items-center px-3 py-2"
-          [attr.aria-label]="'Header.LANGUAGE_ITALY' | translate"
+        <ion-col size="auto">
+          <ion-img
+            class="logo"
+            src="../../../assets/img/utilities/logo.svg"
+          ></ion-img>
+        </ion-col>
+        <ion-col
+          size="auto"
+          class="ion-justify-content-end ion-align-items-center"
         >
-          <div class="d-flex align-items-center">
-            <img
-              src="../../../assets/img/utilities/it.svg"
-              [alt]="'Header.ITALY_FLAG_ALT' | translate"
-            />
-            <span class="ms-2">{{ 'Header.LANGUAGE_ITALY' | translate }}</span>
-          </div>
-          <img
-            *ngIf="currentFlag === '../../../assets/img/utilities/it.svg'"
-            src="../../../assets/img/utilities/check.svg"
-            [alt]="'Header.CHECK_ALT' | translate"
-          />
-        </li>
-        <li
-          (click)="changeLanguage(EN)"
-          class="btn1 d-flex justify-content-between align-items-center px-3 py-2"
-          [attr.aria-label]="'Header.LANGUAGE_ENGLISH' | translate"
-        >
-          <div class="d-flex align-items-center">
-            <img
-              src="../../../assets/img/utilities/en.svg"
-              [alt]="'Header.UK_FLAG_ALT' | translate"
-            />
-            <span class="ms-2"
-              >{{ 'Header.LANGUAGE_ENGLISH' | translate }}</span
-            >
-          </div>
-          <img
-            *ngIf="currentFlag === '../../../assets/img/utilities/en.svg'"
-            src="../../../assets/img/utilities/check.svg"
-            [alt]="'Header.CHECK_ALT' | translate"
-          />
-        </li>
-      </ul>
+          <!-- Pulsante per la selezione della lingua -->
+          <ion-button (click)="presentPopover($event)" fill="clear">
+            <ion-icon [src]="currentFlag" slot="icon-only"></ion-icon>
+          </ion-button>
 
-      <button
-        class="btn1 d-flex justify-content-center align-items-center px-3 py-2"
-        [attr.aria-label]="'Header.LOGIN' | translate"
-      >
-        <img
-          src="../../.././assets/img/utilities/user.svg"
-          [alt]="'Header.USER_ALT' | translate"
-        />
-        <span class="ms-2 d-none d-sm-block"
-          >{{ 'Header.LOGIN' | translate }}</span
-        >
-      </button>
+          <!-- Popover per la selezione della lingua -->
+          <ion-popover
+            [isOpen]="isOpen()"
+            (didDismiss)="isOpen.set(false)"
+            [event]="popoverEvent"
+            side="bottom"
+            alignment="end"
+          >
+            <ng-template>
+              <ion-list>
+                <ion-item
+                  button
+                  (click)="changeLanguage(IT)"
+                  [attr.aria-label]="'Header.LANGUAGE_ITALY' | translate"
+                >
+                  <ion-icon
+                    slot="start"
+                    src="../../../assets/img/utilities/it.svg"
+                  ></ion-icon>
+                  <ion-label>{{
+                    "Header.LANGUAGE_ITALY" | translate
+                  }}</ion-label>
+                  <ion-icon
+                    slot="end"
+                    *ngIf="
+                      currentFlag === '../../../assets/img/utilities/it.svg'
+                    "
+                    src="../../../assets/img/utilities/check.svg"
+                  ></ion-icon>
+                </ion-item>
+                <ion-item
+                  button
+                  (click)="changeLanguage(EN)"
+                  [attr.aria-label]="'Header.LANGUAGE_ENGLISH' | translate"
+                >
+                  <ion-icon
+                    slot="start"
+                    src="../../../assets/img/utilities/en.svg"
+                  ></ion-icon>
+                  <ion-label>{{
+                    "Header.LANGUAGE_ENGLISH" | translate
+                  }}</ion-label>
+                  <ion-icon
+                    slot="end"
+                    *ngIf="
+                      currentFlag === '../../../assets/img/utilities/en.svg'
+                    "
+                    src="../../../assets/img/utilities/check.svg"
+                  ></ion-icon>
+                </ion-item>
+              </ion-list>
+            </ng-template>
+          </ion-popover>
 
-      <button
-        class="btn1 d-flex justify-content-center align-items-center px-3 py-2"
-        [attr.aria-label]="'Header.LIST_ALT' | translate"
-      >
-        <img
-          src="../../.././assets/img/utilities/list.svg"
-          [alt]="'Header.LIST_ALT' | translate"
-        />
-      </button>
-    </div>
-  </nav>
-</header>
+          <!-- Pulsante Accedi -->
+          <ion-button
+            class="ion-padding-horizontal text-color ion-hide-lg-down"
+            [attr.aria-label]="'Header.LOGIN' | translate"
+            fill="clear"
+            routerLink="/auth"
+            color="tertiary"
+          >
+            <ion-icon
+              slot="start"
+              src="../../../assets/img/utilities/user.svg"
+            ></ion-icon>
+            <span class="ion-margin-start">{{
+              "Header.LOGIN" | translate
+            }}</span>
+          </ion-button>
+
+          <!-- Pulsante tema -->
+          <ion-button (click)="toggleTheme()" fill="clear" color="tertiary">
+            <ion-icon
+              *ngIf="currentTheme() === 'light'"
+              name="sunny"
+              slot="icon-only"
+            ></ion-icon>
+            <ion-icon
+              *ngIf="currentTheme() === 'dark'"
+              name="moon"
+              slot="icon-only"
+            ></ion-icon>
+          </ion-button>
+
+          <!-- Pulsante Lista -->
+          <ion-button
+            id="open-modal"
+            [attr.aria-label]="'Header.LIST_ALT' | translate"
+            fill="clear"
+            color="tertiary"
+          >
+            <ion-icon src="../../../assets/img/utilities/list.svg"></ion-icon
+          ></ion-button>
+          <ion-modal
+            #modal
+            class="modal"
+            trigger="open-modal"
+            [enterAnimation]="enterAnimation"
+            [leaveAnimation]="leaveAnimation"
+          >
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>Il mio account</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button (click)="modal.dismiss()">
+                      <ion-icon name="close"></ion-icon>
+                    </ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content>
+                <ion-row class="buttonsContainer ion-padding">
+                  <ion-col size="6">
+                    <ion-button class="btn" expand="block" color="secondary"
+                      >Accedi</ion-button
+                    >
+                  </ion-col>
+                  <ion-col size="6">
+                    <ion-button class="btn" expand="block" color="primary"
+                      >Crea un account</ion-button
+                    >
+                  </ion-col>
+                </ion-row>
+                <ion-list>
+                  <ion-item>
+                    <ion-icon name="card-outline" slot="start"></ion-icon>
+                    <ion-label>Carte Fedeltà</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-icon
+                      name="help-circle-outline"
+                      slot="start"
+                    ></ion-icon>
+                    <ion-label>Ti serve aiuto?</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-icon name="bicycle-outline" slot="start"></ion-icon>
+                    <ion-label>Diventa rider</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-icon name="briefcase-outline" slot="start"></ion-icon>
+                    <ion-label>Just Eat for business</ion-label>
+                  </ion-item>
+                </ion-list>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>

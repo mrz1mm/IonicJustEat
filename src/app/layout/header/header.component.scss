@@ -1,0 +1,24 @@
+ion-header {
+  box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+  .logo {
+    width: 133px;
+    aspect-ratio: auto 133 / 32;
+    height: 32px;
+  }
+  ion-modal {
+    ion-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    ion-button {
+      border-radius: 2rem;
+    }
+
+    .buttonsContainer {
+      a {
+        border-radius: 5rem;
+      }
+    }
+  }
+}

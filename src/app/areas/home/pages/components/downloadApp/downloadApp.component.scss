@@ -1,0 +1,24 @@
+#DownloadApp {
+  background-color: #c1dade;
+  padding: 0;
+  ion-row {
+    ion-col:first-child {
+      h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: var(--text-color-black);
+      }
+      p {
+        font-size: 1.5rem;
+        font-weight: lighter;
+        color: var(--text-color-black);
+      }
+    }
+    ion-col:nth-child(2) {
+      ion-img {
+        width: 320px;
+        margin-inline: auto;
+      }
+    }
+  }
+}

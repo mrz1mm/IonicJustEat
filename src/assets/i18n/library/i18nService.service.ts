@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Language } from './Language';
 import { Store } from '../../../app/library/persistentService/Store';
@@ -21,11 +21,11 @@ export class i18nService {
     this.translate.use(this._language());
   }
 
-  getLanguage() {
+  getLanguage(): Signal<string> {
     return this._language.asReadonly();
   }
 
-  setLanguage(language: string) {
+  setLanguage(language: string): void {
     this._language.set(language);
     this.translate.use(language);
   }

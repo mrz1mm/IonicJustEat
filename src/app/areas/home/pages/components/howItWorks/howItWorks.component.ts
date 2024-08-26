@@ -1,11 +1,18 @@
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { IonGrid, IonCol, IonRow } from '@ionic/angular/standalone';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({
   selector: 'app-how-it-works',
   templateUrl: './howItWorks.component.html',
+  styleUrls: [
+    '../../../../../app.component.scss',
+    './howItWorks.component.scss',
+  ],
   standalone: true,
-  imports: [TranslateModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [TranslateModule, IonGrid, IonCol, IonRow],
 })
 export class HowItWorksComponent {
   constructor() {}

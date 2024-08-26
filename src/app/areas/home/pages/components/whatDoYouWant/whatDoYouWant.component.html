@@ -1,194 +1,160 @@
-<section id="WhatDoYouWant" class="container-fluid d-none d-lg-block">
-  <div class="row row-cols-1 pt-10 pb-4">
-    <div
-      class="col d-flex flex-column justify-content-center align-items-center"
+<ion-grid id="WhatDoYouWant" class="ion-hide-lg-up">
+  <ion-row class="ion-padding-top ion-padding-bottom">
+    <ion-col
+      class="ion-justify-content-around ion-align-items-center ion-text-center"
     >
-      <h2>{{ 'WhatDoYouWant.TITLE' | translate }}</h2>
-      <h3 class="text-primary">{{ 'WhatDoYouWant.SUBTITLE' | translate }}</h3>
-    </div>
-  </div>
-  <div class="row row-cols3 justify-content-around pb-10 mx-10">
-    <div class="col d-flex flex-column align-items-center p-4">
+      <h2>{{ "WhatDoYouWant.TITLE" | translate }}</h2>
+      <h3 class="text-primary">{{ "WhatDoYouWant.SUBTITLE" | translate }}</h3>
+    </ion-col>
+  </ion-row>
+
+  <swiper-container
+    slides-per-view="1"
+    autoplay-delay="3000"
+    autoplay-disable-on-interaction="false"
+    pagination="true"
+    pagination-clickable="true"
+    speed="1000"
+  >
+    <!-- Primo slide -->
+    <swiper-slide>
+      <ion-col class="ion-text-center ion-margin-vertical">
+        <img
+          src="../../../../assets/img/utilities/fidelity.svg"
+          alt="{{ 'WhatDoYouWant.FIDELITY_ALT' | translate }}"
+        />
+        <h4 class="ion-text-center ion-margin-vertical">
+          {{ "WhatDoYouWant.FIDELITY_TITLE" | translate }}
+        </h4>
+        <ul>
+          <li class="ion-margin-bottom">
+            <i class="bi bi-check2"></i
+            >{{ "WhatDoYouWant.FIDELITY_DESCRIPTION" | translate }}
+          </li>
+        </ul>
+      </ion-col>
+    </swiper-slide>
+
+    <!-- Secondo slide -->
+    <swiper-slide>
+      <ion-col class="ion-text-center ion-margin-vertical">
+        <img
+          src="../../../../assets/img/utilities/promise.svg"
+          alt="{{ 'WhatDoYouWant.PROMISE_ALT' | translate }}"
+        />
+        <h4 class="ion-text-center ion-margin-vertical">
+          {{ "WhatDoYouWant.PROMISE_TITLE" | translate }}
+        </h4>
+        <ul>
+          <li class="ion-margin-bottom">
+            <i class="bi bi-check2"></i
+            >{{ "WhatDoYouWant.PROMISE_DESCRIPTION1" | translate }}
+          </li>
+          <li class="ion-margin-bottom">
+            <i class="bi bi-check2"></i
+            >{{ "WhatDoYouWant.PROMISE_DESCRIPTION2" | translate }}
+          </li>
+        </ul>
+      </ion-col>
+    </swiper-slide>
+
+    <!-- Terzo slide -->
+    <swiper-slide>
+      <ion-col class="ion-text-center ion-margin-vertical">
+        <img
+          src="../../../../assets/img/utilities/advantages.svg"
+          alt="{{ 'WhatDoYouWant.ADVANTAGES_ALT' | translate }}"
+        />
+        <h4 class="ion-text-center ion-margin-vertical">
+          {{ "WhatDoYouWant.ADVANTAGES_TITLE" | translate }}
+        </h4>
+        <ul>
+          <li class="ion-margin-bottom">
+            <i class="bi bi-check2"></i
+            >{{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION1" | translate }}
+          </li>
+          <li class="ion-margin-bottom">
+            <i class="bi bi-check2"></i
+            >{{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION2" | translate }}
+          </li>
+          <li class="ion-margin-bottom">
+            <i class="bi bi-check2"></i
+            >{{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION3" | translate }}
+          </li>
+        </ul>
+      </ion-col>
+    </swiper-slide>
+  </swiper-container>
+</ion-grid>
+
+<ion-grid id="WhatDoYouWant" class="ion-hide-lg-down">
+  <ion-row class="ion-padding-vertical">
+    <ion-col class="ion-justify-content-center ion-align-items-center">
+      <h2 class="ion-text-center">{{ "WhatDoYouWant.TITLE" | translate }}</h2>
+      <h3 class="ion-text-center">
+        {{ "WhatDoYouWant.SUBTITLE" | translate }}
+      </h3>
+    </ion-col>
+  </ion-row>
+  <ion-row
+    class="ion-justify-content-around ion-padding-bottom ion-padding-horizontal"
+  >
+    <ion-col class="ion-align-items-center ion-padding">
       <img
         src="../../../../assets/img/utilities/fidelity.svg"
         alt="{{ 'WhatDoYouWant.FIDELITY_ALT' | translate }}"
       />
-      <h4 class="text-center my-4">
-        {{ 'WhatDoYouWant.FIDELITY_TITLE' | translate }}
+      <h4 class="ion-text-center ion-margin-vertical">
+        {{ "WhatDoYouWant.FIDELITY_TITLE" | translate }}
       </h4>
-      <ul class="p-0 m-0">
-        <li class="mb-3">
-          <i class="bi bi-check2"></i>{{ 'WhatDoYouWant.FIDELITY_DESCRIPTION' |
-          translate }}
+      <ul>
+        <li class="ion-margin-bottom">
+          <ion-icon name="checkmark"></ion-icon>
+          {{ "WhatDoYouWant.FIDELITY_DESCRIPTION" | translate }}
         </li>
       </ul>
-    </div>
-    <div class="col d-flex flex-column align-items-center p-4 mx-4">
+    </ion-col>
+    <ion-col class="ion-align-items-center ion-padding ion-margin-horizontal">
       <img
         src="../../../../assets/img/utilities/promise.svg"
         alt="{{ 'WhatDoYouWant.PROMISE_ALT' | translate }}"
       />
-      <h4 class="text-center my-4">
-        {{ 'WhatDoYouWant.PROMISE_TITLE' | translate }}
+      <h4 class="ion-text-center ion-margin-vertical">
+        {{ "WhatDoYouWant.PROMISE_TITLE" | translate }}
       </h4>
-      <ul class="p-0 m-0">
-        <li class="mb-3">
-          <i class="bi bi-check2"></i>{{ 'WhatDoYouWant.PROMISE_DESCRIPTION1' |
-          translate }}
+      <ul>
+        <li class="ion-margin-bottom">
+          <ion-icon name="checkmark"></ion-icon>
+          {{ "WhatDoYouWant.PROMISE_DESCRIPTION1" | translate }}
         </li>
-        <li class="mb-3">
-          <i class="bi bi-check2"></i>{{ 'WhatDoYouWant.PROMISE_DESCRIPTION2' |
-          translate }}
+        <li class="ion-margin-bottom">
+          <ion-icon name="checkmark"></ion-icon>
+          {{ "WhatDoYouWant.PROMISE_DESCRIPTION2" | translate }}
         </li>
       </ul>
-    </div>
-    <div class="col d-flex flex-column align-items-center p-4">
+    </ion-col>
+    <ion-col class="ion-align-items-center ion-padding">
       <img
         src="../../../../assets/img/utilities/advantages.svg"
         alt="{{ 'WhatDoYouWant.ADVANTAGES_ALT' | translate }}"
       />
-      <h4 class="text-center my-4">
-        {{ 'WhatDoYouWant.ADVANTAGES_TITLE' | translate }}
+      <h4 class="ion-text-center ion-margin-vertical">
+        {{ "WhatDoYouWant.ADVANTAGES_TITLE" | translate }}
       </h4>
-      <ul class="p-0 m-0">
-        <li class="mb-3">
-          <i class="bi bi-check2"></i>{{ 'WhatDoYouWant.ADVANTAGES_DESCRIPTION1'
-          | translate }}
+      <ul>
+        <li class="ion-margin-bottom">
+          <ion-icon name="checkmark"></ion-icon>
+          {{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION1" | translate }}
         </li>
-        <li class="mb-3">
-          <i class="bi bi-check2"></i>{{ 'WhatDoYouWant.ADVANTAGES_DESCRIPTION2'
-          | translate }}
+        <li class="ion-margin-bottom">
+          <ion-icon name="checkmark"></ion-icon>
+          {{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION2" | translate }}
         </li>
-        <li class="mb-3">
-          <i class="bi bi-check2"></i>{{ 'WhatDoYouWant.ADVANTAGES_DESCRIPTION3'
-          | translate }}
+        <li class="ion-margin-bottom">
+          <ion-icon name="checkmark"></ion-icon>
+          {{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION3" | translate }}
         </li>
       </ul>
-    </div>
-  </div>
-</section>
-
-<section id="WhatDoYouWant" class="container-fluid d-lg-none">
-  <div class="row row-cols-1 pt-10 pb-4">
-    <div
-      class="col d-flex flex-column justify-content-around align-items-center"
-    >
-      <h2>{{ 'WhatDoYouWant.TITLE' | translate }}</h2>
-      <h3 class="text-primary">{{ 'WhatDoYouWant.SUBTITLE' | translate }}</h3>
-    </div>
-  </div>
-
-  <div
-    id="carouselWhatDoYouWant"
-    class="carousel slide pb-10"
-    data-bs-ride="carousel"
-  >
-    <div class="carousel-indicators">
-      <button
-        type="button"
-        data-bs-target="#carouselWhatDoYouWant"
-        data-bs-slide-to="0"
-        class="active"
-        aria-current="true"
-        [attr.aria-label]="'WhatDoYouWant.ARIA_LABEL_SLIDE1' | translate"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselWhatDoYouWant"
-        data-bs-slide-to="1"
-        [attr.aria-label]="'WhatDoYouWant.ARIA_LABEL_SLIDE2' | translate"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselWhatDoYouWant"
-        data-bs-slide-to="2"
-        [attr.aria-label]="'WhatDoYouWant.ARIA_LABEL_SLIDE3' | translate"
-      ></button>
-    </div>
-
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="col d-flex flex-column align-items-center p-4">
-          <img
-            src="../../../../assets/img/utilities/fidelity.svg"
-            alt="{{ 'WhatDoYouWant.FIDELITY_ALT' | translate }}"
-          />
-          <h4 class="text-center my-4">
-            {{ 'WhatDoYouWant.FIDELITY_TITLE' | translate }}
-          </h4>
-          <ul class="p-0 m-0">
-            <li class="mb-3">
-              <i class="bi bi-check2"></i>{{
-              'WhatDoYouWant.FIDELITY_DESCRIPTION' | translate }}
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="col d-flex flex-column align-items-center p-4">
-          <img
-            src="../../../../assets/img/utilities/promise.svg"
-            alt="{{ 'WhatDoYouWant.PROMISE_ALT' | translate }}"
-          />
-          <h4 class="text-center my-4">
-            {{ 'WhatDoYouWant.PROMISE_TITLE' | translate }}
-          </h4>
-          <ul class="p-0 m-0">
-            <li class="mb-3">
-              <i class="bi bi-check2"></i>{{
-              'WhatDoYouWant.PROMISE_DESCRIPTION1' | translate }}
-            </li>
-            <li class="mb-3">
-              <i class="bi bi-check2"></i>{{
-              'WhatDoYouWant.PROMISE_DESCRIPTION2' | translate }}
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="col d-flex flex-column align-items-center p-4">
-          <img
-            src="../../../../assets/img/utilities/advantages.svg"
-            alt="{{ 'WhatDoYouWant.ADVANTAGES_ALT' | translate }}"
-          />
-          <h4 class="text-center my-4">
-            {{ 'WhatDoYouWant.ADVANTAGES_TITLE' | translate }}
-          </h4>
-          <ul class="p-0 m-0">
-            <li class="mb-3">
-              <i class="bi bi-check2"></i>{{
-              'WhatDoYouWant.ADVANTAGES_DESCRIPTION1' | translate }}
-            </li>
-            <li class="mb-3">
-              <i class="bi bi-check2"></i>{{
-              'WhatDoYouWant.ADVANTAGES_DESCRIPTION2' | translate }}
-            </li>
-            <li class="mb-3">
-              <i class="bi bi-check2"></i>{{
-              'WhatDoYouWant.ADVANTAGES_DESCRIPTION3' | translate }}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselWhatDoYouWant"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselWhatDoYouWant"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</section>
+    </ion-col>
+  </ion-row>
+</ion-grid>
