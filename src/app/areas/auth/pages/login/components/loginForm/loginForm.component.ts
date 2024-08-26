@@ -8,13 +8,39 @@ import {
   Validators,
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { LoginRequest } from '../../../interfaces/LoginRequest';
-import { AuthService } from '../../../services/AuthService.service';
+import { LoginRequest } from '../../../../interfaces/LoginRequest';
+import { AuthService } from '../../../../services/AuthService.service';
+import {
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonItem,
+  IonIcon,
+  IonFab,
+} from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import {
+  lockClosedOutline,
+  personOutline,
+  chevronForward,
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule, TranslateModule],
+  styleUrls: ['./loginForm.component.scss'],
+  imports: [
+    IonFab,
+    IonIcon,
+    IonItem,
+    IonCol,
+    IonRow,
+    IonGrid,
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    TranslateModule,
+  ],
   templateUrl: './loginForm.component.html',
 })
 export class LoginFormComponent {
@@ -32,7 +58,13 @@ export class LoginFormComponent {
     ],
   });
 
-  constructor(private fb: FormBuilder, private authSvc: AuthService) {}
+  constructor(private fb: FormBuilder, private authSvc: AuthService) {
+    addIcons({
+      'person-outline': personOutline,
+      'lock-closed-outline': lockClosedOutline,
+      'chevron-forward': chevronForward,
+    });
+  }
 
   login(): void {
     if (this.loginForm.valid) {

@@ -9,13 +9,14 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { AuthService } from '../../../services/AuthService.service';
-import { RegisterRequest } from '../../../interfaces/RegisterRequest';
+import { AuthService } from '../../../../services/AuthService.service';
+import { RegisterRequest } from '../../../../interfaces/RegisterRequest';
 import { Role } from 'src/app/library/utils/Role';
 
 @Component({
   selector: 'app-register-form',
   standalone: true,
+  styleUrls: ['./registerForm.component.scss'],
   imports: [CommonModule, ReactiveFormsModule, RouterModule, TranslateModule],
   templateUrl: './registerForm.component.html',
 })

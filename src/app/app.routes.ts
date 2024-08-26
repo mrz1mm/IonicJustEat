@@ -12,9 +12,16 @@ export const routes: Routes = [
       import('./areas/home/pages/home.page').then((m) => m.HomePage),
   },
   {
-    path: 'auth',
+    path: 'login',
     loadComponent: () =>
-      import('./areas/auth/pages/auth.page').then((m) => m.AuthPage),
+      import('./areas/auth/pages/login/login.page').then((m) => m.LoginPage),
+  },
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('./areas/auth/pages/register/register.page').then(
+        (m) => m.RegisterPage
+      ),
   },
   {
     path: 'faq',
