@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import {
@@ -19,19 +19,17 @@ import {
   IonFab,
   IonTitle,
   IonInput,
+  IonText,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import {
-  lockClosedOutline,
-  personOutline,
-  chevronForward,
-} from 'ionicons/icons';
+import { personOutline, chevronForward, fingerPrint } from 'ionicons/icons';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
   styleUrls: ['./loginForm.component.scss'],
   imports: [
+    IonText,
     IonInput,
     IonTitle,
     IonFab,
@@ -47,26 +45,21 @@ import {
   ],
   templateUrl: './loginForm.component.html',
 })
-export class LoginFormComponent {
-  loginForm: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: [
-      '',
-      [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.pattern(
-          '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$'
-        ),
-      ],
-    ],
-  });
+export class LoginFormComponent implements OnInit {
+  loginForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private authSvc: AuthService) {
     addIcons({
       'person-outline': personOutline,
-      'lock-closed-outline': lockClosedOutline,
+      'finger-print': fingerPrint,
       'chevron-forward': chevronForward,
+    });
+  }
+
+  ngOnInit() {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 

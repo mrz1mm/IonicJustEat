@@ -75,24 +75,19 @@
     "ARIA_LABEL_SLIDE2": "Slide 2",
     "ARIA_LABEL_SLIDE3": "Slide 3"
   },
-  "LoginValidation": {
-    "EMAIL_REQUIRED": "Email is required.",
-    "EMAIL_FORMAT": "Invalid email format.",
-    "PASSWORD_REQUIRED": "Password is required.",
-    "PASSWORD_MINLENGTH": "Password must be at least 6 characters long.",
-    "PASSWORD_FORMAT": "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character."
-  },
-  "RegisterValidation": {
-    "NAME_REQUIRED": "Il nome è obbligatorio.",
+  "LoginForm": {
+    "TITLE": "Bentornato!",
+    "SUBTITLE": "Accedi per entrare nel tuo account",
     "EMAIL_REQUIRED": "L'email è obbligatoria.",
     "EMAIL_FORMAT": "Formato email non valido.",
+    "EMAIL_HELPER": "Inserisci un'email valida",
+    "EMAIL_VALID": "Email valida",
     "PASSWORD_REQUIRED": "La password è obbligatoria.",
-    "PASSWORD_MINLENGTH": "La password deve essere lunga almeno 6 caratteri.",
-    "PASSWORD_FORMAT": "La password deve contenere almeno una lettera minuscola, una lettera maiuscola, un numero e un carattere speciale.",
-    "CONFIRM_PASSWORD_REQUIRED": "Per favore, conferma la tua password.",
-    "CONFIRM_PASSWORD_MATCH": "Le password non corrispondono.",
-    "ROLE_REQUIRED": "Il ruolo è obbligatorio."
+    "PASSWORD_FORMAT": "La password deve essere lunga almeno 6 caratteri e contenere almeno una lettera minuscola, una lettera maiuscola, un numero e un carattere speciale.",
+    "PASSWORD_HELPER": "Inserisci una password valida",
+    "PASSWORD_VALID": "Password valida"
   },
+  "RegisterForm": {},
   "FaqHero": {
     "TITLE": "Domande Frequenti",
     "SUBTITLE": "Le tue domande trovano risposta, tutto in un unico posto."

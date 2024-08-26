@@ -75,17 +75,19 @@
     "ARIA_LABEL_SLIDE2": "Slide 2",
     "ARIA_LABEL_SLIDE3": "Slide 3"
   },
-  "RegisterValidation": {
-    "NAME_REQUIRED": "Name is required.",
+  "LoginForm": {
+    "TITLE": "Welcome Back!",
+    "SUBTITLE": "Sign in to access your account",
     "EMAIL_REQUIRED": "Email is required.",
     "EMAIL_FORMAT": "Invalid email format.",
+    "EMAIL_HELPER": "Enter a valid email",
+    "EMAIL_VALID": "Valid email",
     "PASSWORD_REQUIRED": "Password is required.",
-    "PASSWORD_MINLENGTH": "Password must be at least 6 characters long.",
-    "PASSWORD_FORMAT": "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character.",
-    "CONFIRM_PASSWORD_REQUIRED": "Please confirm your password.",
-    "CONFIRM_PASSWORD_MATCH": "Passwords do not match.",
-    "ROLE_REQUIRED": "Role is required."
+    "PASSWORD_FORMAT": "Password must be at least 6 characters long and contain at least one lowercase letter, one uppercase letter, one number, and one special character.",
+    "PASSWORD_HELPER": "Enter a valid password",
+    "PASSWORD_VALID": "Valid password"
   },
+  "RegisterForm": {},
   "FaqHero": {
     "TITLE": "Frequently Asked Questions",
     "SUBTITLE": "Your questions answered, all in one place."
