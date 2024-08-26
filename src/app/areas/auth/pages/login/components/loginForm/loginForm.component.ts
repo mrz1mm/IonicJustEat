@@ -17,6 +17,8 @@ import {
   IonItem,
   IonIcon,
   IonFab,
+  IonTitle,
+  IonInput,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
@@ -30,6 +32,8 @@ import {
   standalone: true,
   styleUrls: ['./loginForm.component.scss'],
   imports: [
+    IonInput,
+    IonTitle,
     IonFab,
     IonIcon,
     IonItem,

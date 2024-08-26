@@ -12,12 +12,21 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../../../services/AuthService.service';
 import { RegisterRequest } from '../../../../interfaces/RegisterRequest';
 import { Role } from 'src/app/library/utils/Role';
+import { IonGrid, IonCol, IonRow } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-register-form',
   standalone: true,
   styleUrls: ['./registerForm.component.scss'],
-  imports: [CommonModule, ReactiveFormsModule, RouterModule, TranslateModule],
+  imports: [
+    IonRow,
+    IonCol,
+    IonGrid,
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    TranslateModule,
+  ],
   templateUrl: './registerForm.component.html',
 })
 export class RegisterFormComponent {
