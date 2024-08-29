@@ -81,11 +81,12 @@
     "EMAIL_REQUIRED": "Email is required.",
     "EMAIL_FORMAT": "Invalid email format.",
     "EMAIL_HELPER": "Enter a valid email",
-    "EMAIL_VALID": "Valid email",
+    "EMAIL_VALID": "Valid email format",
     "PASSWORD_REQUIRED": "Password is required.",
-    "PASSWORD_FORMAT": "Password must be at least 6 characters long and contain at least one lowercase letter, one uppercase letter, one number, and one special character.",
-    "PASSWORD_HELPER": "Enter a valid password",
-    "PASSWORD_VALID": "Valid password"
+    "PASSWORD_FORMAT": "The password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (any non-alphanumeric character).",
+    "PASSWORD_HELPER": "Enter a valid password.",
+    "PASSWORD_VALID": "Valid password format.",
+    "BUTTON_TEXT": "Login"
   },
   "RegisterForm": {},
   "FaqHero": {

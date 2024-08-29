@@ -1,3 +1,4 @@
+import { GlobalErrorInterceptor } from './app/library/error/globalErrorInterceptor.interceptor';
 import { bootstrapApplication } from '@angular/platform-browser';
 import {
   RouteReuseStrategy,
@@ -8,7 +9,6 @@ import {
   IonicRouteStrategy,
   provideIonicAngular,
 } from '@ionic/angular/standalone';
-
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -27,7 +27,9 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(withInterceptors([AuthInterceptor])),
+    provideHttpClient(
+      withInterceptors([AuthInterceptor, GlobalErrorInterceptor])
+    ),
     importProvidersFrom(TranslateModules),
   ],
 });

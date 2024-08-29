@@ -13,6 +13,8 @@ import { LoginResponse } from '../interfaces/LoginResponse';
 import { RefreshRequest } from '../interfaces/Refreshequest';
 import { RefreshResponse } from '../interfaces/RefreshResponse';
 import { RegisterRequest } from '../interfaces/RegisterRequest';
+import { NotificationService } from 'src/app/library/notification/notificationService.service';
+import { ErrorHandlingService } from 'src/app/library/error/errorHandlingService.service';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +34,9 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private persistentSvc: PersistentService,
-    private jwtHelper: JwtHelperService
+    private jwtHelper: JwtHelperService,
+    private notificationSvc: NotificationService,
+    private errorHandlingSvc: ErrorHandlingService
   ) {}
 
   login(login: LoginRequest): void {
@@ -41,26 +45,27 @@ export class AuthService {
         if (!resp) throw new Error();
         this.setUserData(resp);
         this.router.navigate(['/']);
+        this.notificationSvc.notify('NOTIFY.LOGIN.SUCCESS', 'success');
       })
       .catch((error) => {
         console.error('Error logging in', error);
+        this.errorHandlingSvc.handleError(error);
       })
       .finally(() => {});
   }
 
   logout(): void {
     this._userData.set(null);
+    this.router.navigate(['/login']);
+    this.notificationSvc.notify('Logout effettuato con successo', 'success');
   }
 
   refreshToken(
     refreshToken: RefreshRequest
   ): Observable<RefreshResponse | undefined> {
-    return this.http.post<RefreshResponse>(
-      `${this.refreshUrl}api/Auth/refreshToken`,
-      {
-        refreshToken,
-      }
-    );
+    return this.http.post<RefreshResponse>(`${this.refreshUrl}`, {
+      refreshToken,
+    });
   }
 
   get userData(): Signal<ILoggedUser | null> {
@@ -90,7 +95,7 @@ export class AuthService {
     return claims.role;
   }
 
-  getClaims(accessToken: string): IUserClaims {
+  private getClaims(accessToken: string): IUserClaims {
     let claims = this.jwtHelper.decodeToken(accessToken);
     if (!claims) throw new Error('No Claims');
 

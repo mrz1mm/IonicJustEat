@@ -81,11 +81,14 @@
     "EMAIL_REQUIRED": "L'email è obbligatoria.",
     "EMAIL_FORMAT": "Formato email non valido.",
     "EMAIL_HELPER": "Inserisci un'email valida",
-    "EMAIL_VALID": "Email valida",
+    "EMAIL_VALID": "Formato email valido",
     "PASSWORD_REQUIRED": "La password è obbligatoria.",
-    "PASSWORD_FORMAT": "La password deve essere lunga almeno 6 caratteri e contenere almeno una lettera minuscola, una lettera maiuscola, un numero e un carattere speciale.",
-    "PASSWORD_HELPER": "Inserisci una password valida",
-    "PASSWORD_VALID": "Password valida"
+    "PASSWORD_FORMAT": "La password deve essere lunga almeno 6 caratteri e contenere almeno una lettera maiuscola, una lettera minuscola, un numero e un carattere speciale (qualsiasi carattere non alfanumerico).",
+    "PASSWORD_HELPER": "Inserisci una password valida.",
+    "PASSWORD_VALID": "Formato password valido.",
+    "BUTTON_TEXT": "Accedi",
+    "NOTIFY.LOGIN.SUCCESS": "Accesso effettuato con successo!",
+    "NOTIFY.LOGIN.ERROR": "Credenziali non valide. Riprova."
   },
   "RegisterForm": {},
   "FaqHero": {

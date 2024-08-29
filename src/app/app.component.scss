@@ -20,16 +20,6 @@
   }
 }
 
-.valid-input {
-  border-color: green;
-  background-color: #eaffea;
-}
-
-.invalid-input {
-  border-color: red;
-  background-color: #ffeaea;
-}
-
 .modal {
   --border-radius: 1rem;
 
@@ -38,9 +28,10 @@
   }
 }
 
-.modalHeader {
-}
-
 .btn {
   --border-radius: 1rem;
+}
+
+ion-input {
+  --highlight-color-valid: #b3b3b3;
 }

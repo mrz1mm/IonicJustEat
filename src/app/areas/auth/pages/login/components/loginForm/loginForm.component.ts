@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoginRequest } from '../../../../interfaces/LoginRequest';
-import { AuthService } from '../../../../services/AuthService.service';
+import { AuthService } from '../../../../services/authService.service';
 import {
   IonGrid,
   IonRow,
@@ -20,6 +20,8 @@ import {
   IonTitle,
   IonInput,
   IonText,
+  IonButton,
+  IonFabButton,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { personOutline, chevronForward, fingerPrint } from 'ionicons/icons';
@@ -27,8 +29,13 @@ import { personOutline, chevronForward, fingerPrint } from 'ionicons/icons';
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  styleUrls: ['./loginForm.component.scss'],
+  styleUrls: [
+    '../../../../../../app.component.scss',
+    './loginForm.component.scss',
+  ],
   imports: [
+    IonFabButton,
+    IonButton,
     IonText,
     IonInput,
     IonTitle,
@@ -67,6 +74,7 @@ export class LoginFormComponent implements OnInit {
     if (this.loginForm.valid) {
       const loginRequest: LoginRequest = this.loginForm.value;
       this.authSvc.login(loginRequest);
+      console.log('Login request', loginRequest);
     }
   }
 }

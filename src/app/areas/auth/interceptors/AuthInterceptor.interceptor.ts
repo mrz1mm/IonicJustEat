@@ -9,7 +9,8 @@ import { inject } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/AuthService.service';
+import { AuthService } from '../services/authService.service';
+import { ErrorHandlingService } from 'src/app/library/error/errorHandlingService.service';
 
 export const AuthInterceptor: HttpInterceptorFn = (
   req: HttpRequest<any>,
@@ -17,6 +18,7 @@ export const AuthInterceptor: HttpInterceptorFn = (
 ): Observable<HttpEvent<any>> => {
   const authSvc = inject(AuthService);
   const router = inject(Router);
+  const errorHandlingSvc = inject(ErrorHandlingService);
 
   const auth = authSvc.userData();
 
@@ -26,6 +28,7 @@ export const AuthInterceptor: HttpInterceptorFn = (
       setHeaders: { Authorization: `Bearer ${auth.accessToken}` },
     });
   }
+
   return next(authReq).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status === 401 && auth?.refreshToken) {
@@ -53,8 +56,10 @@ export const AuthInterceptor: HttpInterceptorFn = (
               return throwError(() => new Error(innerError.message));
             })
           );
+      } else {
+        errorHandlingSvc.handleError(error);
+        return throwError(() => new Error(error.message));
       }
-      return throwError(() => new Error(error.message));
     })
   );
 };

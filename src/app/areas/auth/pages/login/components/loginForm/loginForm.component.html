@@ -56,24 +56,25 @@
             placeholder="password"
             [helperText]="
               loginForm.get('password')?.touched &&
-              loginForm.get('email')?.valid
+              loginForm.get('password')?.valid
                 ? ('LoginForm.PASSWORD_VALID' | translate)
                 : ('LoginForm.PASSWORD_HELPER' | translate)
             "
             [errorText]="
-              loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']
-                ? ('LoginForm.PASSWORD_REQUIRED' | translate)
-                : loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['password']
-                ? ('LoginForm.PASSWORD_FORMAT' | translate)
-                : ''
-            "
+      loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']
+        ? ('LoginForm.PASSWORD_REQUIRED' | translate)
+        : loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['pattern']
+        ? ('LoginForm.PASSWORD_FORMAT' | translate)
+        : ''
+    "
             autocomplete="password"
             clearInput="true"
             counter="true"
             fill="outline"
             inputmode="password"
-            minlength="0"
+            minlength="6"
             maxlength="50"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d])[A-Za-z\d\S]{6,}$"
             shape="round"
             required
             class="ion-margin-vertical"
@@ -86,15 +87,15 @@
           </ion-input>
         </ion-item>
 
-        <ion-fab
+        <ion-button
           class="ion-margin-top ion-padding-top"
-          vertical="bottom"
           horizontal="end"
+          size="large"
+          [disabled]="loginForm.invalid"
+          type="submit"
         >
-          <ion-fab-button [routerLink]="['/home']">
-            <ion-icon name="chevron-forward"></ion-icon>
-          </ion-fab-button>
-        </ion-fab>
+          {{ "LoginForm.BUTTON_TEXT" | translate }}
+        </ion-button>
       </form>
     </ion-col>
   </ion-row>
