@@ -31,8 +31,18 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'faq',
+    path: 'info/aboutUs',
     loadComponent: () =>
-      import('./areas/faq/pages/faq.page').then((m) => m.FaqPage),
+      import('./areas/info/aboutUs/aboutUs.page').then((m) => m.AboutUsPage),
+  },
+  {
+    path: 'info/contact',
+    loadComponent: () =>
+      import('./areas/info/contact/contact.page').then((m) => m.ContactPage),
+  },
+  {
+    path: 'info/faq',
+    loadComponent: () =>
+      import('./areas/info/faq/faq.page').then((m) => m.FaqPage),
   },
 ];

@@ -146,6 +146,14 @@
     "BUTTON_TEXT": "Registrati",
     "LINK_LOGIN": "Hai già un account? Accedi"
   },
+  "ForgotPasswordForm": {
+    "TITLE": "Recupera Password",
+    "EMAIL_LABEL": "Email",
+    "EMAIL_PLACEHOLDER": "Inserisci la tua email",
+    "LINK_LOGIN": "Torna al login",
+    "LINK_REGISTER": "Crea un nuovo account",
+    "BUTTON_TEXT": "Recupera password"
+  },
   "FaqHero": {
     "TITLE": "Domande Frequenti",
     "SUBTITLE": "Le tue domande trovano risposta, tutto in un unico posto."

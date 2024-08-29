@@ -15,6 +15,7 @@ import { RefreshResponse } from '../interfaces/RefreshResponse';
 import { RegisterRequest } from '../interfaces/RegisterRequest';
 import { NotificationService } from 'src/app/library/notification/notificationService.service';
 import { ErrorHandlingService } from 'src/app/library/error/errorHandlingService.service';
+import { PasswordRecoveryRequest } from '../interfaces/PasswordRecoveryRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -53,7 +54,6 @@ export class AuthService {
           this.notificationSvc.notify('NOTIFY.LOGIN.ERROR.401', 'danger');
         else
           this.notificationSvc.notify('NOTIFY.LOGIN.ERROR.GENERIC', 'danger');
-        this.errorHandlingSvc.handleError(error);
       })
       .finally(() => {});
   }
@@ -113,5 +113,32 @@ export class AuthService {
     return decodedToken;
   }
 
-  register(model: RegisterRequest): void {}
+  register(model: RegisterRequest): void {
+    firstValueFrom(this.http.post(`${this.registerUserUrl}`, model))
+      .then(() => {
+        this.notificationSvc.notify('NOTIFY.REGISTER.SUCCESS', 'success');
+        this.router.navigate(['/login']);
+      })
+      .catch((error) => {
+        console.error('Error registering', error);
+        this.notificationSvc.notify('NOTIFY.REGISTER.ERROR', 'danger');
+      })
+      .finally(() => {});
+  }
+
+  passwordRecovery(model: PasswordRecoveryRequest): void {
+    firstValueFrom(this.http.post(`${this.registerUserUrl}`, model))
+      .then(() => {
+        this.notificationSvc.notify(
+          'NOTIFY.PASSWORD_RECOVERY.SUCCESS',
+          'success'
+        );
+        this.router.navigate(['/login']);
+      })
+      .catch((error) => {
+        console.error('Error registering', error);
+        this.notificationSvc.notify('NOTIFY.PASSWORD_RECOVERY.ERROR', 'danger');
+      })
+      .finally(() => {});
+  }
 }
