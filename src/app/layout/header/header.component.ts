@@ -62,7 +62,7 @@ export class HeaderComponent {
   currentFlag: string = '';
   IT = Language.Italian;
   EN = Language.English;
-  isOpen = signal(false);
+  isflagMenuOpen = signal(false);
   popoverEvent: MouseEvent | undefined;
 
   constructor(
@@ -81,11 +81,27 @@ export class HeaderComponent {
     });
   }
 
+  // Language
   protected presentPopover(event: MouseEvent): void {
     this.popoverEvent = event;
-    this.isOpen.set(true);
+    this.isflagMenuOpen.set(true);
   }
 
+  protected changeLanguage(language: string): void {
+    this.i18nSvc.language = language;
+    this.isflagMenuOpen.set(false);
+  }
+
+  private updateCurrentFlag(language: string): void {
+    this.currentFlag = `../../../assets/img/utilities/${language}.svg`;
+  }
+
+  // Theme
+  protected toggleTheme(): void {
+    this.themeSvc.theme = this.currentTheme() === 'light' ? 'dark' : 'light';
+  }
+
+  // Modal
   protected enterAnimation = (baseEl: HTMLElement) => {
     const root = baseEl.shadowRoot;
 
@@ -113,17 +129,4 @@ export class HeaderComponent {
   protected leaveAnimation = (baseEl: HTMLElement) => {
     return this.enterAnimation(baseEl).direction('reverse');
   };
-
-  protected changeLanguage(language: string): void {
-    this.i18nSvc.language = language;
-    this.isOpen.set(false);
-  }
-
-  private updateCurrentFlag(language: string): void {
-    this.currentFlag = `../../../assets/img/utilities/${language}.svg`;
-  }
-
-  protected toggleTheme(): void {
-    this.themeSvc.theme = this.currentTheme() === 'light' ? 'dark' : 'light';
-  }
 }

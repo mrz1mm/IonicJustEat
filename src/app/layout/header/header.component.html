@@ -22,8 +22,8 @@
 
           <!-- Popover per la selezione della lingua -->
           <ion-popover
-            [isOpen]="isOpen()"
-            (didDismiss)="isOpen.set(false)"
+            [isOpen]="isflagMenuOpen()"
+            (didDismiss)="isflagMenuOpen.set(false)"
             [event]="popoverEvent"
             side="bottom"
             alignment="end"
@@ -140,18 +140,26 @@
                       expand="block"
                       color="secondary"
                       [routerLink]="['/auth/login']"
+                      (click)="modal.dismiss()"
                       >Accedi</ion-button
                     >
                   </ion-col>
                   <ion-col size="6">
-                    <ion-button class="btn" expand="block" color="primary"
+                    <ion-button
+                      class="btn"
+                      expand="block"
+                      color="primary"
+                      [routerLink]="['/auth/register']"
+                      (click)="modal.dismiss()"
                       >Crea un account</ion-button
                     >
                   </ion-col>
                 </ion-row>
                 <ion-list>
                   <ion-item>
-                    <ion-label [routerLink]="['/faq']">FAQ</ion-label>
+                    <ion-label [routerLink]="['/faq']" (click)="modal.dismiss()"
+                      >FAQ</ion-label
+                    >
                   </ion-item>
                 </ion-list>
               </ion-content>
