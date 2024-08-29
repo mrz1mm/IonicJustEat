@@ -2,22 +2,24 @@ import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from 'src/app/layout/header/header.component';
 import { FooterComponent } from 'src/app/layout/footer/footer.component';
-import { IonGrid, IonCol, IonRow } from '@ionic/angular/standalone';
+import { IonGrid, IonCol, IonRow, IonImg } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-country-selector',
-  templateUrl: './countrySelector.component.html',
-  styleUrls: ['./countrySelector.component.scss'],
+  selector: 'app-about-us-hero',
+  templateUrl: './aboutUsHero.component.html',
+  styleUrls: ['./aboutUsHero.component.scss'],
   standalone: true,
   imports: [
+    IonImg,
     IonRow,
     IonCol,
     IonGrid,
     TranslateModule,
     HeaderComponent,
     FooterComponent,
+    TranslateModule,
   ],
 })
-export class CountrySelectorComponent {
+export class AboutUsHeroComponent {
   constructor() {}
 }

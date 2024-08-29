@@ -3,7 +3,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { IonContent } from '@ionic/angular/standalone';
 import { HeaderComponent } from 'src/app/layout/header/header.component';
 import { FooterComponent } from 'src/app/layout/footer/footer.component';
-import { ContactHeroComponent } from './aboutUsHero/contactHero.component';
+import { AboutUsHeroComponent } from './aboutUsHero/aboutUsHero.component';
 import { JustEatDescriptionComponent } from './justEatDescription/justEatDescription.component';
 import { JustEatTakeawayDescriptionComponent } from './justEatTakeawayDescription/justEatTakeawayDescription.component';
 
@@ -16,7 +16,7 @@ import { JustEatTakeawayDescriptionComponent } from './justEatTakeawayDescriptio
     TranslateModule,
     HeaderComponent,
     FooterComponent,
-    ContactHeroComponent,
+    AboutUsHeroComponent,
     JustEatDescriptionComponent,
     JustEatTakeawayDescriptionComponent,
   ],

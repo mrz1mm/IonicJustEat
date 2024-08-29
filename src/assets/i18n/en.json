@@ -146,6 +146,24 @@
     "BUTTON_TEXT": "Register",
     "LINK_LOGIN": "Already have an account? Sign In"
   },
+  "aboutUsHero": {
+    "imageAlt": "Informative image about Just Eat",
+    "title": "About Just Eat",
+    "description": "Learn what we do."
+  },
+  "justEatDescription": {
+    "title": "About Just Eat",
+    "content": "Just Eat (www.justeat.it) is part of Just Eat Takeaway.com, one of the global leaders in the digital food delivery market. It has been operating in Italy since 2011 and today works with over 28,000 restaurant partners in more than 2,000 municipalities. Just Eat is accessible from both PC and mobile through the dedicated app or mobile site version, ensuring everyone a wide variety of cuisines to choose from."
+  },
+  "justEatTakeawayDescription": {
+    "title": "Just Eat Takeaway.com",
+    "content": "Just Eat Takeaway.com (LSE: JET, AMS: TKWY) is one of the global leaders in the digital food delivery market. Based in Amsterdam, the company connects customers and restaurant partners through its platform. With over 680,000 restaurant partners, Just Eat Takeaway.com offers a wide variety of choices. Just Eat and Takeaway.com have quickly grown to become leaders in the online food delivery market with operations in the United States, United Kingdom, Germany, Netherlands, Canada, Australia, Austria, Belgium, Bulgaria, Denmark, France, Ireland, Israel, Italy, Luxembourg, New Zealand, Poland, Slovakia, Spain, Switzerland."
+  },
+  "contactHero": {
+    "imageAlt": "A person using Just Eat",
+    "title": "Just Eat Press Office",
+    "description": "Contact the right person."
+  },
   "ForgotPasswordForm": {
     "TITLE": "Recover Password",
     "EMAIL_LABEL": "Email",
