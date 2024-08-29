@@ -16,15 +16,12 @@ import {
   IonCol,
   IonItem,
   IonIcon,
-  IonFab,
-  IonTitle,
   IonInput,
-  IonText,
   IonButton,
-  IonFabButton,
+  IonText,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { personOutline, chevronForward, fingerPrint } from 'ionicons/icons';
+import { personOutline, fingerPrint } from 'ionicons/icons';
 
 @Component({
   selector: 'app-login-form',
@@ -34,12 +31,9 @@ import { personOutline, chevronForward, fingerPrint } from 'ionicons/icons';
     './loginForm.component.scss',
   ],
   imports: [
-    IonFabButton,
-    IonButton,
     IonText,
+    IonButton,
     IonInput,
-    IonTitle,
-    IonFab,
     IonIcon,
     IonItem,
     IonCol,
@@ -59,22 +53,56 @@ export class LoginFormComponent implements OnInit {
     addIcons({
       'person-outline': personOutline,
       'finger-print': fingerPrint,
-      'chevron-forward': chevronForward,
     });
   }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d])[A-Za-z\d\S]{6,}$/
+          ),
+        ],
+      ],
     });
+  }
+
+  getHelperText(controlName: string): string {
+    const control = this.loginForm.get(controlName);
+    return control?.touched && control?.valid
+      ? `LoginForm.${controlName.toUpperCase()}_VALID`
+      : `LoginForm.${controlName.toUpperCase()}_HELPER`;
+  }
+
+  getErrorText(controlName: string): string | null {
+    const control = this.loginForm.get(controlName);
+
+    if (!control || !control.touched || !control.errors) {
+      return null;
+    }
+
+    if (control.errors['required']) {
+      return `LoginForm.${controlName.toUpperCase()}_REQUIRED`;
+    }
+    if (control.errors['email']) {
+      return `LoginForm.${controlName.toUpperCase()}_FORMAT`;
+    }
+    if (control.errors['pattern']) {
+      return `LoginForm.${controlName.toUpperCase()}_FORMAT`;
+    }
+
+    return null;
   }
 
   login(): void {
     if (this.loginForm.valid) {
       const loginRequest: LoginRequest = this.loginForm.value;
       this.authSvc.login(loginRequest);
-      console.log('Login request', loginRequest);
     }
   }
 }

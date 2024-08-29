@@ -1,5 +1,279 @@
-<ion-grid>
+<ion-grid id="registerForm">
   <ion-row>
-    <ion-col></ion-col>
+    <ion-col size="12">
+      <h1 class="ion-text-center">{{ "RegisterForm.TITLE" | translate }}</h1>
+    </ion-col>
+    <ion-col size="12">
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <!-- Email -->
+        <ion-item>
+          <ion-input
+            formControlName="email"
+            type="email"
+            label="{{ 'RegisterForm.EMAIL_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'RegisterForm.EMAIL_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('email') | translate"
+            [errorText]="getErrorText('email') ?? '' | translate"
+            autocomplete="email"
+            autofocus="true"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            inputmode="email"
+            minlength="0"
+            maxlength="50"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="person-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Password -->
+        <ion-item>
+          <ion-input
+            formControlName="password"
+            type="password"
+            label="{{ 'RegisterForm.PASSWORD_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'RegisterForm.PASSWORD_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('password') | translate"
+            [errorText]="getErrorText('password') ?? '' | translate"
+            autocomplete="new-password"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            inputmode="password"
+            minlength="6"
+            maxlength="50"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d])[A-Za-z\d\S]{6,}$"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="finger-print"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Confirm Password -->
+        <ion-item>
+          <ion-input
+            formControlName="confirmPassword"
+            type="password"
+            label="{{ 'RegisterForm.CONFIRM_PASSWORD_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{
+              'RegisterForm.CONFIRM_PASSWORD_PLACEHOLDER' | translate
+            }}"
+            [helperText]="getHelperText('confirmPassword') | translate"
+            [errorText]="getErrorText('confirmPassword') ?? '' | translate"
+            autocomplete="new-password"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            inputmode="password"
+            minlength="6"
+            maxlength="50"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="finger-print"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Name -->
+        <ion-item>
+          <ion-input
+            formControlName="name"
+            type="text"
+            label="{{ 'RegisterForm.NAME_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'RegisterForm.NAME_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('name') | translate"
+            [errorText]="getErrorText('name') ?? '' | translate"
+            autocomplete="name"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            inputmode="text"
+            minlength="0"
+            maxlength="50"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="person-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Surname -->
+        <ion-item>
+          <ion-input
+            formControlName="surname"
+            type="text"
+            label="{{ 'RegisterForm.SURNAME_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'RegisterForm.SURNAME_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('surname') | translate"
+            [errorText]="getErrorText('surname') ?? '' | translate"
+            autocomplete="surname"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            inputmode="text"
+            minlength="0"
+            maxlength="50"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="person-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Address -->
+        <ion-item>
+          <ion-input
+            formControlName="address"
+            type="text"
+            label="{{ 'RegisterForm.ADDRESS_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'RegisterForm.ADDRESS_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('address') | translate"
+            [errorText]="getErrorText('address') ?? '' | translate"
+            autocomplete="street-address"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            inputmode="text"
+            minlength="0"
+            maxlength="50"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon name="home" color="primary" slot="start"></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- City -->
+        <ion-item>
+          <ion-input
+            formControlName="city"
+            type="text"
+            label="{{ 'RegisterForm.CITY_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'RegisterForm.CITY_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('city') | translate"
+            [errorText]="getErrorText('city') ?? '' | translate"
+            autocomplete="address-level2"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            inputmode="text"
+            minlength="0"
+            maxlength="50"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon name="home" color="primary" slot="start"></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- CAP -->
+        <ion-item>
+          <ion-input
+            formControlName="cap"
+            type="text"
+            label="{{ 'RegisterForm.CAP_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'RegisterForm.CAP_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('cap') | translate"
+            [errorText]="getErrorText('cap') ?? '' | translate"
+            autocomplete="postal-code"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            inputmode="text"
+            minlength="5"
+            maxlength="5"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon name="home" color="primary" slot="start"></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Phone Number -->
+        <ion-item>
+          <ion-input
+            formControlName="phoneNumber"
+            type="tel"
+            label="{{ 'RegisterForm.PHONE_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'RegisterForm.PHONE_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('phoneNumber') | translate"
+            [errorText]="getErrorText('phoneNumber') ?? '' | translate"
+            autocomplete="tel"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            inputmode="tel"
+            minlength="8"
+            maxlength="12"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon name="call" color="primary" slot="start"></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Links -->
+        <div class="ion-text-center ion-margin-top">
+          <ion-text>
+            <a [routerLink]="['/auth/login']">
+              {{ "RegisterForm.LINK_LOGIN" | translate }}
+            </a>
+          </ion-text>
+        </div>
+
+        <!-- Submit -->
+        <ion-button
+          class="ion-text-center ion-margin-top ion-padding-top"
+          horizontal="end"
+          size="large"
+          [disabled]="registerForm.invalid"
+          type="submit"
+        >
+          {{ "RegisterForm.BUTTON_TEXT" | translate }}
+        </ion-button>
+      </form>
+    </ion-col>
   </ion-row>
 </ion-grid>

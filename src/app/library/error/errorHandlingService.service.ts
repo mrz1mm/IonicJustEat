@@ -21,10 +21,7 @@ export class ErrorHandlingService {
           'danger'
         );
       } else if (error.status === 404) {
-        this.notificationSvc.notify(
-          "Risorsa non trovata. Controlla l'URL.",
-          'danger'
-        );
+        this.notificationSvc.notify('Ops pagina non trovata.', 'danger');
       } else {
         this.notificationSvc.notify(
           `Errore ${error.status}: ${
@@ -42,7 +39,7 @@ export class ErrorHandlingService {
     } else {
       // Errore generico
       this.notificationSvc.notify(
-        'Errore sconosciuto. Riprova più tardi.',
+        'Ops qualcosa è andato storto. Riprova più tardi.',
         'danger'
       );
     }

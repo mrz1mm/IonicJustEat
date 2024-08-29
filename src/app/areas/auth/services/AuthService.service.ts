@@ -49,6 +49,10 @@ export class AuthService {
       })
       .catch((error) => {
         console.error('Error logging in', error);
+        if (error.status === 401)
+          this.notificationSvc.notify('NOTIFY.LOGIN.ERROR.401', 'danger');
+        else
+          this.notificationSvc.notify('NOTIFY.LOGIN.ERROR.GENERIC', 'danger');
         this.errorHandlingSvc.handleError(error);
       })
       .finally(() => {});
