@@ -57,8 +57,8 @@ import { ThemeService } from 'src/theme/library/theme.service';
   ],
 })
 export class HeaderComponent {
-  currentLanguage = computed<string>(() => this.i18nSvc.getLanguage()());
-  currentTheme = computed<string>(() => this.themeSvc.getTheme()());
+  currentLanguage = computed<string>(() => this.i18nSvc.language());
+  currentTheme = computed<string>(() => this.themeSvc.theme());
   currentFlag: string = '';
   IT = Language.Italian;
   EN = Language.English;
@@ -115,7 +115,7 @@ export class HeaderComponent {
   };
 
   protected changeLanguage(language: string): void {
-    this.i18nSvc.setLanguage(language);
+    this.i18nSvc.language = language;
     this.isOpen.set(false);
   }
 
@@ -124,6 +124,6 @@ export class HeaderComponent {
   }
 
   protected toggleTheme(): void {
-    this.themeSvc.setTheme(this.currentTheme() === 'light' ? 'dark' : 'light');
+    this.themeSvc.theme = this.currentTheme() === 'light' ? 'dark' : 'light';
   }
 }

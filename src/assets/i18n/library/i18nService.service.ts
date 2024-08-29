@@ -21,11 +21,11 @@ export class i18nService {
     this.translate.use(this._language());
   }
 
-  getLanguage(): Signal<string> {
+  get language(): Signal<string> {
     return this._language.asReadonly();
   }
 
-  setLanguage(language: string): void {
+  set language(language: string) {
     this._language.set(language);
     this.translate.use(language);
   }

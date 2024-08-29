@@ -17,11 +17,11 @@ export class ThemeService {
     });
   }
 
-  getTheme(): Signal<string> {
+  get theme(): Signal<string> {
     return this._theme.asReadonly();
   }
 
-  setTheme(theme: string): void {
+  set theme(theme: string) {
     this._theme.set(theme);
   }
 
@@ -34,11 +34,6 @@ export class ThemeService {
   }
 
   private getInitialTheme(): string {
-    const storedTheme = this.persistentSvc.PSignal('theme', null)();
-    if (storedTheme) {
-      return storedTheme;
-    }
-    // Rileva la preferenza del broeser
     const prefersDark = window.matchMedia(
       '(prefers-color-scheme: dark)'
     ).matches;
