@@ -57,7 +57,6 @@ export const AuthInterceptor: HttpInterceptorFn = (
             })
           );
       } else {
-        errorHandlingSvc.handleError(error);
         return throwError(() => new Error(error.message));
       }
     })
