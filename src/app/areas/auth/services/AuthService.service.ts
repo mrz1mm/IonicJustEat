@@ -1,6 +1,6 @@
-import { Injectable, Signal } from '@angular/core';
+import { Injectable, signal, Signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { firstValueFrom, Observable } from 'rxjs';
 import { PersistentService } from 'src/app/library/persistentService/PersistentService.service';
@@ -13,8 +13,7 @@ import { LoginResponse } from '../interfaces/LoginResponse';
 import { RefreshRequest } from '../interfaces/Refreshequest';
 import { RefreshResponse } from '../interfaces/RefreshResponse';
 import { RegisterRequest } from '../interfaces/RegisterRequest';
-import { NotificationService } from 'src/app/library/notification/notificationService.service';
-import { ErrorHandlingService } from 'src/app/library/error/errorHandlingService.service';
+import { ConfirmEmailRequest } from '../interfaces/ConfirmEmailRequest';
 import { PasswordRecoveryRequest } from '../interfaces/PasswordRecoveryRequest';
 
 @Injectable({
@@ -29,14 +28,16 @@ export class AuthService {
   loginUrl: string = `${environment.apiUrl}/api/Auth/login`;
   registerUrl: string = `${environment.apiUrl}/api/Auth/register`;
   refreshUrl: string = `${environment.apiUrl}/api/Auth/refreshtoken`;
+  confirmEmailUrl: string = `${environment.apiUrl}/api/Auth/confirmEmail`;
+
+  private _isEmailConfirmed = signal<boolean | null>(null);
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private persistentSvc: PersistentService,
     private jwtHelper: JwtHelperService,
-    private notificationSvc: NotificationService,
-    private errorHandlingSvc: ErrorHandlingService
+    private route: ActivatedRoute
   ) {}
 
   login(login: LoginRequest): void {
@@ -45,14 +46,10 @@ export class AuthService {
         if (!resp) throw new Error();
         this.setUserData(resp);
         this.router.navigate(['/']);
-        this.notificationSvc.notify('NOTIFY.LOGIN.SUCCESS', 'success');
+        console.log('Login successful');
       })
       .catch((error) => {
         console.error('Error logging in', error);
-        if (error.status === 401)
-          this.notificationSvc.notify('NOTIFY.LOGIN.ERROR.401', 'danger');
-        else
-          this.notificationSvc.notify('NOTIFY.LOGIN.ERROR.GENERIC', 'danger');
       })
       .finally(() => {});
   }
@@ -60,7 +57,6 @@ export class AuthService {
   logout(): void {
     this._userData.set(null);
     this.router.navigate(['/login']);
-    this.notificationSvc.notify('Logout effettuato con successo', 'success');
   }
 
   refreshToken(
@@ -115,12 +111,11 @@ export class AuthService {
   register(model: RegisterRequest): void {
     firstValueFrom(this.http.post(`${this.registerUrl}`, model))
       .then(() => {
-        this.notificationSvc.notify('NOTIFY.REGISTER.SUCCESS', 'success');
+        console.log('Registration successful');
         this.router.navigate(['/login']);
       })
       .catch((error) => {
         console.error('Error registering', error);
-        this.notificationSvc.notify('NOTIFY.REGISTER.ERROR', 'danger');
       })
       .finally(() => {});
   }
@@ -128,16 +123,37 @@ export class AuthService {
   passwordRecovery(model: PasswordRecoveryRequest): void {
     firstValueFrom(this.http.post(`${this.registerUrl}`, model))
       .then(() => {
-        this.notificationSvc.notify(
-          'NOTIFY.PASSWORD_RECOVERY.SUCCESS',
-          'success'
-        );
+        console.log('Password recovery email sent');
         this.router.navigate(['/login']);
       })
       .catch((error) => {
         console.error('Error registering', error);
-        this.notificationSvc.notify('NOTIFY.PASSWORD_RECOVERY.ERROR', 'danger');
       })
       .finally(() => {});
+  }
+
+  confirmEmail(): void {
+    const userId = this.route.snapshot.queryParams['userId'];
+    const token = this.route.snapshot.queryParams['token'];
+
+    const model: ConfirmEmailRequest = {
+      userId: userId,
+      token: token,
+    };
+
+    firstValueFrom(this.http.post(`${this.confirmEmailUrl}`, model))
+      .then(() => {
+        console.log('Email confirmed');
+        this._isEmailConfirmed.set(true);
+      })
+      .catch((error) => {
+        console.error('Error confirming email', error);
+        this._isEmailConfirmed.set(false);
+      })
+      .finally(() => {});
+  }
+
+  get isEmailConfirmed(): Signal<boolean | null> {
+    return this._isEmailConfirmed.asReadonly();
   }
 }

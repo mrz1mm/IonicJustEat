@@ -21,6 +21,7 @@ import { personOutline } from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/areas/auth/services/authService.service';
 import { PasswordRecoveryRequest } from 'src/app/areas/auth/interfaces/PasswordRecoveryRequest';
+import { Path } from 'src/app/library/utils/Path';
 
 @Component({
   selector: 'app-forgot-password-form',
@@ -42,6 +43,7 @@ import { PasswordRecoveryRequest } from 'src/app/areas/auth/interfaces/PasswordR
   ],
 })
 export class ForgotPasswordFormComponent implements OnInit {
+  Path = Path;
   forgotPasswordForm!: FormGroup;
   constructor(private fb: FormBuilder, private authSvc: AuthService) {
     addIcons({

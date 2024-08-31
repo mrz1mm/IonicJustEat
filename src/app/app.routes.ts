@@ -12,36 +12,43 @@ export const routes: Routes = [
       import('./areas/home/pages/home.page').then((m) => m.HomePage),
   },
   {
-    path: 'auth/login',
+    path: 'login',
     loadComponent: () =>
       import('./areas/auth/pages/login/login.page').then((m) => m.LoginPage),
   },
   {
-    path: 'auth/register',
+    path: 'register',
     loadComponent: () =>
       import('./areas/auth/pages/register/register.page').then(
         (m) => m.RegisterPage
       ),
   },
   {
-    path: 'auth/forgotPassword',
+    path: 'forgotPassword',
     loadComponent: () =>
       import('./areas/auth/pages/forgotPassword/forgotPassword.page').then(
         (m) => m.ForgotPasswordPage
       ),
   },
   {
-    path: 'info/aboutUs',
+    path: 'verifyEmail',
+    loadComponent: () =>
+      import('./areas/auth/pages/verifyEmail/verifyEmail.page').then(
+        (m) => m.VerifyEmailPage
+      ),
+  },
+  {
+    path: 'aboutUs',
     loadComponent: () =>
       import('./areas/info/aboutUs/aboutUs.page').then((m) => m.AboutUsPage),
   },
   {
-    path: 'info/contact',
+    path: 'contact',
     loadComponent: () =>
       import('./areas/info/contact/contact.page').then((m) => m.ContactPage),
   },
   {
-    path: 'info/faq',
+    path: 'faq',
     loadComponent: () =>
       import('./areas/info/faq/faq.page').then((m) => m.FaqPage),
   },

@@ -12,6 +12,7 @@ import {
   IonToolbar,
   IonInput,
 } from '@ionic/angular/standalone';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home-hero',
@@ -33,5 +34,6 @@ import {
   ],
 })
 export class HeroComponent {
+  Env = environment;
   constructor() {}
 }

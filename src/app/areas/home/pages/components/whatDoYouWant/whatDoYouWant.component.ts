@@ -4,6 +4,7 @@ import { IonGrid, IonRow, IonCol, IonIcon } from '@ionic/angular/standalone';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { addIcons } from 'ionicons';
 import { checkmark } from 'ionicons/icons';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-what-do-you-want',
@@ -17,6 +18,7 @@ import { checkmark } from 'ionicons/icons';
   imports: [IonIcon, IonCol, IonRow, IonGrid, TranslateModule],
 })
 export class WhatDoYouWantComponent {
+  Env = environment;
   constructor() {
     addIcons({
       checkmark: checkmark,

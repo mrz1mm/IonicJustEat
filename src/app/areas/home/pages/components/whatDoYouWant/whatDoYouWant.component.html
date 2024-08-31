@@ -20,7 +20,7 @@
     <swiper-slide>
       <ion-col class="ion-text-center ion-margin-vertical">
         <img
-          src="../../../../assets/img/utilities/fidelity.svg"
+          [src]="Env.assetsUrl + '/img/utilities/fidelity.svg'"
           alt="{{ 'WhatDoYouWant.FIDELITY_ALT' | translate }}"
         />
         <h4 class="ion-text-center ion-margin-vertical">
@@ -28,8 +28,8 @@
         </h4>
         <ul>
           <li class="ion-margin-bottom">
-            <i class="bi bi-check2"></i
-            >{{ "WhatDoYouWant.FIDELITY_DESCRIPTION" | translate }}
+            <ion-icon slot="start" name="checkmark"></ion-icon>
+            {{ "WhatDoYouWant.FIDELITY_DESCRIPTION" | translate }}
           </li>
         </ul>
       </ion-col>
@@ -39,7 +39,7 @@
     <swiper-slide>
       <ion-col class="ion-text-center ion-margin-vertical">
         <img
-          src="../../../../assets/img/utilities/promise.svg"
+          [src]="Env.assetsUrl + '/img/utilities/promise.svg'"
           alt="{{ 'WhatDoYouWant.PROMISE_ALT' | translate }}"
         />
         <h4 class="ion-text-center ion-margin-vertical">
@@ -47,12 +47,12 @@
         </h4>
         <ul>
           <li class="ion-margin-bottom">
-            <i class="bi bi-check2"></i
-            >{{ "WhatDoYouWant.PROMISE_DESCRIPTION1" | translate }}
+            <ion-icon slot="start" name="checkmark"></ion-icon>
+            {{ "WhatDoYouWant.PROMISE_DESCRIPTION1" | translate }}
           </li>
           <li class="ion-margin-bottom">
-            <i class="bi bi-check2"></i
-            >{{ "WhatDoYouWant.PROMISE_DESCRIPTION2" | translate }}
+            <ion-icon slot="start" name="checkmark"></ion-icon>
+            {{ "WhatDoYouWant.PROMISE_DESCRIPTION2" | translate }}
           </li>
         </ul>
       </ion-col>
@@ -62,7 +62,7 @@
     <swiper-slide>
       <ion-col class="ion-text-center ion-margin-vertical">
         <img
-          src="../../../../assets/img/utilities/advantages.svg"
+          [src]="Env.assetsUrl + '/img/utilities/advantages.svg'"
           alt="{{ 'WhatDoYouWant.ADVANTAGES_ALT' | translate }}"
         />
         <h4 class="ion-text-center ion-margin-vertical">
@@ -70,16 +70,16 @@
         </h4>
         <ul>
           <li class="ion-margin-bottom">
-            <i class="bi bi-check2"></i
-            >{{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION1" | translate }}
+            <ion-icon slot="start" name="checkmark"></ion-icon>
+            {{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION1" | translate }}
           </li>
           <li class="ion-margin-bottom">
-            <i class="bi bi-check2"></i
-            >{{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION2" | translate }}
+            <ion-icon slot="start" name="checkmark"></ion-icon>
+            {{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION2" | translate }}
           </li>
           <li class="ion-margin-bottom">
-            <i class="bi bi-check2"></i
-            >{{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION3" | translate }}
+            <ion-icon slot="start" name="checkmark"></ion-icon>
+            {{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION3" | translate }}
           </li>
         </ul>
       </ion-col>
@@ -101,7 +101,7 @@
   >
     <ion-col class="ion-align-items-center ion-padding">
       <img
-        src="../../../../assets/img/utilities/fidelity.svg"
+        [src]="Env.assetsUrl + '/img/utilities/fidelity.svg'"
         alt="{{ 'WhatDoYouWant.FIDELITY_ALT' | translate }}"
       />
       <h4 class="ion-text-center ion-margin-vertical">
@@ -109,14 +109,14 @@
       </h4>
       <ul>
         <li class="ion-margin-bottom">
-          <ion-icon name="checkmark"></ion-icon>
+          <ion-icon slot="start" name="checkmark"></ion-icon>
           {{ "WhatDoYouWant.FIDELITY_DESCRIPTION" | translate }}
         </li>
       </ul>
     </ion-col>
     <ion-col class="ion-align-items-center ion-padding ion-margin-horizontal">
       <img
-        src="../../../../assets/img/utilities/promise.svg"
+        [src]="Env.assetsUrl + '/img/utilities/promise.svg'"
         alt="{{ 'WhatDoYouWant.PROMISE_ALT' | translate }}"
       />
       <h4 class="ion-text-center ion-margin-vertical">
@@ -124,18 +124,18 @@
       </h4>
       <ul>
         <li class="ion-margin-bottom">
-          <ion-icon name="checkmark"></ion-icon>
+          <ion-icon slot="start" name="checkmark"></ion-icon>
           {{ "WhatDoYouWant.PROMISE_DESCRIPTION1" | translate }}
         </li>
         <li class="ion-margin-bottom">
-          <ion-icon name="checkmark"></ion-icon>
+          <ion-icon slot="start" name="checkmark"></ion-icon>
           {{ "WhatDoYouWant.PROMISE_DESCRIPTION2" | translate }}
         </li>
       </ul>
     </ion-col>
     <ion-col class="ion-align-items-center ion-padding">
       <img
-        src="../../../../assets/img/utilities/advantages.svg"
+        [src]="Env.assetsUrl + '/img/utilities/advantages.svg'"
         alt="{{ 'WhatDoYouWant.ADVANTAGES_ALT' | translate }}"
       />
       <h4 class="ion-text-center ion-margin-vertical">
@@ -143,15 +143,15 @@
       </h4>
       <ul>
         <li class="ion-margin-bottom">
-          <ion-icon name="checkmark"></ion-icon>
+          <ion-icon slot="start" name="checkmark"></ion-icon>
           {{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION1" | translate }}
         </li>
         <li class="ion-margin-bottom">
-          <ion-icon name="checkmark"></ion-icon>
+          <ion-icon slot="start" name="checkmark"></ion-icon>
           {{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION2" | translate }}
         </li>
         <li class="ion-margin-bottom">
-          <ion-icon name="checkmark"></ion-icon>
+          <ion-icon slot="start" name="checkmark"></ion-icon>
           {{ "WhatDoYouWant.ADVANTAGES_DESCRIPTION3" | translate }}
         </li>
       </ul>

@@ -8,6 +8,8 @@ import {
   logoTwitter,
   logoYoutube,
 } from 'ionicons/icons';
+import { Path } from 'src/app/library/utils/Path';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-footer',
@@ -17,6 +19,8 @@ import {
   imports: [IonIcon, IonFooter, RouterModule],
 })
 export class FooterComponent {
+  Env = environment;
+  Path = Path;
   constructor() {
     addIcons({
       'logo-facebook': logoFacebook,

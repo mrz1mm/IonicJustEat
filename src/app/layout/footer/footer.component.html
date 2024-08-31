@@ -2,7 +2,7 @@
   <div class="ion-margin-top">
     <img
       class="logo"
-      src="../../.././assets/img/utilities/logo.svg"
+      [src]="Env.assetsUrl + '/img/utilities/logo.svg'"
       alt="logo Just Eat"
     />
   </div>
@@ -16,7 +16,7 @@
     <ion-icon name="logo-youtube" size="large"></ion-icon>
   </div>
   <div>
-    <a [routerLink]="['/info/aboutUs']">About Us</a>
-    <a [routerLink]="['/info/contact']">Contact</a>
+    <a [routerLink]="[Path.AboutUs]">About Us</a>
+    <a [routerLink]="[Path.Contact]">Contact</a>
   </div>
 </ion-footer>

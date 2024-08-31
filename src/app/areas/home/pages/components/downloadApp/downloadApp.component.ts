@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonGrid, IonCol, IonRow, IonImg } from '@ionic/angular/standalone';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-download-app',
@@ -13,5 +14,6 @@ import { IonGrid, IonCol, IonRow, IonImg } from '@ionic/angular/standalone';
   imports: [IonImg, IonRow, IonCol, IonGrid, TranslateModule],
 })
 export class DownloadAppComponent {
+  Env = environment;
   constructor() {}
 }

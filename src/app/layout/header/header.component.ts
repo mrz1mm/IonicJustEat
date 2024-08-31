@@ -27,6 +27,8 @@ import { addIcons } from 'ionicons';
 import { close, sunny, moon, menu, person } from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from 'src/theme/library/theme.service';
+import { Path } from 'src/app/library/utils/Path';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -57,6 +59,8 @@ import { ThemeService } from 'src/theme/library/theme.service';
   ],
 })
 export class HeaderComponent {
+  Path = Path;
+  Env = environment;
   currentLanguage = computed<string>(() => this.i18nSvc.language());
   currentTheme = computed<string>(() => this.themeSvc.theme());
   currentFlag: string = '';
@@ -95,7 +99,7 @@ export class HeaderComponent {
   }
 
   private updateCurrentFlag(language: string): void {
-    this.currentFlag = `../../../assets/img/utilities/${language}.svg`;
+    this.currentFlag = `${this.Env.assetsUrl}/img/utilities/${language}.svg`;
   }
 
   // Theme

@@ -3,6 +3,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from 'src/app/layout/header/header.component';
 import { FooterComponent } from 'src/app/layout/footer/footer.component';
 import { IonGrid, IonRow, IonCol, IonImg } from '@ionic/angular/standalone';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-contact-hero',
@@ -20,5 +21,6 @@ import { IonGrid, IonRow, IonCol, IonImg } from '@ionic/angular/standalone';
   ],
 })
 export class ContactHeroComponent {
+  Env = environment;
   constructor() {}
 }

@@ -14,12 +14,12 @@
       <div class="ion-text-center">
         <img
           class="ion-margin-horizontal"
-          src="../../../../assets/img/home/appStore.png"
+          [src]="Env.assetsUrl + '/img/home/appStore.png'"
           alt="{{ 'DownloadApp.APP_STORE_ALT' | translate }}"
           [attr.aria-label]="'DownloadApp.APP_STORE_ALT' | translate"
         />
         <img
-          src="../../../../assets/img/home/googlePlay.png"
+          [src]="Env.assetsUrl + '/img/home/googlePlay.png'"
           alt="{{ 'DownloadApp.GOOGLE_PLAY_ALT' | translate }}"
           [attr.aria-label]="'DownloadApp.GOOGLE_PLAY_ALT' | translate"
         />
@@ -31,7 +31,7 @@
       class="ion-justify-content-center ion-align-items-center ion-padding-top"
     >
       <ion-img
-        src="../../../../assets/img/home/banner.png"
+        [src]="Env.assetsUrl + '/img/home/banner.png'"
         alt="{{ 'DownloadApp.APP_IMAGE_ALT' | translate }}"
       >
       </ion-img>

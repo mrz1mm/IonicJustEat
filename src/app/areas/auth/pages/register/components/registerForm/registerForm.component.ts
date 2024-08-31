@@ -24,6 +24,7 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { call, fingerPrint, home, personOutline } from 'ionicons/icons';
+import { Path } from 'src/app/library/utils/Path';
 
 @Component({
   selector: 'app-register-form',
@@ -46,6 +47,7 @@ import { call, fingerPrint, home, personOutline } from 'ionicons/icons';
   templateUrl: './registerForm.component.html',
 })
 export class RegisterFormComponent implements OnInit {
+  Path = Path;
   registerForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private authSvc: AuthService) {

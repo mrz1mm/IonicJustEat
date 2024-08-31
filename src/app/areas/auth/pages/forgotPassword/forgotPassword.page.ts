@@ -7,7 +7,6 @@ import { ForgotPasswordFormComponent } from './components/forgotPasswordForm/for
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgotPassword.page.html',
-  styleUrls: ['../../../../app.component.scss'],
   standalone: true,
   imports: [
     IonContent,

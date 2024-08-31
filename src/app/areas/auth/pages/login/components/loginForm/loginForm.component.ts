@@ -22,6 +22,7 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { personOutline, fingerPrint } from 'ionicons/icons';
+import { Path } from 'src/app/library/utils/Path';
 
 @Component({
   selector: 'app-login-form',
@@ -47,6 +48,7 @@ import { personOutline, fingerPrint } from 'ionicons/icons';
   templateUrl: './loginForm.component.html',
 })
 export class LoginFormComponent implements OnInit {
+  Path = Path;
   loginForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private authSvc: AuthService) {

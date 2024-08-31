@@ -7,8 +7,8 @@
         <ion-col size="auto">
           <ion-img
             class="logo"
-            src="../../../assets/img/utilities/logo.svg"
-            [routerLink]="['/']"
+            [src]="Env.assetsUrl + '/img/utilities/logo.svg'"
+            [routerLink]="[Path.Home]"
           ></ion-img>
         </ion-col>
         <ion-col
@@ -37,7 +37,7 @@
                 >
                   <ion-icon
                     slot="start"
-                    src="../../../assets/img/utilities/it.svg"
+                    [src]="Env.assetsUrl + '/img/utilities/it.svg'"
                   ></ion-icon>
                   <ion-label>{{
                     "Header.LANGUAGE_ITALY" | translate
@@ -47,7 +47,7 @@
                     *ngIf="
                       currentFlag === '../../../assets/img/utilities/it.svg'
                     "
-                    src="../../../assets/img/utilities/check.svg"
+                    [src]="Env.assetsUrl + '/img/utilities/check.svg'"
                   ></ion-icon>
                 </ion-item>
                 <ion-item
@@ -57,7 +57,7 @@
                 >
                   <ion-icon
                     slot="start"
-                    src="../../../assets/img/utilities/en.svg"
+                    [src]="Env.assetsUrl + '/img/utilities/en.svg'"
                   ></ion-icon>
                   <ion-label>{{
                     "Header.LANGUAGE_ENGLISH" | translate
@@ -67,7 +67,7 @@
                     *ngIf="
                       currentFlag === '../../../assets/img/utilities/en.svg'
                     "
-                    src="../../../assets/img/utilities/check.svg"
+                    [src]="Env.assetsUrl + '/img/utilities/check.svg'"
                   ></ion-icon>
                 </ion-item>
               </ion-list>
@@ -79,7 +79,7 @@
             class="ion-padding-horizontal text-color ion-hide-lg-down"
             [attr.aria-label]="'Header.LOGIN' | translate"
             fill="clear"
-            [routerLink]="['/auth/login']"
+            [routerLink]="[Path.Login]"
             color="tertiary"
           >
             <ion-icon name="person"></ion-icon>
@@ -136,7 +136,7 @@
                       class="btn"
                       expand="block"
                       color="secondary"
-                      [routerLink]="['/auth/login']"
+                      [routerLink]="[Path.Login]"
                       (click)="modal.dismiss()"
                       >Accedi</ion-button
                     >
@@ -146,8 +146,8 @@
                       class="btn"
                       expand="block"
                       color="primary"
-                      [routerLink]="['/auth/register']"
                       (click)="modal.dismiss()"
+                      [routerLink]="[Path.Register]"
                       >Crea un account</ion-button
                     >
                   </ion-col>
@@ -155,9 +155,23 @@
                 <ion-list>
                   <ion-item>
                     <ion-label
-                      [routerLink]="['/info/faq']"
                       (click)="modal.dismiss()"
+                      [routerLink]="[Path.Faq]"
                       >FAQ</ion-label
+                    >
+                  </ion-item>
+                  <ion-item>
+                    <ion-label
+                      (click)="modal.dismiss()"
+                      [routerLink]="[Path.AboutUs]"
+                      >About Us</ion-label
+                    >
+                  </ion-item>
+                  <ion-item>
+                    <ion-label
+                      (click)="modal.dismiss()"
+                      [routerLink]="[Path.Contact]"
+                      >Contact</ion-label
                     >
                   </ion-item>
                 </ion-list>

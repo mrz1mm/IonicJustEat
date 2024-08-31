@@ -11,6 +11,7 @@ import {
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { arrowDown } from 'ionicons/icons';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-country-selector',
@@ -29,6 +30,7 @@ import { arrowDown } from 'ionicons/icons';
   ],
 })
 export class CountrySelectorComponent {
+  Env = environment;
   constructor() {
     addIcons({
       'arrow-down': arrowDown,

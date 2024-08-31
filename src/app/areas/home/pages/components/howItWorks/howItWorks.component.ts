@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonGrid, IonCol, IonRow } from '@ionic/angular/standalone';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-how-it-works',
@@ -15,5 +16,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   imports: [TranslateModule, IonGrid, IonCol, IonRow],
 })
 export class HowItWorksComponent {
+  Env = environment;
   constructor() {}
 }
