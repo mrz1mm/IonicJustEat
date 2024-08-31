@@ -2,7 +2,15 @@ import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from 'src/app/layout/header/header.component';
 import { FooterComponent } from 'src/app/layout/footer/footer.component';
-import { IonGrid, IonCol, IonRow } from '@ionic/angular/standalone';
+import {
+  IonGrid,
+  IonCol,
+  IonRow,
+  IonButton,
+  IonIcon,
+} from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { arrowDown } from 'ionicons/icons';
 
 @Component({
   selector: 'app-country-selector',
@@ -10,6 +18,8 @@ import { IonGrid, IonCol, IonRow } from '@ionic/angular/standalone';
   styleUrls: ['./countrySelector.component.scss'],
   standalone: true,
   imports: [
+    IonIcon,
+    IonButton,
     IonRow,
     IonCol,
     IonGrid,
@@ -19,5 +29,9 @@ import { IonGrid, IonCol, IonRow } from '@ionic/angular/standalone';
   ],
 })
 export class CountrySelectorComponent {
-  constructor() {}
+  constructor() {
+    addIcons({
+      'arrow-down': arrowDown,
+    });
+  }
 }

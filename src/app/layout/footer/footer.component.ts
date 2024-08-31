@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { IonFooter, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
@@ -13,7 +14,7 @@ import {
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
   standalone: true,
-  imports: [IonIcon, IonFooter],
+  imports: [IonIcon, IonFooter, RouterModule],
 })
 export class FooterComponent {
   constructor() {

@@ -1,7 +1,10 @@
-import { Role } from 'src/app/library/utils/Role';
-
 export interface RegisterRequest {
   email: string;
   password: string;
-  role: Role;
+  name: string;
+  surname: string;
+  address: string;
+  city: string;
+  cap: string;
+  phoneNumber: string;
 }

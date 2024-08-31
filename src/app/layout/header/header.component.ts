@@ -24,7 +24,7 @@ import {
   IonTitle,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { close, sunny, moon } from 'ionicons/icons';
+import { close, sunny, moon, menu, person } from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from 'src/theme/library/theme.service';
 
@@ -78,6 +78,8 @@ export class HeaderComponent {
       close: close,
       sunny: sunny,
       moon: moon,
+      menu: menu,
+      person: person,
     });
   }
 

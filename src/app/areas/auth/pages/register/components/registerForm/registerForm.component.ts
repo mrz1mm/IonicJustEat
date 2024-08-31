@@ -12,7 +12,6 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../../../services/authService.service';
 import { RegisterRequest } from '../../../../interfaces/RegisterRequest';
-import { Role } from 'src/app/library/utils/Role';
 import {
   IonGrid,
   IonCol,
@@ -139,6 +138,7 @@ export class RegisterFormComponent implements OnInit {
     if (this.registerForm.valid) {
       const registerRequest: RegisterRequest = this.registerForm.value;
       this.authSvc.register(registerRequest);
+      console.log('Registering', registerRequest);
     }
   }
 }

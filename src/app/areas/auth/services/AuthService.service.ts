@@ -5,7 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { firstValueFrom, Observable } from 'rxjs';
 import { PersistentService } from 'src/app/library/persistentService/PersistentService.service';
 import { Store } from 'src/app/library/persistentService/Store';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { ILoggedUser } from '../interfaces/ILoggedUser';
 import { IUserClaims } from '../interfaces/IUserClaims';
 import { LoginRequest } from '../interfaces/LoginRequest';
@@ -27,8 +27,7 @@ export class AuthService {
   );
 
   loginUrl: string = `${environment.apiUrl}/api/Auth/login`;
-  registerUserUrl: string = `${environment.apiUrl}/api/Auth/registeruser`;
-  registerCompanyUrl: string = `${environment.apiUrl}/api/Auth/registercompany`;
+  registerUrl: string = `${environment.apiUrl}/api/Auth/register`;
   refreshUrl: string = `${environment.apiUrl}/api/Auth/refreshtoken`;
 
   constructor(
@@ -114,7 +113,7 @@ export class AuthService {
   }
 
   register(model: RegisterRequest): void {
-    firstValueFrom(this.http.post(`${this.registerUserUrl}`, model))
+    firstValueFrom(this.http.post(`${this.registerUrl}`, model))
       .then(() => {
         this.notificationSvc.notify('NOTIFY.REGISTER.SUCCESS', 'success');
         this.router.navigate(['/login']);
@@ -127,7 +126,7 @@ export class AuthService {
   }
 
   passwordRecovery(model: PasswordRecoveryRequest): void {
-    firstValueFrom(this.http.post(`${this.registerUserUrl}`, model))
+    firstValueFrom(this.http.post(`${this.registerUrl}`, model))
       .then(() => {
         this.notificationSvc.notify(
           'NOTIFY.PASSWORD_RECOVERY.SUCCESS',
