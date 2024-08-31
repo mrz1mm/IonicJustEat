@@ -1,4 +1,4 @@
 export interface ConfirmEmailRequest {
-  userId: string;
+  id: string;
   token: string;
 }

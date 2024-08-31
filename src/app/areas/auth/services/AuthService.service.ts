@@ -132,16 +132,8 @@ export class AuthService {
       .finally(() => {});
   }
 
-  confirmEmail(): void {
-    const userId = this.route.snapshot.queryParams['userId'];
-    const token = this.route.snapshot.queryParams['token'];
-
-    const model: ConfirmEmailRequest = {
-      userId: userId,
-      token: token,
-    };
-
-    firstValueFrom(this.http.post(`${this.confirmEmailUrl}`, model))
+  confirmEmail(model: ConfirmEmailRequest): void {
+    firstValueFrom(this.http.put(`${this.confirmEmailUrl}`, model))
       .then(() => {
         console.log('Email confirmed');
         this._isEmailConfirmed.set(true);
