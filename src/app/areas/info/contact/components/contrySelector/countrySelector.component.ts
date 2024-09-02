@@ -8,6 +8,7 @@ import {
   IonRow,
   IonButton,
   IonIcon,
+  IonItem,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { arrowDown } from 'ionicons/icons';
@@ -19,6 +20,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./countrySelector.component.scss'],
   standalone: true,
   imports: [
+    IonItem,
     IonIcon,
     IonButton,
     IonRow,

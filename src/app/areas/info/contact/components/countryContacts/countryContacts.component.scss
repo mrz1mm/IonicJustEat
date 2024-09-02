@@ -1,0 +1,27 @@
+#countryContacts {
+  ion-item {
+    ion-col {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 900;
+        margin-block: 0 0.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+        font-weight: lighter;
+        margin: 0;
+      }
+    }
+  }
+
+  ion-card {
+    img {
+      border-radius: 50%;
+    }
+  }
+}

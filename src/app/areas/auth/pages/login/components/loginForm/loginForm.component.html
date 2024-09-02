@@ -4,7 +4,11 @@
       <h1 class="ion-text-center">{{ "LoginForm.TITLE" | translate }}</h1>
     </ion-col>
     <ion-col size="12">
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
+        class="ion-text-center"
+      >
         <!-- Email -->
         <ion-item>
           <ion-input
@@ -66,14 +70,14 @@
         </ion-item>
 
         <!-- Links -->
-        <div class="ion-text-center ion-margin-top">
+        <div class="ion-margin-top">
           <ion-text>
             <a [routerLink]="[Path.ForgotPassword]">
               {{ "LoginForm.LINK_FORGOT_PASSWORD" | translate }}
             </a>
           </ion-text>
         </div>
-        <div class="ion-text-center ion-margin-top">
+        <div class="ion-margin-top">
           <ion-text>
             <a [routerLink]="[Path.Register]">
               {{ "LoginForm.LINK_REGISTER" | translate }}
@@ -83,7 +87,7 @@
 
         <!-- Submit -->
         <ion-button
-          class="iion-margin-top ion-padding-top"
+          class="ion-margin-top ion-padding-top"
           [disabled]="loginForm.invalid"
           type="submit"
         >

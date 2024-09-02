@@ -50,11 +50,11 @@
           }
 
           ion-item.active::part(native) {
-            background-color: #efedea;
+            background-color: var(--hero-background-color);
           }
 
           ion-item:hover::part(native) {
-            background-color: #efedea;
+            background-color: var(--hero-background-color);
           }
         }
       }

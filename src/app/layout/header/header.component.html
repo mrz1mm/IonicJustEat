@@ -45,9 +45,9 @@
                   <ion-icon
                     slot="end"
                     *ngIf="
-                      currentFlag === '../../../assets/img/utilities/it.svg'
+                      currentFlag === Env.assetsUrl + '/img/utilities/it.svg'
                     "
-                    [src]="Env.assetsUrl + '/img/utilities/check.svg'"
+                    name="checkmark"
                   ></ion-icon>
                 </ion-item>
                 <ion-item
@@ -65,9 +65,9 @@
                   <ion-icon
                     slot="end"
                     *ngIf="
-                      currentFlag === '../../../assets/img/utilities/en.svg'
+                      currentFlag === Env.assetsUrl + '/img/utilities/en.svg'
                     "
-                    [src]="Env.assetsUrl + '/img/utilities/check.svg'"
+                    name="checkmark"
                   ></ion-icon>
                 </ion-item>
               </ion-list>
@@ -153,21 +153,21 @@
                   </ion-col>
                 </ion-row>
                 <ion-list>
-                  <ion-item>
+                  <ion-item button>
                     <ion-label
                       (click)="modal.dismiss()"
                       [routerLink]="[Path.Faq]"
                       >FAQ</ion-label
                     >
                   </ion-item>
-                  <ion-item>
+                  <ion-item button>
                     <ion-label
                       (click)="modal.dismiss()"
                       [routerLink]="[Path.AboutUs]"
                       >About Us</ion-label
                     >
                   </ion-item>
-                  <ion-item>
+                  <ion-item button>
                     <ion-label
                       (click)="modal.dismiss()"
                       [routerLink]="[Path.Contact]"

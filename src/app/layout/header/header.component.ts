@@ -24,7 +24,7 @@ import {
   IonTitle,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { close, sunny, moon, menu, person } from 'ionicons/icons';
+import { close, sunny, moon, menu, person, checkmark } from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from 'src/theme/library/theme.service';
 import { Path } from 'src/app/library/utils/Path';
@@ -84,6 +84,7 @@ export class HeaderComponent {
       moon: moon,
       menu: menu,
       person: person,
+      checkmark: checkmark,
     });
   }
 
