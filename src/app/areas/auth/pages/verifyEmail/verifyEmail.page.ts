@@ -22,7 +22,7 @@ export class VerifyEmailPage implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       const id = params['id'];
-      const token = params['token'];
+      let token = params['token'];
       if (id && token) {
         const model: ConfirmEmailRequest = {
           id: id,

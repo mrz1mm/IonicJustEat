@@ -2,13 +2,16 @@
   padding: 0;
   ion-row {
     background-color: var(--hero-background-color);
+
     ion-col:first-child {
       h1 {
         font-size: 3.5rem;
       }
+
       #inputWrapper {
         position: relative;
         width: 100%;
+
         ion-input {
           border: 1px solid #b7b6b4;
           border-radius: 2rem;
@@ -18,6 +21,7 @@
           padding-right: 10rem;
           box-sizing: border-box;
         }
+
         ion-icon {
           position: absolute;
           right: 8rem;
@@ -27,8 +31,10 @@
           font-size: 1.25rem;
           cursor: pointer;
         }
+
         ion-button {
           position: absolute;
+          z-index: 2;
           right: 4px;
           top: 50%;
           transform: translateY(-50%);
@@ -37,13 +43,29 @@
           border-radius: 2rem;
         }
       }
-    }
-    ion-col:nth-child(2) {
-      background-color: #ff8000;
-      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
-      @media screen and (max-width: 992px) {
-        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+
+      .autocomplete-results {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: white;
+        max-height: 200px;
+        overflow-y: auto;
+        margin-top: 8px;
+
+        ion-item.highlight {
+          background-color: #6726bd !important;
+          color: #000 !important;
+          cursor: pointer;
+        }
       }
     }
+  }
+}
+
+ion-col:nth-child(2) {
+  background-color: #ff8000;
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+  @media screen and (max-width: 992px) {
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
   }
 }
