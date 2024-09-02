@@ -13,29 +13,30 @@
           <b>{{ "Hero.SUBTITLE" | translate }}</b>
         </h2>
       </div>
-      <div id="inputWrapper" class="ion-margin-top">
+      <div id="inputContainer" class="ion-margin-top">
         <form (submit)="handleSubmit($event)">
           <ion-item>
             <ion-input
               type="text"
-              placeholder="Il tuo indirizzo (comprensivo di città e numero civico)"
+              placeholder="Inserisci l'indirizzo di consegna"
               [(ngModel)]="address"
               (ionInput)="onInputChange($event)"
               (keydown)="onKeyDown($event)"
               autofocus="true"
               #searchBar
               clearInput
+              class="ion-padding-start"
             ></ion-input>
-            <ion-button type="submit">CONSEGNA</ion-button>
+            <ion-button type="submit">Cerca</ion-button>
           </ion-item>
 
           @if (suggestions.length > 0) {
-          <ion-list class="autocomplete-results">
+          <ion-list>
             @for (suggestion of suggestions; track $index; let i = $index) {
             <ion-item
-              [class.highlight]="i === highlightedIndex"
+              #suggestionItem
               (click)="selectAddress(suggestion)"
-              button
+              [ngClass]="{ active: i === suggestionIndex }"
               >{{ suggestion.label }}
             </ion-item>
             }

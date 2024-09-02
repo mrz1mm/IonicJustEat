@@ -8,7 +8,7 @@
         font-size: 3.5rem;
       }
 
-      #inputWrapper {
+      #inputContainer {
         position: relative;
         width: 100%;
 
@@ -22,40 +22,40 @@
           box-sizing: border-box;
         }
 
-        ion-icon {
-          position: absolute;
-          right: 8rem;
-          top: 50%;
-          transform: translateY(-50%);
-          font-weight: bolder;
-          font-size: 1.25rem;
-          cursor: pointer;
+        ::ng-deep ion-input .input-clear-icon {
+          margin-right: 7.5rem;
+          position: relative;
         }
 
-        ion-button {
+        ion-button::part(native) {
           position: absolute;
-          z-index: 2;
-          right: 4px;
-          top: 50%;
-          transform: translateY(-50%);
-          height: 3.5rem;
+          right: 20px;
+          top: 0;
+          z-index: 3;
+          height: 4rem;
           width: 6rem;
+          margin-left: -6rem;
           border-radius: 2rem;
         }
-      }
 
-      .autocomplete-results {
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background: white;
-        max-height: 200px;
-        overflow-y: auto;
-        margin-top: 8px;
+        ion-list {
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          max-height: 200px;
+          overflow-y: auto;
 
-        ion-item.highlight {
-          background-color: #6726bd !important;
-          color: #000 !important;
-          cursor: pointer;
+          ion-item {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+          }
+
+          ion-item.active::part(native) {
+            background-color: #efedea;
+          }
+
+          ion-item:hover::part(native) {
+            background-color: #efedea;
+          }
         }
       }
     }
@@ -68,4 +68,8 @@ ion-col:nth-child(2) {
   @media screen and (max-width: 992px) {
     clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
   }
+}
+
+ion-item::part(native) {
+  background-color: transparent;
 }

@@ -3,7 +3,9 @@ import {
   ElementRef,
   OnDestroy,
   OnInit,
+  QueryList,
   ViewChild,
+  ViewChildren,
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import {
@@ -24,6 +26,7 @@ import { environment } from 'src/environments/environment';
 import { GeosearchService } from 'src/app/layout/shared/services/geoSearch.service';
 import { SearchResult } from 'leaflet-geosearch/dist/providers/provider';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-hero',
@@ -45,16 +48,19 @@ import { FormsModule } from '@angular/forms';
     IonImg,
     IonIcon,
     FormsModule,
+    CommonModule,
   ],
 })
 export class HeroComponent {
   Env = environment;
   address: string = '';
   suggestions: SearchResult[] = [];
-  highlightedIndex: number = -1;
+  suggestionIndex: number = -1;
   searchTimeout: any;
 
   @ViewChild('searchBar', { static: true }) searchBarRef!: ElementRef<IonInput>;
+  @ViewChildren('suggestionItem', { read: ElementRef })
+  suggestionItems!: QueryList<ElementRef>;
 
   constructor(private geosearchService: GeosearchService) {}
 
@@ -62,12 +68,10 @@ export class HeroComponent {
     const value = event.target.value;
     this.address = value;
 
-    // Cancella il timeout precedente
     if (this.searchTimeout) {
       clearTimeout(this.searchTimeout);
     }
 
-    // Imposta un nuovo timeout per la ricerca con debounce
     this.searchTimeout = setTimeout(async () => {
       if (value) {
         this.suggestions = await this.geosearchService.search(value);
@@ -78,50 +82,56 @@ export class HeroComponent {
   }
 
   onKeyDown(event: KeyboardEvent): void {
-    if (this.suggestions.length > 0) {
-      if (event.key === 'ArrowDown') {
-        event.preventDefault();
-        this.highlightedIndex =
-          (this.highlightedIndex + 1) % this.suggestions.length;
-        console.log(
-          'ArrowDown pressed, highlightedIndex:',
-          this.highlightedIndex
-        );
-        console.log(
-          'Element with highlight:',
-          this.suggestions[this.highlightedIndex]
-        );
-      } else if (event.key === 'ArrowUp') {
-        event.preventDefault();
-        this.highlightedIndex =
-          (this.highlightedIndex > 0
-            ? this.highlightedIndex
+    const keyActions: { [key: string]: () => void } = {
+      ArrowDown: () => {
+        this.suggestionIndex =
+          (this.suggestionIndex + 1) % this.suggestions.length;
+        this.focusSuggestion();
+      },
+      ArrowUp: () => {
+        this.suggestionIndex =
+          (this.suggestionIndex > 0
+            ? this.suggestionIndex
             : this.suggestions.length) - 1;
-        console.log(
-          'ArrowUp pressed, highlightedIndex:',
-          this.highlightedIndex
-        );
-        console.log(
-          'Element with highlight:',
-          this.suggestions[this.highlightedIndex]
-        );
-      } else if (event.key === 'Enter') {
-        event.preventDefault();
+        this.focusSuggestion();
+      },
+      Enter: () => {
         if (
-          this.highlightedIndex >= 0 &&
-          this.highlightedIndex < this.suggestions.length
+          this.suggestionIndex >= 0 &&
+          this.suggestionIndex < this.suggestions.length
         ) {
-          this.selectAddress(this.suggestions[this.highlightedIndex]);
+          this.selectAddress(this.suggestions[this.suggestionIndex]);
         }
-      }
+      },
+    };
+
+    if (this.suggestions.length > 0 && keyActions[event.key]) {
+      event.preventDefault();
+      keyActions[event.key]();
+    }
+  }
+
+  focusSuggestion(): void {
+    if (this.suggestionItems) {
+      this.suggestionItems.forEach((item, index) => {
+        const element = item.nativeElement;
+        if (index === this.suggestionIndex) {
+          element.focus(); // Ensure that the selected item is focusable
+          console.log(
+            'Focus index:',
+            this.suggestionIndex,
+            'Suggestion:',
+            this.suggestions[this.suggestionIndex]
+          ); // Log current suggestion being focused
+        }
+      });
     }
   }
 
   selectAddress(suggestion: SearchResult): void {
     this.address = suggestion.label;
     this.suggestions = [];
-    console.log('Selected address:', suggestion);
-
+    this.suggestionIndex = -1; // Reset the suggestion index
     if (this.searchBarRef && this.searchBarRef.nativeElement) {
       this.searchBarRef.nativeElement.setFocus();
     }
@@ -130,7 +140,6 @@ export class HeroComponent {
   handleSubmit(event: Event): void {
     event.preventDefault();
     if (!this.address.trim()) return;
-    console.log('Submitted address:', this.address);
-    // Aggiungi la logica per la gestione del submit
+    console.log('Submit:', this.address);
   }
 }
