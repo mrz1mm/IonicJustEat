@@ -1,8 +1,8 @@
 import { Injectable, Signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Language } from './Language';
-import { Store } from '../../../app/library/persistentService/Store';
+import { Store } from '../../../app/library/persistentService/Store.enum';
 import { PersistentService } from '../../../app/library/persistentService/PersistentService.service';
+import { Language } from './Language.enum';
 
 @Injectable({
   providedIn: 'root',

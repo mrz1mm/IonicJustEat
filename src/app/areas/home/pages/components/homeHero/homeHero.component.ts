@@ -23,10 +23,10 @@ import {
   IonList,
 } from '@ionic/angular/standalone';
 import { environment } from 'src/environments/environment';
-import { GeosearchService } from 'src/app/layout/shared/services/geoSearch.service';
 import { SearchResult } from 'leaflet-geosearch/dist/providers/provider';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { GeosearchService } from 'src/app/library/maps/geoSearch.service';
 
 @Component({
   selector: 'app-home-hero',

@@ -4,7 +4,7 @@ import { IonContent } from '@ionic/angular/standalone';
 import { EmailConfirmedComponent } from './components/emailConfirmed/emailConfirmed.component';
 import { UnverifiedEmailComponent } from './components/unverifiedEmail/unverifiedEmail.component';
 import { ActivatedRoute } from '@angular/router';
-import { ConfirmEmailRequest } from '../../interfaces/ConfirmEmailRequest';
+import { ConfirmEmailRequest } from '../../interfaces/ConfirmEmailRequest.interface';
 
 @Component({
   selector: 'app-verify-email',

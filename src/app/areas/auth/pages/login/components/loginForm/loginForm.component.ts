@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { LoginRequest } from '../../../../interfaces/LoginRequest';
+import { LoginRequest } from '../../../../interfaces/LoginRequest.interface';
 import { AuthService } from '../../../../services/authService.service';
 import {
   IonGrid,

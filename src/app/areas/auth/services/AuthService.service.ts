@@ -4,17 +4,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { firstValueFrom, Observable } from 'rxjs';
 import { PersistentService } from 'src/app/library/persistentService/PersistentService.service';
-import { Store } from 'src/app/library/persistentService/Store';
+import { Store } from 'src/app/library/persistentService/Store.enum';
 import { environment } from 'src/environments/environment';
-import { ILoggedUser } from '../interfaces/ILoggedUser';
-import { IUserClaims } from '../interfaces/IUserClaims';
-import { LoginRequest } from '../interfaces/LoginRequest';
-import { LoginResponse } from '../interfaces/LoginResponse';
-import { RefreshRequest } from '../interfaces/Refreshequest';
-import { RefreshResponse } from '../interfaces/RefreshResponse';
-import { RegisterRequest } from '../interfaces/RegisterRequest';
-import { ConfirmEmailRequest } from '../interfaces/ConfirmEmailRequest';
-import { PasswordRecoveryRequest } from '../interfaces/PasswordRecoveryRequest';
+import { ILoggedUser } from '../interfaces/ILoggedUser.interface';
+import { IUserClaims } from '../interfaces/IUserClaims.interface';
+import { LoginRequest } from '../interfaces/LoginRequest.interface';
+import { LoginResponse } from '../interfaces/LoginResponse.interface';
+import { RefreshRequest } from '../interfaces/Refreshequest.interface';
+import { RefreshResponse } from '../interfaces/RefreshResponse.interface';
+import { RegisterRequest } from '../interfaces/RegisterRequest.interface';
+import { ConfirmEmailRequest } from '../interfaces/ConfirmEmailRequest.interface';
+import { PasswordRecoveryRequest } from '../interfaces/PasswordRecoveryRequest.interface';
 
 @Injectable({
   providedIn: 'root',

@@ -2,7 +2,7 @@ import { Component, computed, effect, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { i18nService } from '../../../assets/i18n/library/i18nService.service';
-import { Language } from '../../../assets/i18n/library/Language';
+import { Language } from '../../../assets/i18n/library/Language.enum';
 import { AnimationController } from '@ionic/angular';
 import {
   IonIcon,
