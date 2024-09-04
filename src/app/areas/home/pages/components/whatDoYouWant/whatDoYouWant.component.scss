@@ -44,10 +44,13 @@
     width: 100%;
     padding: 0;
     li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
       font-weight: lighter;
-      padding-left: 2rem;
       ion-icon {
+        margin-right: 0.5rem;
         font-size: 1.5rem;
         line-height: 1;
         font-weight: bold;

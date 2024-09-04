@@ -8,12 +8,7 @@ import { ForgotPasswordFormComponent } from './components/forgotPasswordForm/for
   selector: 'app-forgot-password',
   templateUrl: './forgotPassword.page.html',
   standalone: true,
-  imports: [
-    IonContent,
-    HeaderComponent,
-    FooterComponent,
-    ForgotPasswordFormComponent,
-  ],
+  imports: [IonContent, FooterComponent, ForgotPasswordFormComponent],
 })
 export class ForgotPasswordPage {
   constructor() {}
