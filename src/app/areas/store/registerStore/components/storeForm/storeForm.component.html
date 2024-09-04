@@ -9,77 +9,283 @@
         (ngSubmit)="addStore()"
         class="ion-text-center"
       >
-        <!-- Email -->
+        <!-- StoreName -->
         <ion-item>
           <ion-input
-            formControlName="email"
-            type="email"
-            label="{{ 'StoreForm.EMAIL_LABEL' | translate }}"
+            formControlName="storeName"
+            type="text"
+            label="{{ 'StoreForm.STORE_NAME_LABEL' | translate }}"
             label-placement="floating"
-            placeholder="{{ 'StoreForm.EMAIL_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('email') | translate"
-            [errorText]="getErrorText('email') ?? '' | translate"
-            autocomplete="email"
+            placeholder="{{ 'StoreForm.STORE_NAME_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('storeName') | translate"
+            [errorText]="getErrorText('storeName') ?? '' | translate"
             autofocus="true"
             clearInput="true"
             counter="true"
             fill="outline"
-            inputmode="email"
-            minlength="0"
-            maxlength="50"
+            maxlength="100"
             shape="round"
             required
             class="ion-margin-vertical"
           >
             <ion-icon
-              name="person-outline"
+              name="storefront-outline"
               color="primary"
               slot="start"
             ></ion-icon>
           </ion-input>
         </ion-item>
 
-        <!-- Password -->
+        <!-- Address -->
         <ion-item>
           <ion-input
-            formControlName="password"
-            type="password"
-            label="{{ 'StoreForm.PASSWORD_LABEL' | translate }}"
+            formControlName="address"
+            type="text"
+            label="{{ 'StoreForm.ADDRESS_LABEL' | translate }}"
             label-placement="floating"
-            placeholder="{{ 'StoreForm.PASSWORD_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('password') | translate"
-            [errorText]="getErrorText('password') ?? '' | translate"
-            autocomplete="current-password"
+            placeholder="{{ 'StoreForm.ADDRESS_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('address') | translate"
+            [errorText]="getErrorText('address') ?? '' | translate"
             clearInput="true"
             counter="true"
             fill="outline"
-            inputmode="password"
-            minlength="6"
-            maxlength="50"
-            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d])[A-Za-z\d\S]{6,}$"
+            maxlength="200"
             shape="round"
             required
             class="ion-margin-vertical"
           >
             <ion-icon
-              name="finger-print"
+              name="location-outline"
               color="primary"
               slot="start"
             ></ion-icon>
           </ion-input>
         </ion-item>
 
-        <!-- StoreName -->
-        <!-- Address -->
         <!-- City -->
+        <ion-item>
+          <ion-input
+            formControlName="city"
+            type="text"
+            label="{{ 'StoreForm.CITY_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.CITY_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('city') | translate"
+            [errorText]="getErrorText('city') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="50"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="business-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
         <!-- CAP -->
+        <ion-item>
+          <ion-input
+            formControlName="cap"
+            type="text"
+            label="{{ 'StoreForm.CAP_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.CAP_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('cap') | translate"
+            [errorText]="getErrorText('cap') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="5"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="mail-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
         <!-- Latitude -->
+        <ion-item>
+          <ion-input
+            formControlName="latitude"
+            type="number"
+            label="{{ 'StoreForm.LATITUDE_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.LATITUDE_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('latitude') | translate"
+            [errorText]="getErrorText('latitude') ?? '' | translate"
+            clearInput="true"
+            fill="outline"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="compass-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
         <!-- Longitude -->
+        <ion-item>
+          <ion-input
+            formControlName="longitude"
+            type="number"
+            label="{{ 'StoreForm.LONGITUDE_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.LONGITUDE_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('longitude') | translate"
+            [errorText]="getErrorText('longitude') ?? '' | translate"
+            clearInput="true"
+            fill="outline"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="globe-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
         <!-- PhoneNumber -->
+        <ion-item>
+          <ion-input
+            formControlName="phoneNumber"
+            type="tel"
+            label="{{ 'StoreForm.PHONE_NUMBER_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.PHONE_NUMBER_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('phoneNumber') | translate"
+            [errorText]="getErrorText('phoneNumber') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="15"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="call-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
         <!-- StoreTag -->
+        <ion-item>
+          <ion-input
+            formControlName="storeTag"
+            type="text"
+            label="{{ 'StoreForm.STORE_TAG_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.STORE_TAG_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('storeTag') | translate"
+            [errorText]="getErrorText('storeTag') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="50"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="pricetag-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
         <!-- CoverImg -->
+        <ion-item>
+          <ion-input
+            formControlName="coverImg"
+            type="url"
+            label="{{ 'StoreForm.COVER_IMG_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.COVER_IMG_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('coverImg') | translate"
+            [errorText]="getErrorText('coverImg') ?? '' | translate"
+            clearInput="true"
+            fill="outline"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="image-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
         <!-- LogoImg -->
+        <ion-item>
+          <ion-input
+            formControlName="logoImg"
+            type="url"
+            label="{{ 'StoreForm.LOGO_IMG_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.LOGO_IMG_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('logoImg') | translate"
+            [errorText]="getErrorText('logoImg') ?? '' | translate"
+            clearInput="true"
+            fill="outline"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="logo-buffer"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
         <!-- Description -->
+        <ion-item>
+          <ion-input
+            formControlName="description"
+            type="text"
+            label="{{ 'StoreForm.DESCRIPTION_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.DESCRIPTION_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('description') | translate"
+            [errorText]="getErrorText('description') ?? '' | translate"
+            clearInput="true"
+            fill="outline"
+            maxlength="500"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="information-circle-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
 
         <!-- Links -->
         <div class="ion-margin-top">

@@ -62,7 +62,7 @@ export class HeroComponent {
   @ViewChildren('suggestionItem', { read: ElementRef })
   suggestionItems!: QueryList<ElementRef>;
 
-  constructor(private geosearchService: GeosearchService) {}
+  constructor(private geosearchSvc: GeosearchService) {}
 
   onInputChange(event: any): void {
     const value = event.target.value;
@@ -74,7 +74,7 @@ export class HeroComponent {
 
     this.searchTimeout = setTimeout(async () => {
       if (value) {
-        this.suggestions = await this.geosearchService.search(value);
+        this.suggestions = await this.geosearchSvc.search(value);
       } else {
         this.suggestions = [];
       }
@@ -116,13 +116,13 @@ export class HeroComponent {
       this.suggestionItems.forEach((item, index) => {
         const element = item.nativeElement;
         if (index === this.suggestionIndex) {
-          element.focus(); // Ensure that the selected item is focusable
+          element.focus();
           console.log(
             'Focus index:',
             this.suggestionIndex,
             'Suggestion:',
             this.suggestions[this.suggestionIndex]
-          ); // Log current suggestion being focused
+          );
         }
       });
     }
@@ -131,7 +131,7 @@ export class HeroComponent {
   selectAddress(suggestion: SearchResult): void {
     this.address = suggestion.label;
     this.suggestions = [];
-    this.suggestionIndex = -1; // Reset the suggestion index
+    this.suggestionIndex = -1;
     if (this.searchBarRef && this.searchBarRef.nativeElement) {
       this.searchBarRef.nativeElement.setFocus();
     }
