@@ -10,7 +10,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
-import { AuthService } from '../../../../services/authService.service';
+import { AuthService } from '../../../../services/auth.service';
 import { RegisterRequest } from '../../../../interfaces/RegisterRequest.interface';
 import {
   IonGrid,

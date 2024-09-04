@@ -1,57 +1,54 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
-  ReactiveFormsModule,
   FormGroup,
+  ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
-import { LoginRequest } from '../../../../interfaces/LoginRequest.interface';
-import { AuthService } from '../../../../services/auth.service';
+import { RouterModule } from '@angular/router';
 import {
   IonGrid,
   IonRow,
   IonCol,
   IonItem,
-  IonIcon,
   IonInput,
-  IonButton,
+  IonIcon,
   IonText,
+  IonButton,
 } from '@ionic/angular/standalone';
+import { TranslateModule } from '@ngx-translate/core';
 import { addIcons } from 'ionicons';
-import { personOutline, fingerPrint } from 'ionicons/icons';
+import { fingerPrint, personOutline } from 'ionicons/icons';
 import { Path } from 'src/app/library/utils/Path';
+import { StoreRequest } from '../../../interfaces/StoreRequest.interface';
+import { StoreService } from '../../../services/store.service';
 
 @Component({
-  selector: 'app-login-form',
+  selector: 'app-store-form',
+  templateUrl: './storeForm.component.html',
+  styleUrls: ['./storeForm.component.scss'],
   standalone: true,
-  styleUrls: [
-    '../../../../../../app.component.scss',
-    './loginForm.component.scss',
-  ],
   imports: [
-    IonText,
     IonButton,
-    IonInput,
+    IonText,
     IonIcon,
+    IonInput,
     IonItem,
     IonCol,
     IonRow,
     IonGrid,
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule,
     TranslateModule,
+    ReactiveFormsModule,
+    CommonModule,
+    RouterModule,
   ],
-  templateUrl: './loginForm.component.html',
 })
-export class LoginFormComponent implements OnInit {
+export class StoreFormComponent implements OnInit {
   Path = Path;
-  loginForm!: FormGroup;
+  storeForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authSvc: AuthService) {
+  constructor(private fb: FormBuilder, private storeSvc: StoreService) {
     addIcons({
       'person-outline': personOutline,
       'finger-print': fingerPrint,
@@ -59,7 +56,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginForm = this.fb.group({
+    this.storeForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: [
         '',
@@ -75,14 +72,14 @@ export class LoginFormComponent implements OnInit {
   }
 
   getHelperText(controlName: string): string {
-    const control = this.loginForm.get(controlName);
+    const control = this.storeForm.get(controlName);
     return control?.touched && control?.valid
       ? `LoginForm.${controlName.toUpperCase()}_VALID`
       : `LoginForm.${controlName.toUpperCase()}_HELPER`;
   }
 
   getErrorText(controlName: string): string | null {
-    const control = this.loginForm.get(controlName);
+    const control = this.storeForm.get(controlName);
 
     if (!control || !control.touched || !control.errors) {
       return null;
@@ -101,10 +98,10 @@ export class LoginFormComponent implements OnInit {
     return null;
   }
 
-  login(): void {
-    if (this.loginForm.valid) {
-      const loginRequest: LoginRequest = this.loginForm.value;
-      this.authSvc.login(loginRequest);
+  addStore(): void {
+    if (this.storeForm.valid) {
+      const storeRequest: StoreRequest = this.storeForm.value;
+      this.storeSvc.addStore(storeRequest);
     }
   }
 }

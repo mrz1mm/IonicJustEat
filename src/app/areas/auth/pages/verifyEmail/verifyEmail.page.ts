@@ -1,4 +1,4 @@
-import { AuthService } from 'src/app/areas/auth/services/authService.service';
+import { AuthService } from 'src/app/areas/auth/services/auth.service';
 import { Component, computed, OnInit } from '@angular/core';
 import { IonContent } from '@ionic/angular/standalone';
 import { EmailConfirmedComponent } from './components/emailConfirmed/emailConfirmed.component';

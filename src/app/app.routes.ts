@@ -52,4 +52,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./areas/info/faq/faq.page').then((m) => m.FaqPage),
   },
+  {
+    path: 'registerStore',
+    loadComponent: () =>
+      import('./areas/store/registerStore/registerStore.page').then(
+        (m) => m.RegisterStorePage
+      ),
+  },
 ];

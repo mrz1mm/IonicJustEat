@@ -19,7 +19,7 @@ import {
 import { addIcons } from 'ionicons';
 import { personOutline } from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
-import { AuthService } from 'src/app/areas/auth/services/authService.service';
+import { AuthService } from 'src/app/areas/auth/services/auth.service';
 import { PasswordRecoveryRequest } from 'src/app/areas/auth/interfaces/PasswordRecoveryRequest.interface';
 import { Path } from 'src/app/library/utils/Path';
 

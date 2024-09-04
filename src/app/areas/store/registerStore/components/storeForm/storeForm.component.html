@@ -1,0 +1,111 @@
+<ion-grid>
+  <ion-row>
+    <ion-col size="12">
+      <h1 class="ion-text-center">{{ "StoreForm.TITLE" | translate }}</h1>
+    </ion-col>
+    <ion-col size="12">
+      <form
+        [formGroup]="storeForm"
+        (ngSubmit)="addStore()"
+        class="ion-text-center"
+      >
+        <!-- Email -->
+        <ion-item>
+          <ion-input
+            formControlName="email"
+            type="email"
+            label="{{ 'StoreForm.EMAIL_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.EMAIL_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('email') | translate"
+            [errorText]="getErrorText('email') ?? '' | translate"
+            autocomplete="email"
+            autofocus="true"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            inputmode="email"
+            minlength="0"
+            maxlength="50"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="person-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Password -->
+        <ion-item>
+          <ion-input
+            formControlName="password"
+            type="password"
+            label="{{ 'StoreForm.PASSWORD_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.PASSWORD_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('password') | translate"
+            [errorText]="getErrorText('password') ?? '' | translate"
+            autocomplete="current-password"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            inputmode="password"
+            minlength="6"
+            maxlength="50"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d])[A-Za-z\d\S]{6,}$"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="finger-print"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- StoreName -->
+        <!-- Address -->
+        <!-- City -->
+        <!-- CAP -->
+        <!-- Latitude -->
+        <!-- Longitude -->
+        <!-- PhoneNumber -->
+        <!-- StoreTag -->
+        <!-- CoverImg -->
+        <!-- LogoImg -->
+        <!-- Description -->
+
+        <!-- Links -->
+        <div class="ion-margin-top">
+          <ion-text>
+            <a [routerLink]="[Path.ForgotPassword]">
+              {{ "StoreForm.LINK_FORGOT_PASSWORD" | translate }}
+            </a>
+          </ion-text>
+        </div>
+        <div class="ion-margin-top">
+          <ion-text>
+            <a [routerLink]="[Path.Register]">
+              {{ "StoreForm.LINK_REGISTER" | translate }}
+            </a>
+          </ion-text>
+        </div>
+
+        <!-- Submit -->
+        <ion-button
+          class="ion-margin-top ion-padding-top"
+          [disabled]="storeForm.invalid"
+          type="submit"
+        >
+          {{ "StoreForm.BUTTON_TEXT" | translate }}
+        </ion-button>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-grid>

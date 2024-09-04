@@ -36,8 +36,7 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private persistentSvc: PersistentService,
-    private jwtHelper: JwtHelperService,
-    private route: ActivatedRoute
+    private jwtHelper: JwtHelperService
   ) {}
 
   login(login: LoginRequest): void {
