@@ -7,10 +7,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-how-it-works',
   templateUrl: './howItWorks.component.html',
-  styleUrls: [
-    '../../../../../app.component.scss',
-    './howItWorks.component.scss',
-  ],
+  styleUrls: ['./howItWorks.component.scss'],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [TranslateModule, IonGrid, IonCol, IonRow],

@@ -19,7 +19,6 @@
             placeholder="{{ 'StoreForm.STORE_NAME_PLACEHOLDER' | translate }}"
             [helperText]="getHelperText('storeName') | translate"
             [errorText]="getErrorText('storeName') ?? '' | translate"
-            autofocus="true"
             clearInput="true"
             counter="true"
             fill="outline"
@@ -39,6 +38,7 @@
         <!-- Address -->
         <ion-item>
           <ion-input
+            #addressInput
             formControlName="address"
             type="text"
             label="{{ 'StoreForm.ADDRESS_LABEL' | translate }}"
@@ -47,9 +47,7 @@
             [helperText]="getHelperText('address') | translate"
             [errorText]="getErrorText('address') ?? '' | translate"
             clearInput="true"
-            counter="true"
             fill="outline"
-            maxlength="200"
             shape="round"
             required
             class="ion-margin-vertical"
@@ -73,9 +71,7 @@
             [helperText]="getHelperText('city') | translate"
             [errorText]="getErrorText('city') ?? '' | translate"
             clearInput="true"
-            counter="true"
             fill="outline"
-            maxlength="50"
             shape="round"
             required
             class="ion-margin-vertical"
@@ -98,7 +94,6 @@
             placeholder="{{ 'StoreForm.CAP_PLACEHOLDER' | translate }}"
             [helperText]="getHelperText('cap') | translate"
             [errorText]="getErrorText('cap') ?? '' | translate"
-            clearInput="true"
             counter="true"
             fill="outline"
             maxlength="5"
@@ -108,54 +103,6 @@
           >
             <ion-icon
               name="mail-outline"
-              color="primary"
-              slot="start"
-            ></ion-icon>
-          </ion-input>
-        </ion-item>
-
-        <!-- Latitude -->
-        <ion-item>
-          <ion-input
-            formControlName="latitude"
-            type="number"
-            label="{{ 'StoreForm.LATITUDE_LABEL' | translate }}"
-            label-placement="floating"
-            placeholder="{{ 'StoreForm.LATITUDE_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('latitude') | translate"
-            [errorText]="getErrorText('latitude') ?? '' | translate"
-            clearInput="true"
-            fill="outline"
-            shape="round"
-            required
-            class="ion-margin-vertical"
-          >
-            <ion-icon
-              name="compass-outline"
-              color="primary"
-              slot="start"
-            ></ion-icon>
-          </ion-input>
-        </ion-item>
-
-        <!-- Longitude -->
-        <ion-item>
-          <ion-input
-            formControlName="longitude"
-            type="number"
-            label="{{ 'StoreForm.LONGITUDE_LABEL' | translate }}"
-            label-placement="floating"
-            placeholder="{{ 'StoreForm.LONGITUDE_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('longitude') | translate"
-            [errorText]="getErrorText('longitude') ?? '' | translate"
-            clearInput="true"
-            fill="outline"
-            shape="round"
-            required
-            class="ion-margin-vertical"
-          >
-            <ion-icon
-              name="globe-outline"
               color="primary"
               slot="start"
             ></ion-icon>
@@ -201,9 +148,7 @@
             clearInput="true"
             counter="true"
             fill="outline"
-            maxlength="50"
             shape="round"
-            required
             class="ion-margin-vertical"
           >
             <ion-icon
@@ -218,7 +163,9 @@
         <ion-item>
           <ion-input
             formControlName="coverImg"
-            type="url"
+            type="file"
+            accept="image/*"
+            (change)="onFileChange($event, 'coverImg')"
             label="{{ 'StoreForm.COVER_IMG_LABEL' | translate }}"
             label-placement="floating"
             placeholder="{{ 'StoreForm.COVER_IMG_PLACEHOLDER' | translate }}"
@@ -227,7 +174,6 @@
             clearInput="true"
             fill="outline"
             shape="round"
-            required
             class="ion-margin-vertical"
           >
             <ion-icon
@@ -242,7 +188,9 @@
         <ion-item>
           <ion-input
             formControlName="logoImg"
-            type="url"
+            type="file"
+            accept="image/*"
+            (change)="onFileChange($event, 'logoImg')"
             label="{{ 'StoreForm.LOGO_IMG_LABEL' | translate }}"
             label-placement="floating"
             placeholder="{{ 'StoreForm.LOGO_IMG_PLACEHOLDER' | translate }}"
@@ -251,7 +199,6 @@
             clearInput="true"
             fill="outline"
             shape="round"
-            required
             class="ion-margin-vertical"
           >
             <ion-icon
@@ -286,22 +233,6 @@
             ></ion-icon>
           </ion-input>
         </ion-item>
-
-        <!-- Links -->
-        <div class="ion-margin-top">
-          <ion-text>
-            <a [routerLink]="[Path.ForgotPassword]">
-              {{ "StoreForm.LINK_FORGOT_PASSWORD" | translate }}
-            </a>
-          </ion-text>
-        </div>
-        <div class="ion-margin-top">
-          <ion-text>
-            <a [routerLink]="[Path.Register]">
-              {{ "StoreForm.LINK_REGISTER" | translate }}
-            </a>
-          </ion-text>
-        </div>
 
         <!-- Submit -->
         <ion-button

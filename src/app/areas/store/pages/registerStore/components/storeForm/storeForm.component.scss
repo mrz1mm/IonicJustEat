@@ -1,0 +1,19 @@
+ion-list {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+
+  ion-item {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+  }
+
+  ion-item.active::part(native) {
+    background-color: var(--hero-background-color);
+  }
+
+  ion-item:hover::part(native) {
+    background-color: var(--hero-background-color);
+  }
+}

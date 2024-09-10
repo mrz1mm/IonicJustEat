@@ -24,11 +24,24 @@ import {
   IonTitle,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { close, sunny, moon, menu, person, checkmark } from 'ionicons/icons';
+import {
+  close,
+  sunny,
+  moon,
+  menu,
+  person,
+  checkmark,
+  personCircle,
+  personOutline,
+  logInOutline,
+  logOutOutline,
+} from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
 import { ThemeService } from 'src/theme/library/theme.service';
 import { Path } from 'src/app/library/utils/Path';
 import { environment } from 'src/environments/environment';
+import { AuthService } from 'src/app/areas/auth/services/auth.service';
+import { Store } from 'src/theme/library/Store';
 
 @Component({
   selector: 'app-header',
@@ -61,42 +74,54 @@ import { environment } from 'src/environments/environment';
 export class HeaderComponent {
   Path = Path;
   Env = environment;
+  Store = Store;
+
   currentLanguage = computed<string>(() => this.i18nSvc.language());
   currentTheme = computed<string>(() => this.themeSvc.theme());
+  currentUser = computed(() => this.authSvc.userData());
   currentFlag: string = '';
   IT = Language.Italian;
   EN = Language.English;
-  isflagMenuOpen = signal(false);
-  popoverEvent: MouseEvent | undefined;
+
+  isFlagMenuOpen = signal(false);
+  isProfileMenuOpen = signal(false);
+
+  languagePopoverEvent: MouseEvent | undefined;
+  profilePopoverEvent: MouseEvent | undefined;
 
   constructor(
     private i18nSvc: i18nService,
     private animationCtrl: AnimationController,
-    private themeSvc: ThemeService
+    private themeSvc: ThemeService,
+    private authSvc: AuthService
   ) {
     effect(() => {
       this.updateCurrentFlag(this.currentLanguage());
     });
 
     addIcons({
-      close: close,
-      sunny: sunny,
-      moon: moon,
-      menu: menu,
-      person: person,
-      checkmark: checkmark,
+      checkmark,
+      person,
+      personCircle,
+      logInOutline,
+      personOutline,
+      logOutOutline,
+      sunny,
+      moon,
+      menu,
+      close,
     });
   }
 
   // Language
-  protected presentPopover(event: MouseEvent): void {
-    this.popoverEvent = event;
-    this.isflagMenuOpen.set(true);
+  protected languagePopover(event: MouseEvent): void {
+    this.languagePopoverEvent = event;
+    this.isFlagMenuOpen.set(true);
   }
 
   protected changeLanguage(language: string): void {
     this.i18nSvc.language = language;
-    this.isflagMenuOpen.set(false);
+    this.isFlagMenuOpen.set(false);
   }
 
   private updateCurrentFlag(language: string): void {
@@ -106,6 +131,21 @@ export class HeaderComponent {
   // Theme
   protected toggleTheme(): void {
     this.themeSvc.theme = this.currentTheme() === 'light' ? 'dark' : 'light';
+  }
+
+  // Auth
+  protected profilePopover(event: MouseEvent): void {
+    this.profilePopoverEvent = event;
+    this.isProfileMenuOpen.set(true);
+  }
+
+  logout(): void {
+    this.authSvc.logout();
+    this.closeProfileMenu();
+  }
+
+  closeProfileMenu(): void {
+    this.isProfileMenuOpen.set(false);
   }
 
   // Modal

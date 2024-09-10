@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
-import { PersistentService } from 'src/app/library/persistentService/PersistentService.service';
 import { environment } from 'src/environments/environment';
 import { StoreRequest } from '../interfaces/StoreRequest.interface';
 import { firstValueFrom } from 'rxjs';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +15,7 @@ export class StoreService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private persistentSvc: PersistentService,
-    private jwtHelper: JwtHelperService
+    private authSvc: AuthService
   ) {}
 
   addStore(model: StoreRequest): void {
@@ -72,6 +70,23 @@ export class StoreService {
       })
       .catch((error) => {
         console.error('Error deleting store', error);
+      })
+      .finally(() => {});
+  }
+
+  getStoreIdByCurrentUser(): void {
+    // soluzione n° 1 - dati nel persistent service
+    // soluzione n° 2 - chiamata API
+    const userData = this.authSvc.userData();
+    let userId: string | null = null;
+    userData?.userId ? (userId = userData.userId) : null;
+
+    firstValueFrom(this.http.get(`${this.storeUrl}/${userId}`))
+      .then(() => {
+        console.log('Store retrieved');
+      })
+      .catch((error) => {
+        console.error('Error retrieving store', error);
       })
       .finally(() => {});
   }

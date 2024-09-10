@@ -18,7 +18,9 @@
     "ARIA_LABEL_BECOME_RIDER": "Become a rider",
     "ARIA_LABEL_FLAG": "Select flag",
     "ARIA_LABEL_LOGIN": "Login",
-    "ARIA_LABEL_LIST": "Open list"
+    "ARIA_LABEL_LIST": "Open list",
+    "PROFILE": "Profile",
+    "LOGOUT": "Logout"
   },
   "Footer": {
     "COPYRIGHT": "All rights reserved",

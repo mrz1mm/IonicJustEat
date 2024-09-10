@@ -6,10 +6,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-download-app',
   templateUrl: './downloadApp.component.html',
-  styleUrls: [
-    '../../../../../app.component.scss',
-    'downloadApp.component.scss',
-  ],
+  styleUrls: ['downloadApp.component.scss'],
   standalone: true,
   imports: [IonImg, IonRow, IonCol, IonGrid, TranslateModule],
 })

@@ -9,7 +9,9 @@ export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () =>
-      import('./areas/home/pages/home.page').then((m) => m.HomePage),
+      import('./areas/home/pages/userHome/userHome.page').then(
+        (m) => m.HomePage
+      ),
   },
   {
     path: 'login',
@@ -55,7 +57,7 @@ export const routes: Routes = [
   {
     path: 'registerStore',
     loadComponent: () =>
-      import('./areas/store/registerStore/registerStore.page').then(
+      import('./areas/store/pages/registerStore/registerStore.page').then(
         (m) => m.RegisterStorePage
       ),
   },

@@ -27,11 +27,15 @@ import { SearchResult } from 'leaflet-geosearch/dist/providers/provider';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { GeosearchService } from 'src/app/library/maps/geoSearch.service';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-home-hero',
   templateUrl: './homeHero.component.html',
-  styleUrls: ['../../../../../app.component.scss', 'homeHero.component.scss'],
+  styleUrls: [
+    '../../../../../../app.component.scss',
+    'homeHero.component.scss',
+  ],
   standalone: true,
   imports: [
     IonList,
@@ -116,6 +120,7 @@ export class HeroComponent {
       this.suggestionItems.forEach((item, index) => {
         const element = item.nativeElement;
         if (index === this.suggestionIndex) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           element.focus();
           console.log(
             'Focus index:',

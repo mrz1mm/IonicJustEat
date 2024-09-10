@@ -18,7 +18,9 @@
     "ARIA_LABEL_BECOME_RIDER": "Diventa un rider",
     "ARIA_LABEL_FLAG": "Seleziona bandiera",
     "ARIA_LABEL_LOGIN": "Accedi",
-    "ARIA_LABEL_LIST": "Apri lista"
+    "ARIA_LABEL_LIST": "Apri lista",
+    "PROFILE": "Profilo",
+    "LOGOUT": "Esci"
   },
   "Footer": {
     "COPYRIGHT": "Tutti i diritti riservati",

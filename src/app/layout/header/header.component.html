@@ -16,25 +16,22 @@
           class="ion-justify-content-end ion-align-items-center"
         >
           <!-- Pulsante per la selezione della lingua -->
-          <ion-button (click)="presentPopover($event)" fill="clear">
+          <ion-button (click)="languagePopover($event)" fill="clear">
             <ion-icon [src]="currentFlag" slot="icon-only"></ion-icon>
           </ion-button>
 
           <!-- Popover per la selezione della lingua -->
           <ion-popover
-            [isOpen]="isflagMenuOpen()"
-            (didDismiss)="isflagMenuOpen.set(false)"
-            [event]="popoverEvent"
+            [isOpen]="isFlagMenuOpen()"
+            (didDismiss)="isFlagMenuOpen.set(false)"
+            [event]="languagePopoverEvent"
             side="bottom"
             alignment="end"
           >
             <ng-template>
               <ion-list>
-                <ion-item
-                  button
-                  (click)="changeLanguage(IT)"
-                  [attr.aria-label]="'Header.LANGUAGE_ITALY' | translate"
-                >
+                <!-- Selezione lingua italiana -->
+                <ion-item button (click)="changeLanguage(IT)">
                   <ion-icon
                     slot="start"
                     [src]="Env.assetsUrl + '/img/utilities/it.svg'"
@@ -50,11 +47,9 @@
                     name="checkmark"
                   ></ion-icon>
                 </ion-item>
-                <ion-item
-                  button
-                  (click)="changeLanguage(EN)"
-                  [attr.aria-label]="'Header.LANGUAGE_ENGLISH' | translate"
-                >
+
+                <!-- Selezione lingua inglese -->
+                <ion-item button (click)="changeLanguage(EN)">
                   <ion-icon
                     slot="start"
                     [src]="Env.assetsUrl + '/img/utilities/en.svg'"
@@ -74,33 +69,73 @@
             </ng-template>
           </ion-popover>
 
-          <!-- Pulsante Accedi -->
-          <ion-button
-            class="ion-padding-horizontal text-color ion-hide-lg-down"
-            [attr.aria-label]="'Header.LOGIN' | translate"
-            fill="clear"
-            [routerLink]="[Path.Login]"
-            color="tertiary"
-          >
-            <ion-icon name="person"></ion-icon>
-            <span class="ion-margin-start">{{
-              "Header.LOGIN" | translate
-            }}</span>
-          </ion-button>
-
           <!-- Pulsante tema -->
           <ion-button (click)="toggleTheme()" fill="clear" color="tertiary">
             <ion-icon
-              *ngIf="currentTheme() === 'light'"
+              *ngIf="currentTheme() === Store.LIGHT"
               name="sunny"
               slot="icon-only"
             ></ion-icon>
             <ion-icon
-              *ngIf="currentTheme() === 'dark'"
+              *ngIf="currentTheme() === Store.DARK"
               name="moon"
               slot="icon-only"
             ></ion-icon>
           </ion-button>
+
+          <!-- Pulsante per aprire il menu del profilo -->
+          <ion-button (click)="profilePopover($event)" fill="clear">
+            <ion-icon name="person-circle" slot="icon-only"></ion-icon>
+          </ion-button>
+
+          <!-- Popover per il menu del profilo -->
+          <ion-popover
+            [isOpen]="isProfileMenuOpen()"
+            (didDismiss)="isProfileMenuOpen.set(false)"
+            [event]="profilePopoverEvent"
+            side="bottom"
+            alignment="end"
+          >
+            <ng-template>
+              <ion-list>
+                <!-- Login -->
+                @if (currentUser() === null) {
+                <ion-item
+                  button
+                  [routerLink]="[Path.Login]"
+                  (click)="closeProfileMenu()"
+                >
+                  <ion-icon
+                    slot="start"
+                    name="log-in-outline"
+                    color="primary"
+                  ></ion-icon>
+                  <ion-label>{{ "Header.LOGIN" | translate }}</ion-label>
+                </ion-item>
+                } @if (currentUser() !== null) {
+                <!-- Profile -->
+                <ion-item button (click)="closeProfileMenu()">
+                  <ion-icon
+                    slot="start"
+                    name="person-outline"
+                    color="primary"
+                  ></ion-icon>
+                  <ion-label>{{ "Header.PROFILE" | translate }}</ion-label>
+                </ion-item>
+
+                <!-- Logout -->
+                <ion-item button (click)="logout()">
+                  <ion-icon
+                    slot="start"
+                    name="log-out-outline"
+                    color="primary"
+                  ></ion-icon>
+                  <ion-label>{{ "Header.LOGOUT" | translate }}</ion-label>
+                </ion-item>
+                }
+              </ion-list>
+            </ng-template>
+          </ion-popover>
 
           <!-- Pulsante Lista -->
           <ion-button

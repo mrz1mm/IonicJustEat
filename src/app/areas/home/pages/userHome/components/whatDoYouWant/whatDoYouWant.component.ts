@@ -9,10 +9,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-what-do-you-want',
   templateUrl: './whatDoYouWant.component.html',
-  styleUrls: [
-    '../../../../../app.component.scss',
-    'whatDoYouWant.component.scss',
-  ],
+  styleUrls: ['whatDoYouWant.component.scss'],
   standalone: true,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [IonIcon, IonCol, IonRow, IonGrid, TranslateModule],

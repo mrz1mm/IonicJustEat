@@ -1,6 +1,6 @@
 import { Injectable, signal, Signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { firstValueFrom, Observable } from 'rxjs';
 import { PersistentService } from 'src/app/library/persistentService/PersistentService.service';
@@ -25,10 +25,10 @@ export class AuthService {
     null
   );
 
-  loginUrl: string = `${environment.apiUrl}/api/Auth/login`;
-  registerUrl: string = `${environment.apiUrl}/api/Auth/register`;
-  refreshUrl: string = `${environment.apiUrl}/api/Auth/refreshtoken`;
-  confirmEmailUrl: string = `${environment.apiUrl}/api/Auth/confirmEmail`;
+  loginUrl: string = `${environment.apiUrl}/api/Authentication/login`;
+  registerUrl: string = `${environment.apiUrl}/api/Authentication/register`;
+  refreshUrl: string = `${environment.apiUrl}/api/Authentication/refreshtoken`;
+  confirmEmailUrl: string = `${environment.apiUrl}/api/Authentication/confirmEmail`;
 
   private _isEmailConfirmed = signal<boolean | null>(null);
 
@@ -55,7 +55,7 @@ export class AuthService {
 
   logout(): void {
     this._userData.set(null);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/home']);
   }
 
   refreshToken(

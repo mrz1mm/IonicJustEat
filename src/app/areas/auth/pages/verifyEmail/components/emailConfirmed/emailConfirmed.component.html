@@ -1,4 +1,13 @@
-<ion-icon name="checkmark-circle"></ion-icon>
-<h1>Email confermata</h1>
-<h2>La tua email è stata verificata con successo</h2>
-<ion-button></ion-button>
+<ion-grid class="ion-margin-top">
+  <ion-row class="ion-margin-top">
+    <ion-col class="ion-margin-top ion-text-center">
+      <ion-icon name="checkmark-circle" color="success"></ion-icon>
+      <h1>Email confermata</h1>
+      <h2 class="ion-margin-bot">
+        La tua email è stata verificata con successo
+      </h2>
+
+      <a class="ion-margin-top" [routerLink]="[Path.Login]">Accedi</a>
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -10,6 +10,7 @@ import { i18nService } from 'src/assets/i18n/library/i18nService.service';
 import { ThemeService } from 'src/theme/library/theme.service';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { AuthService } from './areas/auth/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -28,8 +29,13 @@ import { FooterComponent } from './layout/footer/footer.component';
 export class AppComponent {
   currentLanguage = computed<string>(() => this.i18nSvc.language());
   currentTheme = computed<string>(() => this.themeSvc.theme());
+  currentUser = computed(() => this.authSvc.userData());
 
-  constructor(private i18nSvc: i18nService, private themeSvc: ThemeService) {
+  constructor(
+    private i18nSvc: i18nService,
+    private themeSvc: ThemeService,
+    private authSvc: AuthService
+  ) {
     register();
     addIcons({
       'close-circle-outline': closeCircleOutline,

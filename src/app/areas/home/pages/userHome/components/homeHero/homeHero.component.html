@@ -17,13 +17,13 @@
         <form (submit)="handleSubmit($event)">
           <ion-item>
             <ion-input
+              #searchBar
               type="text"
               placeholder="Inserisci l'indirizzo di consegna"
               [(ngModel)]="address"
               (ionInput)="onInputChange($event)"
               (keydown)="onKeyDown($event)"
               autofocus="true"
-              #searchBar
               clearInput
               class="ion-padding-start"
             ></ion-input>
