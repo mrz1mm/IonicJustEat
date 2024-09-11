@@ -1,0 +1,51 @@
+<ion-grid>
+  <ion-row>
+    <ion-col size="12">
+      <h1 class="ion-text-center">{{ "ProductTypeForm.TITLE" | translate }}</h1>
+    </ion-col>
+    <ion-col size="12">
+      <form
+        [formGroup]="productTypeForm"
+        (ngSubmit)="addProductType()"
+        class="ion-text-center"
+      >
+        <!-- ProductTypeName -->
+        <ion-item>
+          <ion-input
+            formControlName="productTypeName"
+            type="text"
+            label="{{ 'ProductTypeForm.PRODUCT_TYPE_NAME_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{
+              'ProductTypeForm.PRODUCT_TYPE_NAME_PLACEHOLDER' | translate
+            }}"
+            [helperText]="getHelperText('productTypeName') | translate"
+            [errorText]="getErrorText('productTypeName') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="100"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="productTypefront-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Submit -->
+        <ion-button
+          class="medal"
+          [disabled]="productTypeForm.invalid"
+          type="submit"
+        >
+          {{ "ProductTypeForm.BUTTON_TEXT" | translate }}
+        </ion-button>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-grid>

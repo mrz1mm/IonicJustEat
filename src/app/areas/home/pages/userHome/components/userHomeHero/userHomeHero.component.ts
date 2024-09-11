@@ -26,15 +26,14 @@ import { environment } from 'src/environments/environment';
 import { SearchResult } from 'leaflet-geosearch/dist/providers/provider';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { GeosearchService } from 'src/app/library/maps/geoSearch.service';
-import { addIcons } from 'ionicons';
+import { GeosearchService } from 'src/app/library/maps/services/geoSearch.service';
 
 @Component({
-  selector: 'app-home-hero',
-  templateUrl: './homeHero.component.html',
+  selector: 'app-user-home-hero',
+  templateUrl: './userHomeHero.component.html',
   styleUrls: [
     '../../../../../../app.component.scss',
-    'homeHero.component.scss',
+    'userHomeHero.component.scss',
   ],
   standalone: true,
   imports: [
@@ -55,7 +54,7 @@ import { addIcons } from 'ionicons';
     CommonModule,
   ],
 })
-export class HeroComponent {
+export class UserHomeHeroComponent {
   Env = environment;
   address: string = '';
   suggestions: SearchResult[] = [];

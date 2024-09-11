@@ -18,18 +18,6 @@ export class StoreService {
     private authSvc: AuthService
   ) {}
 
-  addStore(model: StoreRequest): void {
-    firstValueFrom(this.http.post(this.storeUrl, model))
-      .then(() => {
-        console.log('Store registered');
-        this.router.navigate(['/']);
-      })
-      .catch((error) => {
-        console.error('Error registering store', error);
-      })
-      .finally(() => {});
-  }
-
   getAllStores(): void {
     firstValueFrom(this.http.get(this.storeUrl))
       .then(() => {
@@ -52,6 +40,33 @@ export class StoreService {
       .finally(() => {});
   }
 
+  getStoreIdByCurrentUser(): void {
+    const userData = this.authSvc.userData();
+    let userId: string | null = null;
+    userData?.userId ? (userId = userData.userId) : null;
+
+    firstValueFrom(this.http.get(`${this.storeUrl}/${userId}`))
+      .then(() => {
+        console.log('Store retrieved');
+      })
+      .catch((error) => {
+        console.error('Error retrieving store', error);
+      })
+      .finally(() => {});
+  }
+
+  addStore(model: StoreRequest): void {
+    firstValueFrom(this.http.post(this.storeUrl, model))
+      .then(() => {
+        console.log('Store registered');
+        this.router.navigate(['/']);
+      })
+      .catch((error) => {
+        console.error('Error registering store', error);
+      })
+      .finally(() => {});
+  }
+
   updateStore(id: number): void {
     firstValueFrom(this.http.put(`${this.storeUrl}/${id}`, {}))
       .then(() => {
@@ -70,23 +85,6 @@ export class StoreService {
       })
       .catch((error) => {
         console.error('Error deleting store', error);
-      })
-      .finally(() => {});
-  }
-
-  getStoreIdByCurrentUser(): void {
-    // soluzione n° 1 - dati nel persistent service
-    // soluzione n° 2 - chiamata API
-    const userData = this.authSvc.userData();
-    let userId: string | null = null;
-    userData?.userId ? (userId = userData.userId) : null;
-
-    firstValueFrom(this.http.get(`${this.storeUrl}/${userId}`))
-      .then(() => {
-        console.log('Store retrieved');
-      })
-      .catch((error) => {
-        console.error('Error retrieving store', error);
       })
       .finally(() => {});
   }

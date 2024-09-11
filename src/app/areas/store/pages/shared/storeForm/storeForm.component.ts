@@ -1,12 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  QueryList,
-  ViewChild,
-  ViewChildren,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -39,10 +32,10 @@ import {
   informationCircleOutline,
 } from 'ionicons/icons';
 import { Path } from 'src/app/library/utils/Path';
-import { StoreRequest } from '../../../../interfaces/StoreRequest.interface';
-import { StoreService } from '../../../../services/store.service';
-import { GeosearchService } from 'src/app/library/maps/geoSearch.service';
-import { Coordinate } from '../../../../interfaces/Coordinate.interface';
+import { StoreService } from '../../../services/store.service';
+import { Coordinate } from '../../../../../library/maps/interfaces/Coordinate.interface';
+import { StoreRequest } from '../../../interfaces/StoreRequest.interface';
+import { GeosearchService } from 'src/app/library/maps/services/geoSearch.service';
 
 @Component({
   selector: 'app-store-form',
@@ -70,11 +63,6 @@ export class StoreFormComponent implements OnInit {
   storeForm!: FormGroup;
   coverImgBase64: string | null = null;
   logoImgBase64: string | null = null;
-
-  @ViewChild('addressInput', { static: true })
-  searchBarRef!: ElementRef<IonInput>;
-  @ViewChildren('suggestionItem', { read: ElementRef })
-  suggestionItems!: QueryList<ElementRef>;
 
   constructor(
     private fb: FormBuilder,
