@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect, OnInit } from '@angular/core';
+import { Component, OnInit, effect, computed } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -21,13 +21,13 @@ import { TranslateModule } from '@ngx-translate/core';
 import { addIcons } from 'ionicons';
 import { medal } from 'ionicons/icons';
 import { Path } from 'src/app/library/utils/Path';
-import { ProductTypeRequest } from '../../../interfaces/ProductTypeRequest.interface';
-import { ProductTypeService } from '../../../services/productType.service';
+import { CategoryService } from '../../service/category.service';
+import { CategoryRequest } from '../../interfaces/CategoryRequest.interface';
 
 @Component({
-  selector: 'app-product-type-form',
-  templateUrl: './productTypeForm.component.html',
-  styleUrls: ['./productTypeForm.component.scss'],
+  selector: 'app-category-form',
+  templateUrl: './categoryForm.component.html',
+  styleUrls: ['./categoryForm.component.scss'],
   standalone: true,
   imports: [
     IonGrid,
@@ -44,48 +44,48 @@ import { ProductTypeService } from '../../../services/productType.service';
     RouterModule,
   ],
 })
-export class ProductTypeFormComponent implements OnInit {
+export class CategoryFormComponent implements OnInit {
   Path = Path;
-  productTypeForm!: FormGroup;
-  productTypeId: string | null = null;
-  productType = computed(() => this.productTypeSvc.productType());
+  categoryForm!: FormGroup;
+  categoryId: string | null = null;
+  category = computed(() => this.categorySvc.category());
 
   constructor(
     private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private productTypeSvc: ProductTypeService
+    private categorySvc: CategoryService,
+    private route: ActivatedRoute
   ) {
     addIcons({ medal });
   }
 
   ngOnInit() {
-    this.productTypeForm = this.fb.group({
-      productTypeName: ['', [Validators.required]],
+    this.categoryForm = this.fb.group({
+      categoryName: ['', [Validators.required]],
     });
 
     this.route.paramMap.subscribe((params) => {
-      this.productTypeId = params.get('id');
+      this.categoryId = params.get('id');
     });
 
     effect(() => {
-      const productType = this.productType();
-      if (productType) {
-        this.productTypeForm.patchValue({
-          productTypeName: productType.ProductTypeName,
+      const category = this.category();
+      if (category) {
+        this.categoryForm.patchValue({
+          categoryName: category.CategoryName,
         });
       }
     });
   }
 
   getHelperText(controlName: string): string {
-    const control = this.productTypeForm.get(controlName);
+    const control = this.categoryForm.get(controlName);
     return control?.touched && control?.valid
       ? `LoginForm.${controlName.toUpperCase()}_VALID`
       : `LoginForm.${controlName.toUpperCase()}_HELPER`;
   }
 
   getErrorText(controlName: string): string | null {
-    const control = this.productTypeForm.get(controlName);
+    const control = this.categoryForm.get(controlName);
 
     if (!control || !control.touched || !control.errors) {
       return null;
@@ -104,17 +104,17 @@ export class ProductTypeFormComponent implements OnInit {
     return null;
   }
 
-  addProductType(): void {
-    if (this.productTypeForm.valid) {
-      const productType: ProductTypeRequest = this.productTypeForm.value;
-      this.productTypeSvc.addProductType(productType);
+  addCategory(): void {
+    if (this.categoryForm.valid) {
+      const category: CategoryRequest = this.categoryForm.value;
+      await this.categorySvc.addCategory(category);
     }
   }
 
-  updateProductType(): void {
-    if (this.productTypeForm.valid && this.productTypeId) {
-      const productType: ProductTypeRequest = this.productTypeForm.value;
-      this.productTypeSvc.updateProductType(this.productTypeId, productType);
+  updateCategory(): void {
+    if (this.categoryForm.valid && this.categoryId) {
+      const category: CategoryRequest = this.categoryForm.value;
+      this.categorySvc.updateCategory(this.categoryId, category);
     }
   }
 }

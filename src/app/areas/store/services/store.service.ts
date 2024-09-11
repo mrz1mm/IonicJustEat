@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { StoreRequest } from '../interfaces/StoreRequest.interface';
 import { firstValueFrom } from 'rxjs';
 import { AuthService } from '../../auth/services/auth.service';
+import { StoreResponse } from '../interfaces/StoreResponse.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -29,13 +30,17 @@ export class StoreService {
       .finally(() => {});
   }
 
-  getStoreById(id: string): void {
-    firstValueFrom(this.http.get(`${this.storeUrl}/${id}`))
-      .then(() => {
+  getStoreById(id: string): Promise<StoreResponse> {
+    return firstValueFrom(
+      this.http.get<StoreResponse>(`${this.storeUrl}/${id}`)
+    )
+      .then((response) => {
         console.log('Store retrieved');
+        return response;
       })
       .catch((error) => {
         console.error('Error retrieving store', error);
+        throw error;
       })
       .finally(() => {});
   }
@@ -67,7 +72,7 @@ export class StoreService {
       .finally(() => {});
   }
 
-  updateStore(id: number): void {
+  updateStore(id: string, model: StoreRequest): void {
     firstValueFrom(this.http.put(`${this.storeUrl}/${id}`, {}))
       .then(() => {
         console.log('Store updated');
@@ -78,7 +83,7 @@ export class StoreService {
       .finally(() => {});
   }
 
-  deleteStore(id: number): void {
+  deleteStore(id: string): void {
     firstValueFrom(this.http.delete(`${this.storeUrl}/${id}`))
       .then(() => {
         console.log('Store deleted');

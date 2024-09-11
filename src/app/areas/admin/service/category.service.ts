@@ -1,17 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { firstValueFrom } from 'rxjs';
 import { CategoryRequest } from '../interfaces/CategoryRequest.interface';
+import { CategoryResponse } from '../interfaces/CategoryResponse.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
+  private _category = signal<CategoryResponse | null>(null);
   categoryUrl: string = `${environment.apiUrl}/api/`; // ???
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  get category(): Signal<CategoryResponse | null> {
+    return this._category.asReadonly();
+  }
 
   getAllCategories(): void {
     firstValueFrom(this.http.get(this.categoryUrl))
@@ -25,9 +31,10 @@ export class CategoryService {
   }
 
   getCategoryById(id: string): void {
-    firstValueFrom(this.http.get(`${this.categoryUrl}/${id}`))
-      .then(() => {
-        console.log('category retrieved');
+    firstValueFrom(this.http.get<CategoryResponse>(`${this.categoryUrl}/${id}`))
+      .then((response) => {
+        console.log('category retrieved', response);
+        this._category.set(response);
       })
       .catch((error) => {
         console.error('Error retrieving category', error);
@@ -47,8 +54,8 @@ export class CategoryService {
       .finally(() => {});
   }
 
-  updateCategory(id: number): void {
-    firstValueFrom(this.http.put(`${this.categoryUrl}/${id}`, id))
+  updateCategory(id: string, model: CategoryRequest): void {
+    firstValueFrom(this.http.put(`${this.categoryUrl}/${id}`, model))
       .then(() => {
         console.log('category updated');
       })
@@ -58,7 +65,7 @@ export class CategoryService {
       .finally(() => {});
   }
 
-  deleteCategory(id: number): void {
+  deleteCategory(id: string): void {
     firstValueFrom(this.http.delete(`${this.categoryUrl}/${id}`))
       .then(() => {
         console.log('category deleted');

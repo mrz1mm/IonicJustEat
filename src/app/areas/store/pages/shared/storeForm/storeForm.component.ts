@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, effect, OnInit, signal } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import {
   IonGrid,
   IonRow,
@@ -36,6 +36,7 @@ import { StoreService } from '../../../services/store.service';
 import { Coordinate } from '../../../../../library/maps/interfaces/Coordinate.interface';
 import { StoreRequest } from '../../../interfaces/StoreRequest.interface';
 import { GeosearchService } from 'src/app/library/maps/services/geoSearch.service';
+import { StoreResponse } from '../../../interfaces/StoreResponse.interface';
 
 @Component({
   selector: 'app-store-form',
@@ -63,9 +64,12 @@ export class StoreFormComponent implements OnInit {
   storeForm!: FormGroup;
   coverImgBase64: string | null = null;
   logoImgBase64: string | null = null;
+  storeId: string | null = null;
+  private _store = signal<StoreRequest | null>(null);
 
   constructor(
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private geoSearchSvc: GeosearchService,
     private storeSvc: StoreService
   ) {
@@ -83,6 +87,7 @@ export class StoreFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    // inizializzazione del form
     this.storeForm = this.fb.group({
       storeName: ['', [Validators.required]],
       address: ['', [Validators.required]],
@@ -94,6 +99,42 @@ export class StoreFormComponent implements OnInit {
       logoImg: [''],
       description: [''],
     });
+
+    // recupero dell'id dalla route
+    this.route.paramMap.subscribe((params) => {
+      this.storeId = params.get('id');
+      if (this.storeId) {
+        this.loadStoreData(this.storeId);
+      }
+    });
+
+    // effect per aggiornare il form quando il signal cambia
+    effect(() => {
+      if (this._store()) {
+        this.storeForm.patchValue({
+          storeName: this._store()!.StoreName,
+          address: this._store()!.Address,
+          city: this._store()!.City,
+          cap: this._store()!.CAP,
+          phoneNumber: this._store()!.PhoneNumber,
+          storeTag: this._store()!.StoreTag,
+          coverImg: this._store()!.CoverImg,
+          logoImg: this._store()!.LogoImg,
+          description: this._store()!.Description,
+        });
+      }
+    });
+  }
+
+  async loadStoreData(storeId: string): Promise<void> {
+    try {
+      const storeResponse: StoreResponse = await this.storeSvc.getStoreById(
+        storeId
+      );
+      this._store.set(storeResponse);
+    } catch (error) {
+      console.error('Error loading category data', error);
+    }
   }
 
   async addCoordinate(
@@ -166,25 +207,41 @@ export class StoreFormComponent implements OnInit {
 
   async addStore(): Promise<void> {
     if (this.storeForm.valid) {
-      const address = this.storeForm.value.address;
-      const city = this.storeForm.value.city;
-      const cap = this.storeForm.value.cap;
+      try {
+        const address = this.storeForm.value.address;
+        const city = this.storeForm.value.city;
+        const cap = this.storeForm.value.cap;
 
-      const coordinate = await this.addCoordinate(address, city, cap);
+        const coordinate = await this.addCoordinate(address, city, cap);
 
-      const latitude = coordinate.Latitude.toString();
-      const longitude = coordinate.Longitude.toString();
+        const latitude = coordinate.Latitude.toString();
+        const longitude = coordinate.Longitude.toString();
 
-      const storeRequest: StoreRequest = {
-        ...this.storeForm.value,
-        Latitude: latitude,
-        Longitude: longitude,
-        CoverImg: this.coverImgBase64,
-        LogoImg: this.logoImgBase64,
-      };
+        const storeRequest: StoreRequest = {
+          ...this.storeForm.value,
+          Latitude: latitude,
+          Longitude: longitude,
+          CoverImg: this.coverImgBase64,
+          LogoImg: this.logoImgBase64,
+        };
 
-      this.storeSvc.addStore(storeRequest);
-      console.log(storeRequest);
+        this.storeSvc.addStore(storeRequest);
+        console.log(storeRequest);
+      } catch (error) {
+        console.error('Error adding store', error);
+      }
+    }
+  }
+
+  async updateStore(): Promise<void> {
+    if (this.storeForm.valid && this.storeId) {
+      try {
+        const store: StoreRequest = this.storeForm.value;
+        await this.storeSvc.updateStore(this.storeId, store);
+        this._store.set(null);
+      } catch (error) {
+        console.error('Error updating store', error);
+      }
     }
   }
 }

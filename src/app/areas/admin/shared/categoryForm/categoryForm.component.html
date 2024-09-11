@@ -3,30 +3,30 @@
     <ion-col size="12">
       <h1 class="ion-text-center">
         {{
-          productTypeId
-            ? ("ProductTypeForm.UPDATE_TITLE" | translate)
-            : ("ProductTypeForm.ADD_TITLE" | translate)
+          categoryId
+            ? ("CategoryForm.UPDATE_TITLE" | translate)
+            : ("CategoryForm.ADD_TITLE" | translate)
         }}
       </h1>
     </ion-col>
     <ion-col size="12">
       <form
-        [formGroup]="productTypeForm"
-        (ngSubmit)="productTypeId ? updateProductType() : addProductType()"
+        [formGroup]="categoryForm"
+        (ngSubmit)="categoryId ? updateCategory() : addCategory()"
         class="ion-text-center"
       >
-        <!-- ProductTypeName -->
+        <!-- CategoryName -->
         <ion-item>
           <ion-input
-            formControlName="productTypeName"
+            formControlName="categoryName"
             type="text"
-            label="{{ 'ProductTypeForm.PRODUCT_TYPE_NAME_LABEL' | translate }}"
+            label="{{ 'CategoryForm.CATEGORY_NAME_LABEL' | translate }}"
             label-placement="floating"
             placeholder="{{
-              'ProductTypeForm.PRODUCT_TYPE_NAME_PLACEHOLDER' | translate
+              'CategoryForm.CATEGORY_NAME_PLACEHOLDER' | translate
             }}"
-            [helperText]="getHelperText('productTypeName') | translate"
-            [errorText]="getErrorText('productTypeName') ?? '' | translate"
+            [helperText]="getHelperText('categoryName') | translate"
+            [errorText]="getErrorText('categoryName') ?? '' | translate"
             clearInput="true"
             counter="true"
             fill="outline"
@@ -42,13 +42,13 @@
         <!-- Submit -->
         <ion-button
           class="ion-margin-top ion-padding-top"
-          [disabled]="productTypeForm.invalid"
+          [disabled]="categoryForm.invalid"
           type="submit"
         >
           {{
-            productTypeId
-              ? ("ProductTypeForm.UPDATE_BUTTON_TEXT" | translate)
-              : ("ProductTypeForm.ADD_BUTTON_TEXT" | translate)
+            categoryId
+              ? ("CategoryForm.UPDATE_BUTTON_TEXT" | translate)
+              : ("CategoryForm.ADD_BUTTON_TEXT" | translate)
           }}
         </ion-button>
       </form>

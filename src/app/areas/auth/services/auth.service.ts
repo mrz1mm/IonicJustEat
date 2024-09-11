@@ -39,6 +39,14 @@ export class AuthService {
     private jwtHelper: JwtHelperService
   ) {}
 
+  get userData(): Signal<ILoggedUser | null> {
+    return this._userData.asReadonly();
+  }
+
+  get isEmailConfirmed(): Signal<boolean | null> {
+    return this._isEmailConfirmed.asReadonly();
+  }
+
   login(login: LoginRequest): void {
     firstValueFrom(this.http.post<LoginResponse>(this.loginUrl, login))
       .then((resp) => {
@@ -64,10 +72,6 @@ export class AuthService {
     return this.http.post<RefreshResponse>(`${this.refreshUrl}`, {
       refreshToken,
     });
-  }
-
-  get userData(): Signal<ILoggedUser | null> {
-    return this._userData.asReadonly();
   }
 
   setUserData(login: LoginResponse): void {
@@ -142,9 +146,5 @@ export class AuthService {
         this._isEmailConfirmed.set(false);
       })
       .finally(() => {});
-  }
-
-  get isEmailConfirmed(): Signal<boolean | null> {
-    return this._isEmailConfirmed.asReadonly();
   }
 }

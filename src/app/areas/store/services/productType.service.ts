@@ -1,17 +1,24 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { firstValueFrom } from 'rxjs';
 import { ProductTypeRequest } from '../interfaces/ProductTypeRequest.interface';
+import { ProductTypeResponse } from '../interfaces/ProductTypeResponse.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductTypeService {
+  private _productType = signal<ProductTypeResponse | null>(null);
+
   productTypeUrl: string = `${environment.apiUrl}/api/`; // ???
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  get productType(): Signal<ProductTypeResponse | null> {
+    return this._productType.asReadonly();
+  }
 
   getAllProductTypes(): void {
     firstValueFrom(this.http.get(this.productTypeUrl))
@@ -25,9 +32,12 @@ export class ProductTypeService {
   }
 
   getProductTypeById(id: string): void {
-    firstValueFrom(this.http.get(`${this.productTypeUrl}/${id}`))
-      .then(() => {
-        console.log('productType retrieved');
+    firstValueFrom(
+      this.http.get<ProductTypeResponse>(`${this.productTypeUrl}/${id}`)
+    )
+      .then((response) => {
+        console.log('productType retrieved', response);
+        this._productType.set(response);
       })
       .catch((error) => {
         console.error('Error retrieving productType', error);
@@ -47,8 +57,8 @@ export class ProductTypeService {
       .finally(() => {});
   }
 
-  updateProductType(id: number): void {
-    firstValueFrom(this.http.put(`${this.productTypeUrl}/${id}`, id))
+  updateProductType(id: string, model: ProductTypeRequest): void {
+    firstValueFrom(this.http.put(`${this.productTypeUrl}/${id}`, model))
       .then(() => {
         console.log('productType updated');
       })
