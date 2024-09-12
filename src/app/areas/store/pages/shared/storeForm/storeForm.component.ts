@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -34,7 +34,6 @@ import {
 } from 'ionicons/icons';
 import { Path } from 'src/app/library/utils/Path';
 import { StoreService } from '../../../services/store.service';
-import { Coordinate } from '../../../../../library/maps/interfaces/Coordinate.interface';
 import { StoreRequest } from '../../../interfaces/StoreRequest.interface';
 import { GeosearchService } from 'src/app/library/maps/services/geoSearch.service';
 
@@ -66,7 +65,9 @@ export class StoreFormComponent implements OnInit {
   coverImgBase64: string | null = null;
   logoImgBase64: string | null = null;
   storeId: string | null = null;
-  private _store = signal<StoreRequest | null>(null);
+  store = computed(() => this.storeSvc.store());
+  latitude = computed(() => this.geoSearchSvc.latitude());
+  longitude = computed(() => this.geoSearchSvc.longitude());
 
   constructor(
     private fb: FormBuilder,
@@ -105,7 +106,7 @@ export class StoreFormComponent implements OnInit {
     });
 
     effect(() => {
-      const store = this._store();
+      const store = this.store();
       if (store) {
         this.storeForm.patchValue({
           storeName: store.StoreName,
@@ -122,25 +123,12 @@ export class StoreFormComponent implements OnInit {
     });
   }
 
-  async addCoordinate(
-    address: string,
-    city: string,
-    cap: string
-  ): Promise<Coordinate> {
+  addCoordinate(address: string, city: string, cap: string): void {
     this.storeForm.patchValue({ address });
     this.storeForm.patchValue({ city });
     this.storeForm.patchValue({ cap });
     const completeAddress = address + ' ' + city + ' ' + cap;
-    const results = await this.geoSearchSvc.search(completeAddress);
-    if (results.length > 0) {
-      const result = results[0];
-      this.storeForm.patchValue({
-        Latitude: result.y,
-        Longitude: result.x,
-      });
-      return { Latitude: result.y, Longitude: result.x };
-    }
-    return { Latitude: 0, Longitude: 0 };
+    this.geoSearchSvc.search(completeAddress);
   }
 
   onFileChange(event: any, controlName: string): void {
@@ -196,15 +184,12 @@ export class StoreFormComponent implements OnInit {
       const city = this.storeForm.value.city;
       const cap = this.storeForm.value.cap;
 
-      const coordinate = await this.addCoordinate(address, city, cap);
-
-      const latitude = coordinate.Latitude.toString();
-      const longitude = coordinate.Longitude.toString();
+      this.addCoordinate(address, city, cap);
 
       const storeRequest: StoreRequest = {
         ...this.storeForm.value,
-        Latitude: latitude,
-        Longitude: longitude,
+        Latitude: this.latitude,
+        Longitude: this.longitude,
         CoverImg: this.coverImgBase64,
         LogoImg: this.logoImgBase64,
       };
@@ -216,8 +201,25 @@ export class StoreFormComponent implements OnInit {
 
   async updateStore(): Promise<void> {
     if (this.storeForm.valid && this.storeId) {
-      const store: StoreRequest = this.storeForm.value;
-      await this.storeSvc.updateStore(this.storeId, store);
+      if (this.storeForm.valid) {
+        const address = this.storeForm.value.address;
+        const city = this.storeForm.value.city;
+        const cap = this.storeForm.value.cap;
+
+        this.addCoordinate(address, city, cap);
+
+        const storeRequest: StoreRequest = {
+          ...this.storeForm.value,
+          StoreId: this.storeId,
+          Latitude: this.latitude,
+          Longitude: this.longitude,
+          CoverImg: this.coverImgBase64,
+          LogoImg: this.logoImgBase64,
+        };
+
+        this.storeSvc.updateStore(this.storeId, storeRequest);
+        console.log(storeRequest);
+      }
     }
   }
 }

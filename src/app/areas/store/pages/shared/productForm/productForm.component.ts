@@ -32,6 +32,7 @@ import { Path } from 'src/app/library/utils/Path';
 import { ProductService } from '../../../services/product.service';
 import { ProductRequest } from '../../../interfaces/ProductRequest.interface';
 import { ProductTypeService } from '../../../services/productType.service';
+import { StoreService } from '../../../services/store.service';
 
 @Component({
   selector: 'app-product-form',
@@ -69,7 +70,8 @@ export class ProductFormComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private productSvc: ProductService,
-    private productTypeSvc: ProductTypeService
+    private productTypeSvc: ProductTypeService,
+    private storeSvc: StoreService
   ) {
     addIcons({ pricetagOutline, informationCircleOutline, imageOutline });
   }
@@ -150,9 +152,11 @@ export class ProductFormComponent implements OnInit {
 
   addProduct(): void {
     if (this.productForm.valid) {
+      const storeId = this.storeSvc.getStoreIdByCurrentUser();
       const product: ProductRequest = {
         ...this.productForm.value,
-        productImg: this.productImgBase64,
+        StoreId: storeId,
+        ProductImg: this.productImgBase64,
       };
 
       this.productSvc.addProduct(product);
@@ -161,9 +165,11 @@ export class ProductFormComponent implements OnInit {
 
   updateProduct(): void {
     if (this.productForm.valid && this.productId) {
+      const storeId = this.storeSvc.getStoreIdByCurrentUser();
       const product: ProductRequest = {
         ...this.productForm.value,
-        productImg: this.productImgBase64,
+        StoreId: storeId,
+        ProductImg: this.productImgBase64,
       };
 
       this.productSvc.addProduct(product);

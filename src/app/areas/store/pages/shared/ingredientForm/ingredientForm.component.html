@@ -1,0 +1,87 @@
+<ion-grid>
+  <ion-row>
+    <ion-col size="12">
+      <h1 class="ion-text-center">
+        {{
+          ingredientId
+            ? ("IngredientForm.UPDATE_TITLE" | translate)
+            : ("IngredientForm.ADD_TITLE" | translate)
+        }}
+      </h1>
+    </ion-col>
+    <ion-col size="12">
+      <form
+        [formGroup]="ingredientForm"
+        (ngSubmit)="ingredientId ? updateIngredient() : addIngredient()"
+        class="ion-text-center"
+      >
+        <!-- IngredientName -->
+        <ion-item>
+          <ion-input
+            formControlName="ingredientName"
+            type="text"
+            label="{{ 'IngredientForm.INGREDIENT_NAME_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{
+              'IngredientForm.INGREDIENT_NAME_PLACEHOLDER' | translate
+            }}"
+            [helperText]="getHelperText('ingredientName') | translate"
+            [errorText]="getErrorText('ingredientName') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="100"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="ingredientfront-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- IngredientPrice -->
+        <ion-item>
+          <ion-input
+            formControlName="ingredientPrice"
+            type="number"
+            label="{{ 'IngredientForm.INGREDIENT_PRICE_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{
+              'IngredientForm.INGREDIENT_PRICE_PLACEHOLDER' | translate
+            }}"
+            [helperText]="getHelperText('ingredientPrice') | translate"
+            [errorText]="getErrorText('ingredientPrice') ?? '' | translate"
+            counter="true"
+            fill="outline"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="pricetag-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Submit -->
+        <ion-button
+          class="ion-margin-top ion-padding-top"
+          [disabled]="ingredientForm.invalid"
+          type="submit"
+        >
+          {{
+            ingredientId
+              ? ("IngredientForm.UPDATE_BUTTON_TEXT" | translate)
+              : ("IngredientForm.ADD_BUTTON_TEXT" | translate)
+          }}
+        </ion-button>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-grid>

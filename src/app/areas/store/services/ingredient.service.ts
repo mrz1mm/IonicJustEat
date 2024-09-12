@@ -1,22 +1,34 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, signal } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IngredientRequest } from '../interfaces/IngredientRequest.interface';
 import { firstValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
+import { IngredientResponse } from '../interfaces/IngredientResponse.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IngredientService {
+  private _ingredient = signal<IngredientResponse | null>(null);
+  private _allIngredients = signal<IngredientResponse[]>([]);
   ingredientUrl: string = `${environment.apiUrl}/api/`; // ???
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  get ingredient(): Signal<IngredientResponse | null> {
+    return this._ingredient.asReadonly();
+  }
+
+  get allIngredients(): Signal<IngredientResponse[] | null> {
+    return this._allIngredients.asReadonly();
+  }
+
   getAllIngredients(): void {
-    firstValueFrom(this.http.get(this.ingredientUrl))
-      .then(() => {
+    firstValueFrom(this.http.get<IngredientResponse[]>(this.ingredientUrl))
+      .then((response) => {
         console.log('Ingredients retrieved');
+        this._allIngredients.set(response);
       })
       .catch((error) => {
         console.error('Error retrieving ingredients', error);
@@ -25,9 +37,12 @@ export class IngredientService {
   }
 
   getIngredientById(id: string): void {
-    firstValueFrom(this.http.get(`${this.ingredientUrl}/${id}`))
-      .then(() => {
+    firstValueFrom(
+      this.http.get<IngredientResponse>(`${this.ingredientUrl}/${id}`)
+    )
+      .then((response) => {
         console.log('Ingredient retrieved');
+        this._ingredient.set(response);
       })
       .catch((error) => {
         console.error('Error retrieving ingredient', error);
@@ -47,8 +62,8 @@ export class IngredientService {
       .finally(() => {});
   }
 
-  updateIngredient(id: string): void {
-    firstValueFrom(this.http.put(`${this.ingredientUrl}/${id}`, id))
+  updateIngredient(id: string, model: IngredientRequest): void {
+    firstValueFrom(this.http.put(`${this.ingredientUrl}/${id}`, model))
       .then(() => {
         console.log('Ingredient updated');
       })

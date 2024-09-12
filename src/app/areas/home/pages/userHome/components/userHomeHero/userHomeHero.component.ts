@@ -1,5 +1,6 @@
 import {
   Component,
+  computed,
   ElementRef,
   OnDestroy,
   OnInit,
@@ -57,9 +58,11 @@ import { GeosearchService } from 'src/app/library/maps/services/geoSearch.servic
 export class UserHomeHeroComponent {
   Env = environment;
   address: string = '';
-  suggestions: SearchResult[] = [];
   suggestionIndex: number = -1;
   searchTimeout: any;
+  suggestions = computed(() => this.geosearchSvc.suggestions());
+  latitude = computed(() => this.geosearchSvc.latitude());
+  longitude = computed(() => this.geosearchSvc.longitude());
 
   @ViewChild('searchBar', { static: true }) searchBarRef!: ElementRef<IonInput>;
   @ViewChildren('suggestionItem', { read: ElementRef })
@@ -75,11 +78,11 @@ export class UserHomeHeroComponent {
       clearTimeout(this.searchTimeout);
     }
 
-    this.searchTimeout = setTimeout(async () => {
+    this.searchTimeout = setTimeout(() => {
       if (value) {
-        this.suggestions = await this.geosearchSvc.search(value);
+        this.geosearchSvc.searchAndUpdateSuggestions(value); // Avvia la ricerca tramite il servizio
       } else {
-        this.suggestions = [];
+        this.geosearchSvc.clearSuggestions(); // Cancella i suggerimenti
       }
     }, 300);
   }
@@ -88,22 +91,22 @@ export class UserHomeHeroComponent {
     const keyActions: { [key: string]: () => void } = {
       ArrowDown: () => {
         this.suggestionIndex =
-          (this.suggestionIndex + 1) % this.suggestions.length;
+          (this.suggestionIndex + 1) % this.suggestions().length;
         this.focusSuggestion();
       },
       ArrowUp: () => {
         this.suggestionIndex =
           (this.suggestionIndex > 0
             ? this.suggestionIndex
-            : this.suggestions.length) - 1;
+            : this.suggestions().length) - 1;
         this.focusSuggestion();
       },
       Enter: () => {
         if (
           this.suggestionIndex >= 0 &&
-          this.suggestionIndex < this.suggestions.length
+          this.suggestionIndex < this.suggestions().length
         ) {
-          this.selectAddress(this.suggestions[this.suggestionIndex]);
+          this.selectAddress(this.suggestions()[this.suggestionIndex]);
         }
       },
     };
@@ -125,16 +128,16 @@ export class UserHomeHeroComponent {
             'Focus index:',
             this.suggestionIndex,
             'Suggestion:',
-            this.suggestions[this.suggestionIndex]
+            this.suggestions()[this.suggestionIndex]
           );
         }
       });
     }
   }
 
-  selectAddress(suggestion: SearchResult): void {
+  selectAddress(suggestion: any): void {
     this.address = suggestion.label;
-    this.suggestions = [];
+    this.geosearchSvc.clearSuggestions();
     this.suggestionIndex = -1;
     if (this.searchBarRef && this.searchBarRef.nativeElement) {
       this.searchBarRef.nativeElement.setFocus();
@@ -144,6 +147,13 @@ export class UserHomeHeroComponent {
   handleSubmit(event: Event): void {
     event.preventDefault();
     if (!this.address.trim()) return;
-    console.log('Submit:', this.address);
+    console.log(
+      'Submit:',
+      this.address,
+      'Lat:',
+      this.latitude(),
+      'Lng:',
+      this.longitude()
+    );
   }
 }
