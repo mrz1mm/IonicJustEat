@@ -41,6 +41,8 @@ export class StoreService {
       .finally(() => {});
   }
 
+  getAllActiveStores(): void {}
+
   getStoreById(id: string): void {
     firstValueFrom(this.http.get<StoreResponse>(`${this.storeUrl}/${id}`))
       .then((response) => {

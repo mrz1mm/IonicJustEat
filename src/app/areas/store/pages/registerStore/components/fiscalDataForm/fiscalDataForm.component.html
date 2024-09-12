@@ -1,1 +1,217 @@
-y
+<ion-grid>
+  <ion-row>
+    <ion-col size="12">
+      <h1 class="ion-text-center">
+        {{
+          fiscalDataId
+            ? ("FiscalDataForm.UPDATE_TITLE" | translate)
+            : ("FiscalDataForm.ADD_TITLE" | translate)
+        }}
+      </h1>
+    </ion-col>
+    <ion-col size="12">
+      <form
+        [formGroup]="fiscalDataForm"
+        (ngSubmit)="fiscalDataId ? updateFiscalData() : addFiscalData()"
+        class="ion-text-center"
+      >
+        <!-- CompanyName -->
+        <ion-item>
+          <ion-input
+            formControlName="companyName"
+            type="text"
+            label="{{ 'FiscalDataForm.COMPANY_NAME_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{
+              'FiscalDataForm.COMPANY_NAME_PLACEHOLDER' | translate
+            }}"
+            [helperText]="getHelperText('companyName') | translate"
+            [errorText]="getErrorText('companyName') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="100"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="business-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- VATNumber -->
+        <ion-item>
+          <ion-input
+            formControlName="vatNumber"
+            type="text"
+            label="{{ 'FiscalDataForm.VAT_NUMBER_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{
+              'FiscalDataForm.VAT_NUMBER_PLACEHOLDER' | translate
+            }}"
+            [helperText]="getHelperText('vatNumber') | translate"
+            [errorText]="getErrorText('vatNumber') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="20"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon name="business" color="primary" slot="start"></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Address -->
+        <ion-item>
+          <ion-input
+            formControlName="address"
+            type="text"
+            label="{{ 'FiscalDataForm.ADDRESS_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'FiscalDataForm.ADDRESS_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('address') | translate"
+            [errorText]="getErrorText('address') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="150"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="location-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- City -->
+        <ion-item>
+          <ion-input
+            formControlName="city"
+            type="text"
+            label="{{ 'FiscalDataForm.CITY_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'FiscalDataForm.CITY_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('city') | translate"
+            [errorText]="getErrorText('city') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="100"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="business-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- CAP -->
+        <ion-item>
+          <ion-input
+            formControlName="cap"
+            type="text"
+            label="{{ 'FiscalDataForm.CAP_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'FiscalDataForm.CAP_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('cap') | translate"
+            [errorText]="getErrorText('cap') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="10"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="mail-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- IBAN -->
+        <ion-item>
+          <ion-input
+            formControlName="iban"
+            type="text"
+            label="{{ 'FiscalDataForm.IBAN_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'FiscalDataForm.IBAN_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('iban') | translate"
+            [errorText]="getErrorText('iban') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="34"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="card-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- UniqueCode -->
+        <ion-item>
+          <ion-input
+            formControlName="uniqueCode"
+            type="text"
+            label="{{ 'FiscalDataForm.UNIQUE_CODE_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{
+              'FiscalDataForm.UNIQUE_CODE_PLACEHOLDER' | translate
+            }}"
+            [helperText]="getHelperText('uniqueCode') | translate"
+            [errorText]="getErrorText('uniqueCode') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            maxlength="7"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="key-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Submit -->
+        <ion-button
+          class="ion-margin-top ion-padding-top"
+          [disabled]="fiscalDataForm.invalid"
+          type="submit"
+        >
+          {{
+            fiscalDataId
+              ? ("FiscalDataForm.UPDATE_BUTTON_TEXT" | translate)
+              : ("FiscalDataForm.ADD_BUTTON_TEXT" | translate)
+          }}
+        </ion-button>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-grid>

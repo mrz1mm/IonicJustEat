@@ -1,7 +1,6 @@
 import { Injectable, signal, Signal } from '@angular/core';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { SearchResult } from 'leaflet-geosearch/dist/providers/provider';
-import { first, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
