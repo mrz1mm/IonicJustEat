@@ -1,22 +1,30 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal, Signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { firstValueFrom } from 'rxjs';
 import { ProductRequest } from '../interfaces/ProductRequest.interface';
+import { ProductResponse } from '../interfaces/ProductResponse.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
+  private _product = signal<ProductRequest | null>(null);
+  private _allProducts = signal<ProductResponse[] | null>(null);
   productUrl: string = `${environment.apiUrl}/api/`; // ???
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  get product(): Signal<ProductRequest | null> {
+    return this._product.asReadonly();
+  }
+
   getAllProducts(): void {
-    firstValueFrom(this.http.get(this.productUrl))
-      .then(() => {
+    firstValueFrom(this.http.get<ProductResponse[]>(this.productUrl))
+      .then((response) => {
         console.log('products retrieved');
+        this._allProducts.set(response);
       })
       .catch((error) => {
         console.error('Error retrieving products', error);
@@ -25,9 +33,10 @@ export class ProductService {
   }
 
   getProductById(id: string): void {
-    firstValueFrom(this.http.get(`${this.productUrl}/${id}`))
-      .then(() => {
-        console.log('product retrieved');
+    firstValueFrom(this.http.get<ProductResponse>(`${this.productUrl}/${id}`))
+      .then((response) => {
+        console.log('product retrieved', response);
+        this._product.set(response);
       })
       .catch((error) => {
         console.error('Error retrieving product', error);
@@ -47,8 +56,8 @@ export class ProductService {
       .finally(() => {});
   }
 
-  updateProduct(id: number): void {
-    firstValueFrom(this.http.put(`${this.productUrl}/${id}`, id))
+  updateProduct(id: string, model: ProductRequest): void {
+    firstValueFrom(this.http.put(`${this.productUrl}/${id}`, model))
       .then(() => {
         console.log('product updated');
       })

@@ -11,18 +11,24 @@ import { CategoryResponse } from '../interfaces/CategoryResponse.interface';
 })
 export class CategoryService {
   private _category = signal<CategoryResponse | null>(null);
+  private _allCategories = signal<CategoryResponse[]>([]);
   categoryUrl: string = `${environment.apiUrl}/api/`; // ???
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  get allCategories(): Signal<CategoryResponse[] | null> {
+    return this._allCategories.asReadonly();
+  }
 
   get category(): Signal<CategoryResponse | null> {
     return this._category.asReadonly();
   }
 
   getAllCategories(): void {
-    firstValueFrom(this.http.get(this.categoryUrl))
-      .then(() => {
+    firstValueFrom(this.http.get<CategoryResponse[]>(this.categoryUrl))
+      .then((response) => {
         console.log('categorys retrieved');
+        this._allCategories.set(response);
       })
       .catch((error) => {
         console.error('Error retrieving categorys', error);

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { StoreRequest } from '../interfaces/StoreRequest.interface';
@@ -11,6 +11,8 @@ import { StoreResponse } from '../interfaces/StoreResponse.interface';
   providedIn: 'root',
 })
 export class StoreService {
+  private _store = signal<StoreResponse | null>(null);
+  private _allStore = signal<StoreResponse[] | null>(null);
   storeUrl: string = `${environment.apiUrl}/api/`; // ???
 
   constructor(
@@ -19,10 +21,19 @@ export class StoreService {
     private authSvc: AuthService
   ) {}
 
+  get store(): Signal<StoreRequest | null> {
+    return this._store.asReadonly();
+  }
+
+  get allStore(): Signal<StoreRequest[] | null> {
+    return this._allStore.asReadonly();
+  }
+
   getAllStores(): void {
-    firstValueFrom(this.http.get(this.storeUrl))
-      .then(() => {
+    firstValueFrom(this.http.get<StoreResponse[]>(this.storeUrl))
+      .then((response) => {
         console.log('Stores retrieved');
+        this._allStore.set(response);
       })
       .catch((error) => {
         console.error('Error retrieving stores', error);
@@ -30,17 +41,14 @@ export class StoreService {
       .finally(() => {});
   }
 
-  getStoreById(id: string): Promise<StoreResponse> {
-    return firstValueFrom(
-      this.http.get<StoreResponse>(`${this.storeUrl}/${id}`)
-    )
+  getStoreById(id: string): void {
+    firstValueFrom(this.http.get<StoreResponse>(`${this.storeUrl}/${id}`))
       .then((response) => {
         console.log('Store retrieved');
-        return response;
+        this._store.set(response);
       })
       .catch((error) => {
         console.error('Error retrieving store', error);
-        throw error;
       })
       .finally(() => {});
   }
@@ -73,7 +81,7 @@ export class StoreService {
   }
 
   updateStore(id: string, model: StoreRequest): void {
-    firstValueFrom(this.http.put(`${this.storeUrl}/${id}`, {}))
+    firstValueFrom(this.http.put(`${this.storeUrl}/${id}`, model))
       .then(() => {
         console.log('Store updated');
       })

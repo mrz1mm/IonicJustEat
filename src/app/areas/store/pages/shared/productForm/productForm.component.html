@@ -1,24 +1,56 @@
 <ion-grid>
   <ion-row>
     <ion-col size="12">
-      <h1 class="ion-text-center">{{ "StoreForm.TITLE" | translate }}</h1>
+      <h1 class="ion-text-center">
+        {{
+          productId
+            ? ("ProductForm.UPDATE_TITLE" | translate)
+            : ("ProductForm.ADD_TITLE" | translate)
+        }}
+      </h1>
     </ion-col>
     <ion-col size="12">
       <form
-        [formGroup]="storeForm"
-        (ngSubmit)="addStore()"
+        [formGroup]="productForm"
+        (ngSubmit)="productId ? updateProduct() : addProduct()"
         class="ion-text-center"
       >
-        <!-- StoreName -->
+        <!-- ProductType -->
+        <ion-item>
+          <ion-select
+            formControlName="productTypeId"
+            interface="popover"
+            label="{{ 'ProductForm.PRODUCT_TYPE_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{
+              'ProductForm.SELECT_PRODUCT_TYPE_PLACEHOLDER' | translate
+            }}"
+            clearInput="true"
+            fill="outline"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            @for (productType of productTypes(); track $index; let i = $index) {
+            <ion-select-option [value]="productType.ProductTypeId">
+              {{ productType.ProductTypeName }}
+            </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+
+        <!-- ProductName -->
         <ion-item>
           <ion-input
-            formControlName="storeName"
+            formControlName="productName"
             type="text"
-            label="{{ 'StoreForm.STORE_NAME_LABEL' | translate }}"
+            label="{{ 'ProductForm.PRODUCT_NAME_LABEL' | translate }}"
             label-placement="floating"
-            placeholder="{{ 'StoreForm.STORE_NAME_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('storeName') | translate"
-            [errorText]="getErrorText('storeName') ?? '' | translate"
+            placeholder="{{
+              'ProductForm.PRODUCT_NAME_PLACEHOLDER' | translate
+            }}"
+            [helperText]="getHelperText('productName') | translate"
+            [errorText]="getErrorText('productName') ?? '' | translate"
             clearInput="true"
             counter="true"
             fill="outline"
@@ -28,127 +60,29 @@
             class="ion-margin-vertical"
           >
             <ion-icon
-              name="storefront-outline"
+              name="productfront-outline"
               color="primary"
               slot="start"
             ></ion-icon>
           </ion-input>
         </ion-item>
 
-        <!-- Address -->
+        <!-- ProductPrice -->
         <ion-item>
           <ion-input
-            #addressInput
-            formControlName="address"
-            type="text"
-            label="{{ 'StoreForm.ADDRESS_LABEL' | translate }}"
+            formControlName="productPrice"
+            type="number"
+            label="{{ 'ProductForm.PRODUCT_PRICE_LABEL' | translate }}"
             label-placement="floating"
-            placeholder="{{ 'StoreForm.ADDRESS_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('address') | translate"
-            [errorText]="getErrorText('address') ?? '' | translate"
-            clearInput="true"
-            fill="outline"
-            shape="round"
-            required
-            class="ion-margin-vertical"
-          >
-            <ion-icon
-              name="location-outline"
-              color="primary"
-              slot="start"
-            ></ion-icon>
-          </ion-input>
-        </ion-item>
-
-        <!-- City -->
-        <ion-item>
-          <ion-input
-            formControlName="city"
-            type="text"
-            label="{{ 'StoreForm.CITY_LABEL' | translate }}"
-            label-placement="floating"
-            placeholder="{{ 'StoreForm.CITY_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('city') | translate"
-            [errorText]="getErrorText('city') ?? '' | translate"
-            clearInput="true"
-            fill="outline"
-            shape="round"
-            required
-            class="ion-margin-vertical"
-          >
-            <ion-icon
-              name="business-outline"
-              color="primary"
-              slot="start"
-            ></ion-icon>
-          </ion-input>
-        </ion-item>
-
-        <!-- CAP -->
-        <ion-item>
-          <ion-input
-            formControlName="cap"
-            type="text"
-            label="{{ 'StoreForm.CAP_LABEL' | translate }}"
-            label-placement="floating"
-            placeholder="{{ 'StoreForm.CAP_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('cap') | translate"
-            [errorText]="getErrorText('cap') ?? '' | translate"
-            counter="true"
-            fill="outline"
-            maxlength="5"
-            shape="round"
-            required
-            class="ion-margin-vertical"
-          >
-            <ion-icon
-              name="mail-outline"
-              color="primary"
-              slot="start"
-            ></ion-icon>
-          </ion-input>
-        </ion-item>
-
-        <!-- PhoneNumber -->
-        <ion-item>
-          <ion-input
-            formControlName="phoneNumber"
-            type="tel"
-            label="{{ 'StoreForm.PHONE_NUMBER_LABEL' | translate }}"
-            label-placement="floating"
-            placeholder="{{ 'StoreForm.PHONE_NUMBER_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('phoneNumber') | translate"
-            [errorText]="getErrorText('phoneNumber') ?? '' | translate"
-            clearInput="true"
-            counter="true"
-            fill="outline"
-            maxlength="15"
-            shape="round"
-            required
-            class="ion-margin-vertical"
-          >
-            <ion-icon
-              name="call-outline"
-              color="primary"
-              slot="start"
-            ></ion-icon>
-          </ion-input>
-        </ion-item>
-
-        <!-- StoreTag -->
-        <ion-item>
-          <ion-input
-            formControlName="storeTag"
-            type="text"
-            label="{{ 'StoreForm.STORE_TAG_LABEL' | translate }}"
-            label-placement="floating"
-            placeholder="{{ 'StoreForm.STORE_TAG_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('storeTag') | translate"
-            [errorText]="getErrorText('storeTag') ?? '' | translate"
-            clearInput="true"
+            placeholder="{{
+              'ProductForm.PRODUCT_PRICE_PLACEHOLDER' | translate
+            }}"
+            [helperText]="getHelperText('productPrice') | translate"
+            [errorText]="getErrorText('productPrice') ?? '' | translate"
             counter="true"
             fill="outline"
             shape="round"
+            required
             class="ion-margin-vertical"
           >
             <ion-icon
@@ -159,18 +93,46 @@
           </ion-input>
         </ion-item>
 
-        <!-- CoverImg -->
+        <!-- ProductDescription -->
+        <ion-item>
+          <ion-textarea
+            formControlName="productDescription"
+            label="{{ 'ProductForm.DESCRIPTION_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{
+              'ProductForm.DESCRIPTION_PLACEHOLDER' | translate
+            }}"
+            [helperText]="getHelperText('productDescription') | translate"
+            [errorText]="getErrorText('productDescription') ?? '' | translate"
+            clearInput="true"
+            fill="outline"
+            maxlength="500"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="information-circle-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-textarea>
+        </ion-item>
+
+        <!-- ProductImg -->
         <ion-item>
           <ion-input
-            formControlName="coverImg"
+            formControlName="productImg"
             type="file"
             accept="image/*"
-            (change)="onFileChange($event, 'coverImg')"
-            label="{{ 'StoreForm.COVER_IMG_LABEL' | translate }}"
+            (change)="onFileChange($event, 'productImg')"
+            label="{{ 'ProductForm.PRODUCT_IMG_LABEL' | translate }}"
             label-placement="floating"
-            placeholder="{{ 'StoreForm.COVER_IMG_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('coverImg') | translate"
-            [errorText]="getErrorText('coverImg') ?? '' | translate"
+            placeholder="{{
+              'ProductForm.PRODUCT_IMG_PLACEHOLDER' | translate
+            }}"
+            [helperText]="getHelperText('productImg') | translate"
+            [errorText]="getErrorText('productImg') ?? '' | translate"
             clearInput="true"
             fill="outline"
             shape="round"
@@ -184,63 +146,17 @@
           </ion-input>
         </ion-item>
 
-        <!-- LogoImg -->
-        <ion-item>
-          <ion-input
-            formControlName="logoImg"
-            type="file"
-            accept="image/*"
-            (change)="onFileChange($event, 'logoImg')"
-            label="{{ 'StoreForm.LOGO_IMG_LABEL' | translate }}"
-            label-placement="floating"
-            placeholder="{{ 'StoreForm.LOGO_IMG_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('logoImg') | translate"
-            [errorText]="getErrorText('logoImg') ?? '' | translate"
-            clearInput="true"
-            fill="outline"
-            shape="round"
-            class="ion-margin-vertical"
-          >
-            <ion-icon
-              name="logo-buffer"
-              color="primary"
-              slot="start"
-            ></ion-icon>
-          </ion-input>
-        </ion-item>
-
-        <!-- Description -->
-        <ion-item>
-          <ion-input
-            formControlName="description"
-            type="text"
-            label="{{ 'StoreForm.DESCRIPTION_LABEL' | translate }}"
-            label-placement="floating"
-            placeholder="{{ 'StoreForm.DESCRIPTION_PLACEHOLDER' | translate }}"
-            [helperText]="getHelperText('description') | translate"
-            [errorText]="getErrorText('description') ?? '' | translate"
-            clearInput="true"
-            fill="outline"
-            maxlength="500"
-            shape="round"
-            required
-            class="ion-margin-vertical"
-          >
-            <ion-icon
-              name="information-circle-outline"
-              color="primary"
-              slot="start"
-            ></ion-icon>
-          </ion-input>
-        </ion-item>
-
         <!-- Submit -->
         <ion-button
           class="ion-margin-top ion-padding-top"
-          [disabled]="storeForm.invalid"
+          [disabled]="productForm.invalid"
           type="submit"
         >
-          {{ "StoreForm.BUTTON_TEXT" | translate }}
+          {{
+            productId
+              ? ("ProductForm.UPDATE_BUTTON_TEXT" | translate)
+              : ("ProductForm.ADD_BUTTON_TEXT" | translate)
+          }}
         </ion-button>
       </form>
     </ion-col>

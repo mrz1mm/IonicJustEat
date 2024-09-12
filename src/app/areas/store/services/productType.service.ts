@@ -11,19 +11,25 @@ import { ProductTypeResponse } from '../interfaces/ProductTypeResponse.interface
 })
 export class ProductTypeService {
   private _productType = signal<ProductTypeResponse | null>(null);
+  private _allProductTypes = signal<ProductTypeResponse[]>([]);
 
   productTypeUrl: string = `${environment.apiUrl}/api/`; // ???
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  get allProductTypes(): Signal<ProductTypeResponse[] | null> {
+    return this._allProductTypes.asReadonly();
+  }
 
   get productType(): Signal<ProductTypeResponse | null> {
     return this._productType.asReadonly();
   }
 
   getAllProductTypes(): void {
-    firstValueFrom(this.http.get(this.productTypeUrl))
-      .then(() => {
+    firstValueFrom(this.http.get<ProductTypeResponse[]>(this.productTypeUrl))
+      .then((response) => {
         console.log('productTypes retrieved');
+        this._allProductTypes.set(response);
       })
       .catch((error) => {
         console.error('Error retrieving productTypes', error);

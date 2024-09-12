@@ -47,7 +47,7 @@ export class IngredientService {
       .finally(() => {});
   }
 
-  updateIngredient(id: number): void {
+  updateIngredient(id: string): void {
     firstValueFrom(this.http.put(`${this.ingredientUrl}/${id}`, id))
       .then(() => {
         console.log('Ingredient updated');
@@ -58,7 +58,7 @@ export class IngredientService {
       .finally(() => {});
   }
 
-  deleteIngredient(id: number): void {
+  deleteIngredient(id: string): void {
     firstValueFrom(this.http.delete(`${this.ingredientUrl}/${id}`))
       .then(() => {
         console.log('Ingredient deleted');
