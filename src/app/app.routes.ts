@@ -55,10 +55,14 @@ export const routes: Routes = [
       import('./areas/info/faq/faq.page').then((m) => m.FaqPage),
   },
   {
-    path: 'terms',
+    path: 'privacy',
+    loadComponent: () =>
+      import('./areas/info/privacy/privacy.page').then((m) => m.PrivacyPage),
   },
   {
-    path: 'privacy',
+    path: 'terms',
+    loadComponent: () =>
+      import('./areas/info/terms/terms.page').then((m) => m.TermsPage),
   },
   {
     path: 'ingredients',

@@ -22,11 +22,6 @@ export class FooterComponent {
   Env = environment;
   Path = Path;
   constructor() {
-    addIcons({
-      'logo-facebook': logoFacebook,
-      'logo-instagram': logoInstagram,
-      'logo-twitter': logoTwitter,
-      'logo-youtube': logoYoutube,
-    });
+    addIcons({ logoFacebook, logoInstagram, logoTwitter, logoYoutube });
   }
 }

@@ -1,10 +1,25 @@
 export enum Path {
   Home = '/',
+
+  // auth
   Login = '/login',
   Register = '/register',
   ForgotPassword = '/forgotPassword',
   VerifyEmail = '/verifyEmail',
+
+  // info
   AboutUs = '/aboutUs',
   Contact = '/contact',
   Faq = '/faq',
+  Privacy = '/privacy',
+  Terms = '/terms',
+
+  // store
+  Ingredients = '/ingredients',
+  Products = '/products',
+  ProductTypes = '/productTypes',
+  Store = '/store',
+
+  // admin
+  Categories = '/categories',
 }

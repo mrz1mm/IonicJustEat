@@ -5,12 +5,18 @@ import { EmailConfirmedComponent } from './components/emailConfirmed/emailConfir
 import { UnverifiedEmailComponent } from './components/unverifiedEmail/unverifiedEmail.component';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmEmailRequest } from '../../interfaces/ConfirmEmailRequest.interface';
+import { FooterComponent } from '../../../../layout/footer/footer.component';
 
 @Component({
   selector: 'app-verify-email',
   templateUrl: './verifyEmail.page.html',
   standalone: true,
-  imports: [IonContent, EmailConfirmedComponent, UnverifiedEmailComponent],
+  imports: [
+    IonContent,
+    EmailConfirmedComponent,
+    UnverifiedEmailComponent,
+    FooterComponent,
+  ],
 })
 export class VerifyEmailPage implements OnInit {
   isEmailConfirmed = computed<boolean | null>(() =>

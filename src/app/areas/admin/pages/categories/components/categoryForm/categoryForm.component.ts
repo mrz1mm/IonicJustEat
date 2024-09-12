@@ -27,7 +27,6 @@ import { CategoryRequest } from '../../../../interfaces/CategoryRequest.interfac
 @Component({
   selector: 'app-category-form',
   templateUrl: './categoryForm.component.html',
-  styleUrls: ['./categoryForm.component.scss'],
   standalone: true,
   imports: [
     IonGrid,
@@ -107,7 +106,7 @@ export class CategoryFormComponent implements OnInit {
   addCategory(): void {
     if (this.categoryForm.valid) {
       const category: CategoryRequest = this.categoryForm.value;
-      await this.categorySvc.addCategory(category);
+      this.categorySvc.addCategory(category);
     }
   }
 

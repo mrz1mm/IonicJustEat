@@ -1,4 +1,5 @@
 <ion-content>
   @if (!isEmailConfirmed()) {<app-unverified-email></app-unverified-email>}
   @else if (isEmailConfirmed()) {<app-email-confirmed></app-email-confirmed>}
+  <app-footer></app-footer>
 </ion-content>
