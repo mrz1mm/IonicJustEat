@@ -1,16 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Signal, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DistanceService {
+  private _distance = signal<number | null>(null);
+
+  get distance(): Signal<number | null> {
+    return this._distance.asReadonly();
+  }
+
   // Calcola la distanza tra due coordinate usando la formula dell'Haversine
   calculateDistance(
     lat1: number,
     lon1: number,
     lat2: number,
     lon2: number
-  ): number {
+  ): void {
     const R = 6371; // Raggio della Terra in km
     const dLat = this.deg2rad(lat2 - lat1);
     const dLon = this.deg2rad(lon2 - lon1);
@@ -22,7 +28,7 @@ export class DistanceService {
         Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const distance = R * c; // Distanza in km
-    return distance;
+    this._distance.set(distance);
   }
 
   // Converti i gradi in radianti
@@ -32,7 +38,7 @@ export class DistanceService {
 
   // Simulazione del tempo medio di viaggio in minuti (20 km/h)
   calculateTravelTime(distance: number): number {
-    const speed = 20; // km/h
+    const speed = 30; // km/h
     const travelTime = (distance / speed) * 60; // Tempo in minuti
     return travelTime;
   }
