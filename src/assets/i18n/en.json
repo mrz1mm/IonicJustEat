@@ -27,6 +27,20 @@
     "PRIVACY_POLICY": "Privacy Policy",
     "TERMS_OF_SERVICE": "Terms of Service"
   },
+  "CookieModal": {
+    "TITLE": "Customize Cookies",
+    "ESSENTIAL_COOKIES": "Essential Cookies",
+    "ESSENTIAL_COOKIES_DESCRIPTION": "These cookies are necessary for the functioning of the website and cannot be switched off.",
+    "FUNCTIONAL_COOKIES": "Functional Cookies",
+    "FUNCTIONAL_COOKIES_DESCRIPTION": "These cookies enhance website performance and user experience.",
+    "ANALYTICS_COOKIES": "Analytics Cookies",
+    "ANALYTICS_COOKIES_DESCRIPTION": "These cookies help us understand how users interact with the website.",
+    "TARGETING_COOKIES": "Targeting/Advertising Cookies",
+    "TARGETING_COOKIES_DESCRIPTION": "These cookies personalize ads and make them more relevant to users.",
+    "ACCEPT_ALL_BUTTON": "Accept All Cookies",
+    "ACCEPT_ESSENTIAL_BUTTON": "Accept Only Essential Cookies",
+    "SAVE_APPLY_BUTTON": "Save And Apply"
+  },
   "CookiesPage": {
     "TITLE": "Cookie Policy",
     "DESCRIPTION": "This page explains what cookies are, how we use them, and how you can control them.",

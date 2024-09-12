@@ -1,0 +1,49 @@
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Essential Cookies</ion-label>
+      <ion-toggle checked="true" disabled></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Functional Cookies</ion-label>
+      <ion-toggle
+        [checked]="cookies()?.functionalCookies"
+        (ionChange)="toggleFunctionalCookies()"
+      ></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Analytics Cookies</ion-label>
+      <ion-toggle
+        [checked]="cookies()?.analyticsCookies"
+        (ionChange)="toggleAnalyticsCookies()"
+      ></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Targeting Cookies</ion-label>
+      <ion-toggle
+        [checked]="cookies()?.targetingCookies"
+        (ionChange)="toggleTargetingCookies()"
+      ></ion-toggle>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" (click)="acceptAllCookies()">
+          Accept All Cookies
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button
+          expand="block"
+          color="secondary"
+          (click)="acceptEssentialCookies()"
+        >
+          Accept Essential Cookies Only
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>

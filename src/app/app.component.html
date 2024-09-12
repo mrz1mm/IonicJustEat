@@ -1,6 +1,17 @@
 <ion-app>
   <app-header></app-header>
   <ion-content>
-    <ion-router-outlet> </ion-router-outlet>
+    <ion-router-outlet>
+      <!-- Modal for Cookies Preferences -->
+      <ion-modal
+        *ngIf="showCookieModal()"
+        [isOpen]="true"
+        backdropDismiss="false"
+      >
+        <ng-template>
+          <app-cookies></app-cookies>
+        </ng-template>
+      </ion-modal>
+    </ion-router-outlet>
   </ion-content>
 </ion-app>
