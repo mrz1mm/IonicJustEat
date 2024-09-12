@@ -33,9 +33,8 @@ import {
   informationCircleOutline,
 } from 'ionicons/icons';
 import { Path } from 'src/app/library/utils/Path';
-import { StoreService } from '../../../services/store.service';
-import { StoreRequest } from '../../../interfaces/StoreRequest.interface';
 import { GeosearchService } from 'src/app/library/maps/services/geoSearch.service';
+import { StoreService } from 'src/app/areas/store/services/store.service';
 
 @Component({
   selector: 'app-store-form',

@@ -23,15 +23,11 @@ import {
 } from '@ionic/angular/standalone';
 import { TranslateModule } from '@ngx-translate/core';
 import { addIcons } from 'ionicons';
-import {
-  pricetagOutline,
-  imageOutline,
-  informationCircleOutline,
-} from 'ionicons/icons';
+import { pricetagOutline } from 'ionicons/icons';
+import { IngredientRequest } from 'src/app/areas/store/interfaces/IngredientRequest.interface';
+import { IngredientService } from 'src/app/areas/store/services/ingredient.service';
+import { StoreService } from 'src/app/areas/store/services/store.service';
 import { Path } from 'src/app/library/utils/Path';
-import { IngredientService } from '../../../services/ingredient.service';
-import { IngredientRequest } from '../../../interfaces/IngredientRequest.interface';
-import { StoreService } from '../../../services/store.service';
 
 @Component({
   selector: 'app-ingredient-form',

@@ -55,10 +55,42 @@ export const routes: Routes = [
       import('./areas/info/faq/faq.page').then((m) => m.FaqPage),
   },
   {
-    path: 'registerStore',
+    path: 'terms',
+  },
+  {
+    path: 'privacy',
+  },
+  {
+    path: 'ingredients',
     loadComponent: () =>
-      import('./areas/store/pages/registerStore/registerStore.page').then(
-        (m) => m.RegisterStorePage
+      import('./areas/store/pages/ingredients/ingredients.page').then(
+        (m) => m.IngredientsPage
+      ),
+  },
+  {
+    path: 'products',
+    loadComponent: () =>
+      import('./areas/store/pages/products/products.page').then(
+        (m) => m.ProductsPage
+      ),
+  },
+  {
+    path: 'productTypes',
+    loadComponent: () =>
+      import('./areas/store/pages/productTypes/productTypes.page').then(
+        (m) => m.ProductTypesPage
+      ),
+  },
+  {
+    path: 'store',
+    loadComponent: () =>
+      import('./areas/store/pages/store/store.page').then((m) => m.StorePage),
+  },
+  {
+    path: 'categories',
+    loadComponent: () =>
+      import('./areas/admin/pages/categories/categories.page').then(
+        (m) => m.CategoriesPage
       ),
   },
 ];

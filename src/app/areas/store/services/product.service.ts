@@ -20,6 +20,10 @@ export class ProductService {
     return this._product.asReadonly();
   }
 
+  get allProducts(): Signal<ProductResponse[] | null> {
+    return this._allProducts.asReadonly();
+  }
+
   getAllProducts(): void {
     firstValueFrom(this.http.get<ProductResponse[]>(this.productUrl))
       .then((response) => {

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, effect, computed } from '@angular/core';
+import { Component, computed, effect, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -20,14 +20,14 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { addIcons } from 'ionicons';
 import { medal } from 'ionicons/icons';
+import { ProductTypeRequest } from 'src/app/areas/store/interfaces/ProductTypeRequest.interface';
+import { ProductTypeService } from 'src/app/areas/store/services/productType.service';
 import { Path } from 'src/app/library/utils/Path';
-import { CategoryService } from '../../service/category.service';
-import { CategoryRequest } from '../../interfaces/CategoryRequest.interface';
 
 @Component({
-  selector: 'app-category-form',
-  templateUrl: './categoryForm.component.html',
-  styleUrls: ['./categoryForm.component.scss'],
+  selector: 'app-product-type-form',
+  templateUrl: './productTypeForm.component.html',
+  styleUrls: ['./productTypeForm.component.scss'],
   standalone: true,
   imports: [
     IonGrid,
@@ -44,48 +44,48 @@ import { CategoryRequest } from '../../interfaces/CategoryRequest.interface';
     RouterModule,
   ],
 })
-export class CategoryFormComponent implements OnInit {
+export class ProductTypeFormComponent implements OnInit {
   Path = Path;
-  categoryForm!: FormGroup;
-  categoryId: string | null = null;
-  category = computed(() => this.categorySvc.category());
+  productTypeForm!: FormGroup;
+  productTypeId: string | null = null;
+  productType = computed(() => this.productTypeSvc.productType());
 
   constructor(
     private fb: FormBuilder,
-    private categorySvc: CategoryService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private productTypeSvc: ProductTypeService
   ) {
     addIcons({ medal });
   }
 
   ngOnInit() {
-    this.categoryForm = this.fb.group({
-      categoryName: ['', [Validators.required]],
+    this.productTypeForm = this.fb.group({
+      productTypeName: ['', [Validators.required]],
     });
 
     this.route.paramMap.subscribe((params) => {
-      this.categoryId = params.get('id');
+      this.productTypeId = params.get('id');
     });
 
     effect(() => {
-      const category = this.category();
-      if (category) {
-        this.categoryForm.patchValue({
-          categoryName: category.CategoryName,
+      const productType = this.productType();
+      if (productType) {
+        this.productTypeForm.patchValue({
+          productTypeName: productType.ProductTypeName,
         });
       }
     });
   }
 
   getHelperText(controlName: string): string {
-    const control = this.categoryForm.get(controlName);
+    const control = this.productTypeForm.get(controlName);
     return control?.touched && control?.valid
       ? `LoginForm.${controlName.toUpperCase()}_VALID`
       : `LoginForm.${controlName.toUpperCase()}_HELPER`;
   }
 
   getErrorText(controlName: string): string | null {
-    const control = this.categoryForm.get(controlName);
+    const control = this.productTypeForm.get(controlName);
 
     if (!control || !control.touched || !control.errors) {
       return null;
@@ -104,17 +104,17 @@ export class CategoryFormComponent implements OnInit {
     return null;
   }
 
-  addCategory(): void {
-    if (this.categoryForm.valid) {
-      const category: CategoryRequest = this.categoryForm.value;
-      await this.categorySvc.addCategory(category);
+  addProductType(): void {
+    if (this.productTypeForm.valid) {
+      const productType: ProductTypeRequest = this.productTypeForm.value;
+      this.productTypeSvc.addProductType(productType);
     }
   }
 
-  updateCategory(): void {
-    if (this.categoryForm.valid && this.categoryId) {
-      const category: CategoryRequest = this.categoryForm.value;
-      this.categorySvc.updateCategory(this.categoryId, category);
+  updateProductType(): void {
+    if (this.productTypeForm.valid && this.productTypeId) {
+      const productType: ProductTypeRequest = this.productTypeForm.value;
+      this.productTypeSvc.updateProductType(this.productTypeId, productType);
     }
   }
 }

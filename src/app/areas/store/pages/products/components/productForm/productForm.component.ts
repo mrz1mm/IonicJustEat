@@ -28,15 +28,15 @@ import {
   imageOutline,
   informationCircleOutline,
 } from 'ionicons/icons';
+import { ProductRequest } from 'src/app/areas/store/interfaces/ProductRequest.interface';
+import { ProductService } from 'src/app/areas/store/services/product.service';
+import { ProductTypeService } from 'src/app/areas/store/services/productType.service';
+import { StoreService } from 'src/app/areas/store/services/store.service';
 import { Path } from 'src/app/library/utils/Path';
-import { ProductService } from '../../../services/product.service';
-import { ProductRequest } from '../../../interfaces/ProductRequest.interface';
-import { ProductTypeService } from '../../../services/productType.service';
-import { StoreService } from '../../../services/store.service';
-
-@Component({
-  selector: 'app-product-form',
-  templateUrl: './productForm.component.html',
+../../../../services/product.service
+@Component({../../../../interfaces/ProductRequest.interface
+  selector: 'app-product-form',../../../../services/productType.service
+  templateUrl: './productForm.../../../../services/store.service
   styleUrls: ['./productForm.component.scss'],
   standalone: true,
   imports: [
