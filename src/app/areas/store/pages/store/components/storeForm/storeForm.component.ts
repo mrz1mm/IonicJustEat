@@ -35,6 +35,7 @@ import {
 import { Path } from 'src/app/library/utils/Path';
 import { GeosearchService } from 'src/app/library/maps/services/geoSearch.service';
 import { StoreService } from 'src/app/areas/store/services/store.service';
+import { StoreRequest } from 'src/app/areas/store/interfaces/StoreRequest.interface';
 
 @Component({
   selector: 'app-store-form',

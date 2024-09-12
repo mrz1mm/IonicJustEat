@@ -2,8 +2,6 @@ import {
   Component,
   computed,
   ElementRef,
-  OnDestroy,
-  OnInit,
   QueryList,
   ViewChild,
   ViewChildren,
@@ -24,7 +22,6 @@ import {
   IonList,
 } from '@ionic/angular/standalone';
 import { environment } from 'src/environments/environment';
-import { SearchResult } from 'leaflet-geosearch/dist/providers/provider';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { GeosearchService } from 'src/app/library/maps/services/geoSearch.service';
