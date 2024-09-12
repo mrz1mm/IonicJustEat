@@ -27,6 +27,38 @@
     "PRIVACY_POLICY": "Politica sulla privacy",
     "TERMS_OF_SERVICE": "Termini di servizio"
   },
+  "CookiesPage": {
+    "TITLE": "Politica sui Cookie",
+    "DESCRIPTION": "Questa pagina spiega cosa sono i cookie, come li utilizziamo e come puoi controllarli.",
+    "TYPES_TITLE": "Tipologie di cookie che utilizziamo",
+    "TYPES": {
+      "TECHNICAL": "Cookie tecnici: Necessari per il funzionamento del sito.",
+      "ANALYTICS": "Cookie di analisi: Utilizzati per raccogliere dati statistici anonimi.",
+      "PROFILING": "Cookie di profilazione: Utilizzati per personalizzare i contenuti pubblicitari."
+    },
+    "MANAGE_TITLE": "Come gestire i cookie",
+    "MANAGE_DESCRIPTION": "Puoi disabilitare i cookie modificando le impostazioni del tuo browser. Tuttavia, disabilitando i cookie, alcune parti del sito potrebbero non funzionare correttamente."
+  },
+  "TermsPage": {
+    "TITLE": "Termini e Condizioni",
+    "DESCRIPTION": "Utilizzando il nostro sito web, accetti di rispettare i seguenti termini e condizioni.",
+    "USE_TITLE": "Uso del sito",
+    "USE_DESCRIPTION": "Il sito web è disponibile solo per uso personale. Non è consentito l'uso commerciale del sito senza la nostra approvazione scritta.",
+    "INTELLECTUAL_TITLE": "Proprietà intellettuale",
+    "INTELLECTUAL_DESCRIPTION": "Tutti i contenuti presenti sul sito, inclusi testi, immagini e loghi, sono di nostra proprietà e protetti da copyright.",
+    "CHANGES_TITLE": "Modifiche ai termini",
+    "CHANGES_DESCRIPTION": "Ci riserviamo il diritto di modificare i presenti Termini in qualsiasi momento. L'uso continuato del sito costituisce l'accettazione dei Termini aggiornati."
+  },
+  "PrivacyPage": {
+    "TITLE": "Politica sulla Privacy",
+    "DESCRIPTION": "Questa pagina descrive come raccogliamo, utilizziamo e proteggiamo i tuoi dati personali.",
+    "COLLECTION_TITLE": "Raccolta dei dati",
+    "COLLECTION_DESCRIPTION": "Raccogliamo dati personali come nome, indirizzo email, numero di telefono quando interagisci con il nostro sito.",
+    "USE_TITLE": "Uso dei dati",
+    "USE_DESCRIPTION": "Utilizziamo i dati raccolti per migliorare il nostro servizio e personalizzare l'esperienza utente.",
+    "PROTECTION_TITLE": "Protezione dei dati",
+    "PROTECTION_DESCRIPTION": "Adottiamo misure di sicurezza per proteggere i tuoi dati personali contro accessi non autorizzati e divulgazione."
+  },
   "DownloadApp": {
     "TITLE": "Scarica l'app",
     "SUBTITLE": "Disponibile su App Store e Google Play",

@@ -27,6 +27,38 @@
     "PRIVACY_POLICY": "Privacy Policy",
     "TERMS_OF_SERVICE": "Terms of Service"
   },
+  "CookiesPage": {
+    "TITLE": "Cookie Policy",
+    "DESCRIPTION": "This page explains what cookies are, how we use them, and how you can control them.",
+    "TYPES_TITLE": "Types of Cookies We Use",
+    "TYPES": {
+      "TECHNICAL": "Technical cookies: Necessary for the website to function.",
+      "ANALYTICS": "Analytics cookies: Used to collect anonymous statistical data.",
+      "PROFILING": "Profiling cookies: Used to personalize advertising content."
+    },
+    "MANAGE_TITLE": "How to Manage Cookies",
+    "MANAGE_DESCRIPTION": "You can disable cookies by changing your browser settings. However, disabling cookies may cause some parts of the website to not function properly."
+  },
+  "TermsPage": {
+    "TITLE": "Terms and Conditions",
+    "DESCRIPTION": "By using our website, you agree to the following terms and conditions.",
+    "USE_TITLE": "Use of the Website",
+    "USE_DESCRIPTION": "The website is available for personal use only. Commercial use of the website is not allowed without our written approval.",
+    "INTELLECTUAL_TITLE": "Intellectual Property",
+    "INTELLECTUAL_DESCRIPTION": "All content on the website, including text, images, and logos, are owned by us and protected by copyright.",
+    "CHANGES_TITLE": "Changes to Terms",
+    "CHANGES_DESCRIPTION": "We reserve the right to modify these Terms at any time. Continued use of the website constitutes acceptance of the updated Terms."
+  },
+  "PrivacyPage": {
+    "TITLE": "Privacy Policy",
+    "DESCRIPTION": "This page describes how we collect, use, and protect your personal data.",
+    "COLLECTION_TITLE": "Data Collection",
+    "COLLECTION_DESCRIPTION": "We collect personal data such as your name, email address, and phone number when you interact with our website.",
+    "USE_TITLE": "Data Usage",
+    "USE_DESCRIPTION": "We use the collected data to improve our service and personalize the user experience.",
+    "PROTECTION_TITLE": "Data Protection",
+    "PROTECTION_DESCRIPTION": "We take security measures to protect your personal data against unauthorized access and disclosure."
+  },
   "DownloadApp": {
     "TITLE": "Download the app",
     "SUBTITLE": "Available on App Store and Google Play",

@@ -9,6 +9,7 @@ export enum Path {
 
   // info
   AboutUs = '/aboutUs',
+  Cookies = '/cookies',
   Contact = '/contact',
   Faq = '/faq',
   Privacy = '/privacy',
