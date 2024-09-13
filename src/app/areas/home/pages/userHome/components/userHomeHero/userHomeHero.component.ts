@@ -77,9 +77,9 @@ export class UserHomeHeroComponent {
 
     this.searchTimeout = setTimeout(() => {
       if (value) {
-        this.geosearchSvc.searchAndUpdateSuggestions(value); // Avvia la ricerca tramite il servizio
+        this.geosearchSvc.searchAndUpdateSuggestions(value);
       } else {
-        this.geosearchSvc.clearSuggestions(); // Cancella i suggerimenti
+        this.geosearchSvc.clearSuggestions();
       }
     }, 300);
   }
