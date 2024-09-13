@@ -44,6 +44,7 @@ export class AppComponent {
     private modalController: ModalController
   ) {
     register();
+    this.checkCookies();
   }
 
   checkCookies() {
