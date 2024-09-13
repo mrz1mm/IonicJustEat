@@ -101,25 +101,24 @@ export class HeaderComponent {
 
     addIcons({
       checkmark,
-      person,
+      sunny,
+      moon,
       personCircle,
       logInOutline,
       personOutline,
       logOutOutline,
-      sunny,
-      moon,
       menu,
       close,
     });
   }
 
   // Language
-  protected languagePopover(event: MouseEvent): void {
+  languagePopover(event: MouseEvent): void {
     this.languagePopoverEvent = event;
     this.isFlagMenuOpen.set(true);
   }
 
-  protected changeLanguage(language: string): void {
+  changeLanguage(language: string): void {
     this.i18nSvc.language = language;
     this.isFlagMenuOpen.set(false);
   }
@@ -129,12 +128,12 @@ export class HeaderComponent {
   }
 
   // Theme
-  protected toggleTheme(): void {
+  toggleTheme(): void {
     this.themeSvc.theme = this.currentTheme() === 'light' ? 'dark' : 'light';
   }
 
   // Auth
-  protected profilePopover(event: MouseEvent): void {
+  profilePopover(event: MouseEvent): void {
     this.profilePopoverEvent = event;
     this.isProfileMenuOpen.set(true);
   }
@@ -149,7 +148,7 @@ export class HeaderComponent {
   }
 
   // Modal
-  protected enterAnimation = (baseEl: HTMLElement) => {
+  enterAnimation = (baseEl: HTMLElement) => {
     const root = baseEl.shadowRoot;
 
     const backdropAnimation = this.animationCtrl
@@ -173,7 +172,7 @@ export class HeaderComponent {
       .addAnimation([backdropAnimation, wrapperAnimation]);
   };
 
-  protected leaveAnimation = (baseEl: HTMLElement) => {
+  leaveAnimation = (baseEl: HTMLElement) => {
     return this.enterAnimation(baseEl).direction('reverse');
   };
 }

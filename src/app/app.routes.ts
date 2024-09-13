@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { CookieGuard } from './guards/cookie.guard';
 
 export const routes: Routes = [
   {
@@ -103,6 +102,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./areas/admin/pages/categories/categories.page').then(
         (m) => m.CategoriesPage
+      ),
+  },
+  {
+    path: 'companyHome',
+    loadComponent: () =>
+      import('./areas/home/pages/companyHome/companyHome.page').then(
+        (m) => m.CompanyHomePage
       ),
   },
 ];
