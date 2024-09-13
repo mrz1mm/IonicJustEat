@@ -27,19 +27,17 @@
     "PRIVACY_POLICY": "Politica sulla privacy",
     "TERMS_OF_SERVICE": "Termini di servizio"
   },
-  "CookieModal": {
-    "TITLE": "Personalizza i Cookie",
-    "ESSENTIAL_COOKIES": "Cookie essenziali",
-    "ESSENTIAL_COOKIES_DESCRIPTION": "Questi cookie sono necessari per il funzionamento del sito e non possono essere disattivati.",
-    "FUNCTIONAL_COOKIES": "Cookie funzionali",
-    "FUNCTIONAL_COOKIES_DESCRIPTION": "Questi cookie migliorano le funzionalità del sito e l'esperienza dell'utente.",
-    "ANALYTICS_COOKIES": "Cookie di analisi",
-    "ANALYTICS_COOKIES_DESCRIPTION": "Questi cookie ci aiutano a comprendere come gli utenti interagiscono con il sito.",
-    "TARGETING_COOKIES": "Cookie di targeting/pubblicitari",
-    "TARGETING_COOKIES_DESCRIPTION": "Questi cookie personalizzano gli annunci e li rendono più rilevanti per gli utenti.",
-    "ACCEPT_ALL_BUTTON": "Accetta tutti i cookie",
-    "ACCEPT_ESSENTIAL_BUTTON": "Accetta solo i cookie essenziali",
-    "SAVE_APPLY_BUTTON": "Salva e applica"
+  "Cookies": {
+    "DESCRIPTION": "Utilizziamo cookie e tecnologie simili necessari per gestire i nostri siti web (cookie essenziali). Utilizziamo anche cookie Analitici, Funzionali e di Targeting per analizzare il traffico dei nostri siti web, ottimizzare la tua esperienza, personalizzare i contenuti e fornire pubblicità mirata.",
+    "ACCEPT_ALL": "Accetta tutti i cookie",
+    "ACCEPT_ESSENTIAL": "Accetta solo i cookie essenziali",
+    "CUSTOMIZE": "Personalizza i cookie",
+    "ESSENTIAL_ALWAYS": "Cookie essenziali (sempre attivi)",
+    "FUNCTIONAL": "Cookie funzionali",
+    "ANALYTICS": "Cookie analitici",
+    "TARGETING": "Cookie di targeting/pubblicitari",
+    "SAVE_AND_APPLY": "Salva e applica",
+    "BACK": "Indietro"
   },
   "CookiesPage": {
     "TITLE": "Politica sui Cookie",

@@ -27,19 +27,17 @@
     "PRIVACY_POLICY": "Privacy Policy",
     "TERMS_OF_SERVICE": "Terms of Service"
   },
-  "CookieModal": {
-    "TITLE": "Customize Cookies",
-    "ESSENTIAL_COOKIES": "Essential Cookies",
-    "ESSENTIAL_COOKIES_DESCRIPTION": "These cookies are necessary for the functioning of the website and cannot be switched off.",
-    "FUNCTIONAL_COOKIES": "Functional Cookies",
-    "FUNCTIONAL_COOKIES_DESCRIPTION": "These cookies enhance website performance and user experience.",
-    "ANALYTICS_COOKIES": "Analytics Cookies",
-    "ANALYTICS_COOKIES_DESCRIPTION": "These cookies help us understand how users interact with the website.",
-    "TARGETING_COOKIES": "Targeting/Advertising Cookies",
-    "TARGETING_COOKIES_DESCRIPTION": "These cookies personalize ads and make them more relevant to users.",
-    "ACCEPT_ALL_BUTTON": "Accept All Cookies",
-    "ACCEPT_ESSENTIAL_BUTTON": "Accept Only Essential Cookies",
-    "SAVE_APPLY_BUTTON": "Save And Apply"
+  "Cookies": {
+    "DESCRIPTION": "We use cookies and similar technologies that are necessary to run our Websites (essential cookies). We also use Analytics, Functionality, and Targeting cookies to analyze our Websites’ traffic, optimize your experience, personalize content, and serve targeted advertisements.",
+    "ACCEPT_ALL": "Accept All Cookies",
+    "ACCEPT_ESSENTIAL": "Accept Only Essential Cookies",
+    "CUSTOMIZE": "Customize Cookies",
+    "ESSENTIAL_ALWAYS": "Essential Cookies (always active)",
+    "FUNCTIONAL": "Functional Cookies",
+    "ANALYTICS": "Analytics Cookies",
+    "TARGETING": "Targeting/Advertising Cookies",
+    "SAVE_AND_APPLY": "Save And Apply",
+    "BACK": "Back"
   },
   "CookiesPage": {
     "TITLE": "Cookie Policy",

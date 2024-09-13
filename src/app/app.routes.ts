@@ -45,6 +45,13 @@ export const routes: Routes = [
       import('./areas/info/aboutUs/aboutUs.page').then((m) => m.AboutUsPage),
   },
   {
+    path: 'cookiesPolicy',
+    loadComponent: () =>
+      import('./areas/info/cookiesPolicy/cookiesPolicy.page').then(
+        (m) => m.CookiesPolicyPage
+      ),
+  },
+  {
     path: 'contact',
     loadComponent: () =>
       import('./areas/info/contact/contact.page').then((m) => m.ContactPage),

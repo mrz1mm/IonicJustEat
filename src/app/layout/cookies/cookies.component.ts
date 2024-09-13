@@ -1,7 +1,7 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import {
-  IonModal,
+  ModalController,
   IonContent,
   IonGrid,
   IonRow,
@@ -14,6 +14,7 @@ import {
   IonList,
 } from '@ionic/angular/standalone';
 import { CookieService } from 'src/app/library/cookie/services/cookie.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cookies',
@@ -31,32 +32,48 @@ import { CookieService } from 'src/app/library/cookie/services/cookie.service';
     IonRow,
     IonGrid,
     IonContent,
-    IonModal,
     TranslateModule,
   ],
 })
 export class CookiesComponent {
+  Env = environment;
+  isCustomizing = false;
   cookies = computed(() => this.cookieService.cookies());
 
-  constructor(private cookieService: CookieService) {}
+  constructor(
+    private cookieService: CookieService,
+    private modalController: ModalController
+  ) {
+    console.log('Component initialized');
+  }
+
+  toggleCustomization(): void {
+    this.isCustomizing = !this.isCustomizing;
+  }
 
   acceptAllCookies(): void {
     this.cookieService.acceptAllCookies();
+    this.modalController.dismiss();
   }
 
   acceptEssentialCookies(): void {
     this.cookieService.acceptEssentialCookies();
-  }
-
-  toggleFunctionalCookies(): void {
-    this.cookieService.toggleFunctionalCookies();
+    this.modalController.dismiss();
   }
 
   toggleAnalyticsCookies(): void {
     this.cookieService.toggleAnalyticsCookies();
   }
 
+  toggleFunctionalCookies(): void {
+    this.cookieService.toggleFunctionalCookies();
+  }
+
   toggleTargetingCookies(): void {
     this.cookieService.toggleTargetingCookies();
+  }
+
+  dismiss(): void {
+    this.modalController.dismiss();
   }
 }

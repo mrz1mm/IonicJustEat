@@ -8,8 +8,8 @@ import { Store } from '../../persistentService/Store.enum';
 })
 export class CookieService {
   private _cookies = this.persistentSvc.PSignal<ICookie | null>(Store.COOKIES, {
+    essentialCookies: true,
     analyticsCookies: null,
-    essentialCookies: null,
     functionalCookies: null,
     targetingCookies: null,
   });
@@ -23,8 +23,8 @@ export class CookieService {
   acceptAllCookies(): void {
     this._cookies.set({
       essentialCookies: true,
-      functionalCookies: true,
       analyticsCookies: true,
+      functionalCookies: true,
       targetingCookies: true,
     });
   }
@@ -32,8 +32,8 @@ export class CookieService {
   acceptEssentialCookies(): void {
     this._cookies.set({
       essentialCookies: true,
-      functionalCookies: false,
       analyticsCookies: false,
+      functionalCookies: false,
       targetingCookies: false,
     });
   }

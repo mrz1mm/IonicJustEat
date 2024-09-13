@@ -35,3 +35,14 @@
 ion-input {
   --highlight-color-valid: #b3b3b3;
 }
+
+.cookieModal {
+  --height: 50%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-height: 50%;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0px -2px 12px rgba(0, 0, 0, 0.1);
+}

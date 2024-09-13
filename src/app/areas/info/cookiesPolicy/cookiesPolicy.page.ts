@@ -4,8 +4,8 @@ import { IonContent, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
 import { FooterComponent } from 'src/app/layout/footer/footer.component';
 
 @Component({
-  selector: 'app-cookies',
-  templateUrl: './cookies.page.html',
+  selector: 'app-cookies-policy',
+  templateUrl: './cookiesPolicy.page.html',
   standalone: true,
   imports: [
     IonCol,
@@ -16,6 +16,6 @@ import { FooterComponent } from 'src/app/layout/footer/footer.component';
     FooterComponent,
   ],
 })
-export class CookiesPage {
+export class CookiesPolicyPage {
   constructor() {}
 }

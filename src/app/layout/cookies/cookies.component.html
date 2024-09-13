@@ -1,49 +1,72 @@
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label>Essential Cookies</ion-label>
-      <ion-toggle checked="true" disabled></ion-toggle>
-    </ion-item>
+  @if (isCustomizing === false) {
+  <!-- Schermata principale -->
+  <div class="cookie-container">
+    <img
+      [src]="Env.assetsUrl + '/img/utilities/logo.svg'"
+      alt="Logo"
+      class="logo"
+    />
+    <p class="cookie-description">
+      {{ "Cookies.DESCRIPTION" | translate }}
+    </p>
+    <div class="buttons-container">
+      <ion-button (click)="acceptAllCookies()">
+        {{ "Cookies.ACCEPT_ALL" | translate }}
+      </ion-button>
+      <ion-button (click)="acceptEssentialCookies()">
+        {{ "Cookies.ACCEPT_ESSENTIAL" | translate }}
+      </ion-button>
+      <ion-button color="secondary" (click)="toggleCustomization()">
+        {{ "Cookies.CUSTOMIZE" | translate }}
+      </ion-button>
+    </div>
+  </div>
+  } @if (isCustomizing === true) {
+  <!-- Personalizzazione dei cookie -->
+  <div class="cookie-customization">
+    <ion-list>
+      <ion-button (click)="toggleCustomization()" color="dark">
+        {{ "Cookies.BACK" | translate }}
+      </ion-button>
 
-    <ion-item>
-      <ion-label>Functional Cookies</ion-label>
-      <ion-toggle
-        [checked]="cookies()?.functionalCookies"
-        (ionChange)="toggleFunctionalCookies()"
-      ></ion-toggle>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Analytics Cookies</ion-label>
-      <ion-toggle
-        [checked]="cookies()?.analyticsCookies"
-        (ionChange)="toggleAnalyticsCookies()"
-      ></ion-toggle>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Targeting Cookies</ion-label>
-      <ion-toggle
-        [checked]="cookies()?.targetingCookies"
-        (ionChange)="toggleTargetingCookies()"
-      ></ion-toggle>
-    </ion-item>
-
-    <ion-row>
-      <ion-col>
-        <ion-button expand="block" (click)="acceptAllCookies()">
-          Accept All Cookies
-        </ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button
-          expand="block"
-          color="secondary"
-          (click)="acceptEssentialCookies()"
-        >
-          Accept Essential Cookies Only
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-list>
+      <ion-item>
+        <ion-label>{{ "Cookies.ESSENTIAL_ALWAYS" | translate }}</ion-label>
+        <ion-toggle checked="true" disabled></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ "Cookies.FUNCTIONAL" | translate }}</ion-label>
+        <ion-toggle
+          [checked]="cookies()?.functionalCookies"
+          (ionChange)="toggleFunctionalCookies()"
+        ></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ "Cookies.ANALYTICS" | translate }}</ion-label>
+        <ion-toggle
+          [checked]="cookies()?.analyticsCookies"
+          (ionChange)="toggleAnalyticsCookies()"
+        ></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ "Cookies.TARGETING" | translate }}</ion-label>
+        <ion-toggle
+          [checked]="cookies()?.targetingCookies"
+          (ionChange)="toggleTargetingCookies()"
+        ></ion-toggle>
+      </ion-item>
+    </ion-list>
+    <div class="buttons-container">
+      <ion-button expand="block" (click)="acceptAllCookies()">
+        {{ "Cookies.ACCEPT_ALL" | translate }}
+      </ion-button>
+      <ion-button expand="block" (click)="acceptEssentialCookies()">
+        {{ "Cookies.ACCEPT_ESSENTIAL" | translate }}
+      </ion-button>
+      <ion-button expand="block" color="primary" (click)="dismiss()">
+        {{ "Cookies.SAVE_AND_APPLY" | translate }}
+      </ion-button>
+    </div>
+  </div>
+  }
 </ion-content>
