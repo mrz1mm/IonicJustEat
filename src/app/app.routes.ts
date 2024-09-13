@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CookieGuard } from './guards/cookie.guard';
 
 export const routes: Routes = [
   {

@@ -10,8 +10,6 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { AuthService } from './areas/auth/services/auth.service';
 import { CookieService } from './library/cookie/services/cookie.service';
-import { CookiesComponent } from './layout/cookies/cookies.component';
-import { ModalController, IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -26,8 +24,6 @@ import { ModalController, IonicModule } from '@ionic/angular';
     RouterModule,
     HeaderComponent,
     FooterComponent,
-    CookiesComponent,
-    IonicModule,
   ],
 })
 export class AppComponent {
@@ -40,31 +36,8 @@ export class AppComponent {
     private i18nSvc: i18nService,
     private themeSvc: ThemeService,
     private authSvc: AuthService,
-    private cookieSvc: CookieService,
-    private modalController: ModalController
+    private cookieSvc: CookieService
   ) {
     register();
-    this.checkCookies();
-  }
-
-  checkCookies() {
-    const cookieValue = this.cookieSvc.cookies();
-
-    if (
-      cookieValue?.analyticsCookies === null &&
-      cookieValue?.functionalCookies === null &&
-      cookieValue?.targetingCookies === null
-    ) {
-      this.showCookieModal();
-    }
-  }
-
-  async showCookieModal() {
-    const modal = await this.modalController.create({
-      component: CookiesComponent,
-      backdropDismiss: false,
-      cssClass: 'cookieModal',
-    });
-    await modal.present();
   }
 }
