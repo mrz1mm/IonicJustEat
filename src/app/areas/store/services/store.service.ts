@@ -12,8 +12,9 @@ import { StoreResponse } from '../interfaces/StoreResponse.interface';
 })
 export class StoreService {
   private _store = signal<StoreResponse | null>(null);
-  private _allStore = signal<StoreResponse[] | null>(null);
+  private _allStores = signal<StoreResponse[] | null>(null);
   storeUrl: string = `${environment.apiUrl}/api/StoreManagement/createstore`;
+  tempUrl: string = `${environment.apiUrl}/api/OrderProcessing/stores`;
 
   constructor(
     private http: HttpClient,
@@ -21,19 +22,19 @@ export class StoreService {
     private authSvc: AuthService
   ) {}
 
-  get store(): Signal<StoreRequest | null> {
+  get store(): Signal<StoreResponse | null> {
     return this._store.asReadonly();
   }
 
-  get allStore(): Signal<StoreRequest[] | null> {
-    return this._allStore.asReadonly();
+  get allStores(): Signal<StoreResponse[] | null> {
+    return this._allStores.asReadonly();
   }
 
   getAllStores(): void {
-    firstValueFrom(this.http.get<StoreResponse[]>(this.storeUrl))
+    firstValueFrom(this.http.get<StoreResponse[]>(this.tempUrl))
       .then((response) => {
         console.log('Stores retrieved');
-        this._allStore.set(response);
+        this._allStores.set(response);
       })
       .catch((error) => {
         console.error('Error retrieving stores', error);

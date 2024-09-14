@@ -14,7 +14,7 @@
         </h2>
       </div>
       <div id="inputContainer" class="ion-margin-top">
-        <form (submit)="handleSubmit($event)">
+        <form>
           <ion-item>
             <ion-input
               #searchBar
@@ -26,7 +26,9 @@
               clearInput
               class="ion-padding-start"
             ></ion-input>
-            <ion-button type="submit">Cerca</ion-button>
+            <ion-button type="button" (click)="discoveryStore()"
+              >Cerca</ion-button
+            >
           </ion-item>
 
           @if (suggestions()) {

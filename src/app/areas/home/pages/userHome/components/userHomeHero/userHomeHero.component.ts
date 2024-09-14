@@ -25,6 +25,8 @@ import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { GeosearchService } from 'src/app/library/maps/services/geoSearch.service';
+import { Path } from 'src/app/library/utils/Path';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-home-hero',
@@ -54,18 +56,18 @@ import { GeosearchService } from 'src/app/library/maps/services/geoSearch.servic
 })
 export class UserHomeHeroComponent {
   Env = environment;
+  Path = Path;
   address: string = '';
   suggestionIndex: number = -1;
   searchTimeout: any;
   suggestions = computed(() => this.geosearchSvc.suggestions());
-  latitude = computed(() => this.geosearchSvc.latitude());
-  longitude = computed(() => this.geosearchSvc.longitude());
+  coordinates = computed(() => this.geosearchSvc.coordinates());
 
   @ViewChild('searchBar', { static: true }) searchBarRef!: ElementRef<IonInput>;
   @ViewChildren('suggestionItem', { read: ElementRef })
   suggestionItems!: QueryList<ElementRef>;
 
-  constructor(private geosearchSvc: GeosearchService) {}
+  constructor(private geosearchSvc: GeosearchService, private router: Router) {}
 
   onInputChange(event: any): void {
     const value = event.target.value;
@@ -148,9 +150,15 @@ export class UserHomeHeroComponent {
       'Submit:',
       this.address,
       'Lat:',
-      this.latitude(),
+      this.coordinates()?.Latitude,
       'Lng:',
-      this.longitude()
+      this.coordinates()?.Longitude
     );
+  }
+
+  discoveryStore(): void {
+    this.router.navigate([this.Path.StoreDiscovery], {
+      queryParams: { address: this.address },
+    });
   }
 }

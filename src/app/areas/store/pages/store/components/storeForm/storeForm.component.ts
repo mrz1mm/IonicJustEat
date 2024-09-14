@@ -62,8 +62,7 @@ export class StoreFormComponent implements OnInit {
   logoImgBase64: string | null = null;
   storeId: string | null = null;
   store = computed(() => this.storeSvc.store());
-  latitude = computed(() => this.geoSearchSvc.latitude());
-  longitude = computed(() => this.geoSearchSvc.longitude());
+  coordinates = computed(() => this.geoSearchSvc.coordinates());
 
   constructor(
     private fb: FormBuilder,
@@ -139,8 +138,8 @@ export class StoreFormComponent implements OnInit {
 
       const storeRequest: StoreRequest = {
         ...this.storeForm.value,
-        Latitude: this.latitude()?.toString(),
-        Longitude: this.longitude()?.toString(),
+        Latitude: this.coordinates()?.Latitude.toString(),
+        Longitude: this.coordinates()?.Longitude.toString(),
       };
 
       this.storeSvc.addStore(storeRequest);
@@ -160,8 +159,8 @@ export class StoreFormComponent implements OnInit {
         const storeRequest: StoreRequest = {
           ...this.storeForm.value,
           StoreId: this.storeId,
-          Latitude: this.latitude()?.toString(),
-          Longitude: this.longitude()?.toString(),
+          Latitude: this.coordinates()?.Latitude.toString(),
+          Longitude: this.coordinates()?.Longitude.toString(),
         };
 
         this.storeSvc.updateStore(this.storeId, storeRequest);

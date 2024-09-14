@@ -1,8 +1,8 @@
-import { CategoryResponse } from '../../admin/interfaces/CategoryResponse.interface';
-import { ProductResponse } from './ProductResponse.interface';
-import { WorkingDayResponse } from './WorkingDayResponse.interface';
+import { CategoryResponse } from 'src/app/areas/admin/interfaces/CategoryResponse.interface';
+import { ProductResponse } from 'src/app/areas/store/interfaces/ProductResponse.interface';
+import { WorkingDayResponse } from 'src/app/areas/store/interfaces/WorkingDayResponse.interface';
 
-export interface StoreResponse {
+export interface IStoreWithDistance {
   address: string;
   applicationUserId: string;
   cap: string;
@@ -20,4 +20,5 @@ export interface StoreResponse {
   storeName: string;
   storeTag?: string;
   workingDays: WorkingDayResponse[];
+  Distance: number;
 }

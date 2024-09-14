@@ -13,6 +13,7 @@ export class CategoryService {
   private _category = signal<CategoryResponse | null>(null);
   private _allCategories = signal<CategoryResponse[]>([]);
   categoryUrl: string = `${environment.apiUrl}/api/`; // ???
+  tempUrl: string = `${environment.apiUrl}/api/OrderProcessing/stores`;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -25,7 +26,7 @@ export class CategoryService {
   }
 
   getAllCategories(): void {
-    firstValueFrom(this.http.get<CategoryResponse[]>(this.categoryUrl))
+    firstValueFrom(this.http.get<CategoryResponse[]>(this.tempUrl))
       .then((response) => {
         console.log('categorys retrieved');
         this._allCategories.set(response);

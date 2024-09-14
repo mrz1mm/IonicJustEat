@@ -1,26 +1,23 @@
 import { Injectable, signal, Signal } from '@angular/core';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { SearchResult } from 'leaflet-geosearch/dist/providers/provider';
+import { iCoordinates } from '../interfaces/iCoordinates.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GeosearchService {
   private _suggestions = signal<SearchResult[]>([]);
-  private _latitude = signal<number | null>(null);
-  private _longitude = signal<number | null>(null);
+  private _coordinates = signal<iCoordinates | null>(null);
+
   provider = new OpenStreetMapProvider();
 
   get suggestions(): Signal<SearchResult[]> {
     return this._suggestions.asReadonly();
   }
 
-  get latitude(): Signal<number | null> {
-    return this._latitude.asReadonly();
-  }
-
-  get longitude(): Signal<number | null> {
-    return this._longitude.asReadonly();
+  get coordinates(): Signal<iCoordinates | null> {
+    return this._coordinates.asReadonly();
   }
 
   async search(query: string): Promise<void> {
@@ -28,12 +25,10 @@ export class GeosearchService {
       const results = await this.provider.search({ query });
       if (results.length > 0) {
         const result = results[0];
-        this._latitude.set(result.y);
-        this._longitude.set(result.x);
+        this._coordinates.set({ Latitude: result.y, Longitude: result.x });
         console.log(`Coordinates updated: ${result.y}, ${result.x}`);
       } else {
-        this._latitude.set(null);
-        this._longitude.set(null);
+        this._coordinates.set(null);
         console.log('No coordinates found for the given query.');
       }
     } catch (error) {

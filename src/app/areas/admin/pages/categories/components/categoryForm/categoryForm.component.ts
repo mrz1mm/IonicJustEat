@@ -70,7 +70,7 @@ export class CategoryFormComponent implements OnInit {
       const category = this.category();
       if (category) {
         this.categoryForm.patchValue({
-          categoryName: category.CategoryName,
+          categoryName: category.categoryName,
         });
       }
     });

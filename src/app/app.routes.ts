@@ -98,6 +98,13 @@ export const routes: Routes = [
       import('./areas/store/pages/store/store.page').then((m) => m.StorePage),
   },
   {
+    path: 'storeDiscovery',
+    loadComponent: () =>
+      import('./areas/order/pages/storeDiscovery/storeDiscovery.page').then(
+        (m) => m.StoreDiscoveryPage
+      ),
+  },
+  {
     path: 'categories',
     loadComponent: () =>
       import('./areas/admin/pages/categories/categories.page').then(
