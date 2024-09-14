@@ -20,5 +20,5 @@ export interface IStoreWithDistance {
   storeName: string;
   storeTag?: string;
   workingDays: WorkingDayResponse[];
-  Distance: number;
+  distance: number;
 }

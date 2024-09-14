@@ -27,13 +27,13 @@ export class DistanceService {
 
     if (!stores || stores.length === 0) {
       console.warn('No stores available or stores array is empty.');
-      this.updateStoresWithDistance(null); // Imposta null se i dati non sono disponibili
+      this._storesWithDistance.set(null); // Imposta null se i dati non sono disponibili
       return;
     }
 
     if (!coords || !coords.Latitude || !coords.Longitude) {
       console.warn('Coordinates are not available or are invalid.');
-      this.updateStoresWithDistance(null); // Imposta null se le coordinate non sono disponibili
+      this._storesWithDistance.set(null); // Imposta null se le coordinate non sono disponibili
       return;
     }
 
@@ -57,7 +57,7 @@ export class DistanceService {
           storeLon
         );
 
-        return { ...store, Distance: distance }; // Aggiungi la distanza direttamente all'oggetto IStoreWithDistance
+        return { ...store, distance: distance }; // Aggiungi la distanza direttamente all'oggetto IStoreWithDistance
       })
       .filter((store): store is IStoreWithDistance => store !== null); // Filtra gli store non validi
 
@@ -65,13 +65,6 @@ export class DistanceService {
     console.log('Stores with calculated distance:', storesWithDistance);
 
     // Aggiorna il signal privato
-    this.updateStoresWithDistance(storesWithDistance);
-  }
-
-  // Metodo separato per aggiornare il segnale
-  private updateStoresWithDistance(
-    storesWithDistance: IStoreWithDistance[] | null
-  ): void {
     this._storesWithDistance.set(storesWithDistance);
   }
 
@@ -81,7 +74,7 @@ export class DistanceService {
   }
 
   // Calcola la distanza tra due coordinate usando la formula dell'Haversine
-  private calculateDistance(
+  calculateDistance(
     lat1: number,
     lon1: number,
     lat2: number,

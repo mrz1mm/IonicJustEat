@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Signal, signal } from '@angular/core';
+import { computed, Injectable, Signal, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { StoreRequest } from '../interfaces/StoreRequest.interface';
 import { firstValueFrom } from 'rxjs';
 import { AuthService } from '../../auth/services/auth.service';
 import { StoreResponse } from '../interfaces/StoreResponse.interface';
+import { DistanceService } from 'src/app/library/maps/services/distance.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,13 +14,15 @@ import { StoreResponse } from '../interfaces/StoreResponse.interface';
 export class StoreService {
   private _store = signal<StoreResponse | null>(null);
   private _allStores = signal<StoreResponse[] | null>(null);
+  storesWithDistance = computed(() => this.distanceSvc.storesWithDistance());
   storeUrl: string = `${environment.apiUrl}/api/StoreManagement/createstore`;
   tempUrl: string = `${environment.apiUrl}/api/OrderProcessing/stores`;
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private distanceSvc: DistanceService
   ) {}
 
   get store(): Signal<StoreResponse | null> {
@@ -103,5 +106,16 @@ export class StoreService {
         console.error('Error deleting store', error);
       })
       .finally(() => {});
+  }
+
+  filterStoresBy(property: string, value: string): void {
+    const stores = this._allStores();
+    if (!stores) {
+      console.warn('No stores available');
+      return;
+    }
+
+    const filteredStores = stores.filter((store) => store[property] === value);
+    console.log('Filtered stores:', filteredStores);
   }
 }
