@@ -33,10 +33,17 @@ import { ProductService } from 'src/app/areas/store/services/product.service';
 import { ProductTypeService } from 'src/app/areas/store/services/productType.service';
 import { StoreService } from 'src/app/areas/store/services/store.service';
 import { Path } from 'src/app/library/utils/Path';
-../../../../services/product.service
-@Component({../../../../interfaces/ProductRequest.interface
-  selector: 'app-product-form',../../../../services/productType.service
-  templateUrl: './productForm.../../../../services/store.service
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+  CdkDrag,
+  CdkDropList,
+} from '@angular/cdk/drag-drop';
+
+@Component({
+  selector: 'app-product-form',
+  templateUrl: './productForm.component.html',
   styleUrls: ['./productForm.component.scss'],
   standalone: true,
   imports: [
@@ -56,9 +63,32 @@ import { Path } from 'src/app/library/utils/Path';
     ReactiveFormsModule,
     CommonModule,
     RouterModule,
+    CdkDropList,
+    CdkDrag,
   ],
 })
 export class ProductFormComponent implements OnInit {
+  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+
+  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
+
   Path = Path;
   productForm!: FormGroup;
   productId: string | null = null;

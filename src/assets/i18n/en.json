@@ -299,5 +299,21 @@
     "BUTTON_TEXT": "Submit",
     "HELPER_EMAIL": "The email must be valid",
     "HELPER_PASSWORD": "Password must be at least 6 characters, include uppercase, lowercase letters, a number, and a symbol."
+  },
+  "ProductForm": {
+    "UPDATE_TITLE": "Update Product",
+    "ADD_TITLE": "Add Product",
+    "PRODUCT_TYPE_LABEL": "Product Type",
+    "SELECT_PRODUCT_TYPE_PLACEHOLDER": "Select Product Type",
+    "PRODUCT_NAME_LABEL": "Product Name",
+    "PRODUCT_NAME_PLACEHOLDER": "Enter Product Name",
+    "PRODUCT_PRICE_LABEL": "Product Price",
+    "PRODUCT_PRICE_PLACEHOLDER": "Enter Product Price",
+    "DESCRIPTION_LABEL": "Product Description",
+    "DESCRIPTION_PLACEHOLDER": "Enter Product Description",
+    "PRODUCT_IMG_LABEL": "Product Image",
+    "PRODUCT_IMG_PLACEHOLDER": "Upload Product Image",
+    "UPDATE_BUTTON_TEXT": "Update Product",
+    "ADD_BUTTON_TEXT": "Add Product"
   }
 }

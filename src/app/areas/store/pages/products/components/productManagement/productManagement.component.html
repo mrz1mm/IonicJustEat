@@ -1,0 +1,16 @@
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        <a [routerLink]="[Path.Products]">Aggiungi prodotto</a>
+        <app-product-form></app-product-form>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <a [routerLink]="[Path.ProductTypes]">Modifica prodotto</a>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <app-footer></app-footer>
+</ion-content>

@@ -141,6 +141,105 @@
           </ion-input>
         </ion-item>
 
+        <!-- StoreTag -->
+        <ion-item>
+          <ion-input
+            formControlName="storeTag"
+            type="text"
+            label="{{ 'StoreForm.STORE_TAG_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.STORE_TAG_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('storeTag') | translate"
+            [errorText]="getErrorText('storeTag') ?? '' | translate"
+            clearInput="true"
+            counter="true"
+            fill="outline"
+            shape="round"
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="pricetag-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- CoverImg -->
+        <ion-item>
+          <ion-input
+            formControlName="coverImg"
+            type="file"
+            accept="image/*"
+            (change)="onFileChange($event, 'coverImg')"
+            label="{{ 'StoreForm.COVER_IMG_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.COVER_IMG_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('coverImg') | translate"
+            [errorText]="getErrorText('coverImg') ?? '' | translate"
+            clearInput="true"
+            fill="outline"
+            shape="round"
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="image-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- LogoImg -->
+        <ion-item>
+          <ion-input
+            formControlName="logoImg"
+            type="file"
+            accept="image/*"
+            (change)="onFileChange($event, 'logoImg')"
+            label="{{ 'StoreForm.LOGO_IMG_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.LOGO_IMG_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('logoImg') | translate"
+            [errorText]="getErrorText('logoImg') ?? '' | translate"
+            clearInput="true"
+            fill="outline"
+            shape="round"
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="logo-buffer"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-input>
+        </ion-item>
+
+        <!-- Description -->
+        <ion-item>
+          <ion-textarea
+            formControlName="description"
+            type="text"
+            label="{{ 'StoreForm.DESCRIPTION_LABEL' | translate }}"
+            label-placement="floating"
+            placeholder="{{ 'StoreForm.DESCRIPTION_PLACEHOLDER' | translate }}"
+            [helperText]="getHelperText('description') | translate"
+            [errorText]="getErrorText('description') ?? '' | translate"
+            clearInput="true"
+            fill="outline"
+            maxlength="500"
+            shape="round"
+            required
+            class="ion-margin-vertical"
+          >
+            <ion-icon
+              name="information-circle-outline"
+              color="primary"
+              slot="start"
+            ></ion-icon>
+          </ion-textarea>
+        </ion-item>
+
         <!-- Submit -->
         <ion-button
           class="ion-margin-top ion-padding-top"

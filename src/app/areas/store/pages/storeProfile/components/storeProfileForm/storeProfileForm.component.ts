@@ -22,6 +22,10 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { addIcons } from 'ionicons';
 import {
+  pricetagOutline,
+  imageOutline,
+  logoBuffer,
+  informationCircleOutline,
   storefrontOutline,
   locationOutline,
   businessOutline,
@@ -34,9 +38,9 @@ import { StoreService } from 'src/app/areas/store/services/store.service';
 import { StoreRequest } from 'src/app/areas/store/interfaces/StoreRequest.interface';
 
 @Component({
-  selector: 'app-store-form',
-  templateUrl: './storeForm.component.html',
-  styleUrls: ['./storeForm.component.scss'],
+  selector: 'app-store-profile-form',
+  templateUrl: './storeProfileForm.component.html',
+  styleUrls: ['./storeProfileForm.component.scss'],
   standalone: true,
   imports: [
     IonTextarea,
@@ -55,7 +59,7 @@ import { StoreRequest } from 'src/app/areas/store/interfaces/StoreRequest.interf
     RouterModule,
   ],
 })
-export class StoreFormComponent implements OnInit {
+export class StoreProfileFormComponent implements OnInit {
   Path = Path;
   storeForm!: FormGroup;
   coverImgBase64: string | null = null;
@@ -77,6 +81,10 @@ export class StoreFormComponent implements OnInit {
       businessOutline,
       mailOutline,
       callOutline,
+      pricetagOutline,
+      imageOutline,
+      logoBuffer,
+      informationCircleOutline,
     });
   }
 
@@ -87,6 +95,10 @@ export class StoreFormComponent implements OnInit {
       city: ['', [Validators.required]],
       cap: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
+      storeTag: [''],
+      coverImg: [''],
+      logoImg: [''],
+      description: [''],
     });
 
     this.route.paramMap.subscribe((params) => {
@@ -102,6 +114,10 @@ export class StoreFormComponent implements OnInit {
           city: store.City,
           cap: store.CAP,
           phoneNumber: store.PhoneNumber,
+          storeTag: store.StoreTag,
+          coverImg: store.CoverImg,
+          logoImg: store.LogoImg,
+          description: store.Description,
         });
       }
     });
@@ -113,6 +129,26 @@ export class StoreFormComponent implements OnInit {
     this.storeForm.patchValue({ cap });
     const completeAddress = address + ' ' + city + ' ' + cap;
     this.geoSearchSvc.search(completeAddress);
+  }
+
+  onFileChange(event: any, controlName: string): void {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        const base64String = reader.result as string;
+
+        if (controlName === 'coverImg') {
+          this.coverImgBase64 = base64String;
+        } else if (controlName === 'logoImg') {
+          this.logoImgBase64 = base64String;
+        }
+      };
+
+      reader.readAsDataURL(file);
+    }
   }
 
   getHelperText(controlName: string): string {
@@ -154,6 +190,8 @@ export class StoreFormComponent implements OnInit {
         ...this.storeForm.value,
         Latitude: this.latitude,
         Longitude: this.longitude,
+        CoverImg: this.coverImgBase64,
+        LogoImg: this.logoImgBase64,
       };
 
       this.storeSvc.addStore(storeRequest);
@@ -175,6 +213,8 @@ export class StoreFormComponent implements OnInit {
           StoreId: this.storeId,
           Latitude: this.latitude,
           Longitude: this.longitude,
+          CoverImg: this.coverImgBase64,
+          LogoImg: this.logoImgBase64,
         };
 
         this.storeSvc.updateStore(this.storeId, storeRequest);

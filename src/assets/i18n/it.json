@@ -328,5 +328,21 @@
     "BUTTON_TEXT": "Invia",
     "HELPER_EMAIL": "L'email deve essere valida",
     "HELPER_PASSWORD": "La password deve avere almeno 6 caratteri, includere lettere maiuscole e minuscole, un numero e un simbolo."
+  },
+  "ProductForm": {
+    "UPDATE_TITLE": "Aggiorna Prodotto",
+    "ADD_TITLE": "Aggiungi Prodotto",
+    "PRODUCT_TYPE_LABEL": "Tipo di Prodotto",
+    "SELECT_PRODUCT_TYPE_PLACEHOLDER": "Seleziona Tipo di Prodotto",
+    "PRODUCT_NAME_LABEL": "Nome del Prodotto",
+    "PRODUCT_NAME_PLACEHOLDER": "Inserisci il Nome del Prodotto",
+    "PRODUCT_PRICE_LABEL": "Prezzo del Prodotto",
+    "PRODUCT_PRICE_PLACEHOLDER": "Inserisci il Prezzo del Prodotto",
+    "DESCRIPTION_LABEL": "Descrizione del Prodotto",
+    "DESCRIPTION_PLACEHOLDER": "Inserisci la Descrizione del Prodotto",
+    "PRODUCT_IMG_LABEL": "Immagine del Prodotto",
+    "PRODUCT_IMG_PLACEHOLDER": "Carica Immagine del Prodotto",
+    "UPDATE_BUTTON_TEXT": "Aggiorna Prodotto",
+    "ADD_BUTTON_TEXT": "Aggiungi Prodotto"
   }
 }
