@@ -105,8 +105,8 @@ export class StoreFormComponent implements OnInit {
   getHelperText(controlName: string): string {
     const control = this.storeForm.get(controlName);
     return control?.touched && control?.valid
-      ? `LoginForm.${controlName.toUpperCase()}_VALID`
-      : `LoginForm.${controlName.toUpperCase()}_HELPER`;
+      ? `StoreForm.${controlName.toUpperCase()}_VALID`
+      : `StoreForm.${controlName.toUpperCase()}_HELPER`;
   }
 
   getErrorText(controlName: string): string | null {
@@ -117,13 +117,13 @@ export class StoreFormComponent implements OnInit {
     }
 
     if (control.errors['required']) {
-      return `LoginForm.${controlName.toUpperCase()}_REQUIRED`;
+      return `StoreForm.${controlName.toUpperCase()}_REQUIRED`;
     }
     if (control.errors['email']) {
-      return `LoginForm.${controlName.toUpperCase()}_FORMAT`;
+      return `StoreForm.${controlName.toUpperCase()}_FORMAT`;
     }
     if (control.errors['pattern']) {
-      return `LoginForm.${controlName.toUpperCase()}_FORMAT`;
+      return `StoreForm.${controlName.toUpperCase()}_FORMAT`;
     }
 
     return null;
