@@ -88,23 +88,6 @@ export class StoreFormComponent implements OnInit {
       cap: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
     });
-
-    this.route.paramMap.subscribe((params) => {
-      this.storeId = params.get('id');
-    });
-
-    effect(() => {
-      const store = this.store();
-      if (store) {
-        this.storeForm.patchValue({
-          storeName: store.StoreName,
-          address: store.Address,
-          city: store.City,
-          cap: store.CAP,
-          phoneNumber: store.PhoneNumber,
-        });
-      }
-    });
   }
 
   async addCoordinate(
