@@ -108,14 +108,5 @@ export class StoreService {
       .finally(() => {});
   }
 
-  filterStoresBy(property: string, value: string): void {
-    const stores = this._allStores();
-    if (!stores) {
-      console.warn('No stores available');
-      return;
-    }
-
-    const filteredStores = stores.filter((store) => store[property] === value);
-    console.log('Filtered stores:', filteredStores);
-  }
+  filterStoresBy(property: string, value: string): void {}
 }
