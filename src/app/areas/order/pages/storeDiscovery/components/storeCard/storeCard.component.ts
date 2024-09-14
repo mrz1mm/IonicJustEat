@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import {
   IonCard,
@@ -6,7 +7,7 @@ import {
   IonCardSubtitle,
   IonCardContent,
 } from '@ionic/angular/standalone';
-import { IStoreWithDistance } from 'src/app/library/maps/interfaces/iStoreWithDistance.interface';
+import { IStoreWithDistance } from 'src/app/areas/store/interfaces/iStoreWithDistance.interface';
 
 @Component({
   selector: 'app-store-card',
@@ -19,6 +20,7 @@ import { IStoreWithDistance } from 'src/app/library/maps/interfaces/iStoreWithDi
     IonCardTitle,
     IonCardHeader,
     IonCard,
+    CommonModule,
   ],
 })
 export class StoreCardComponent {

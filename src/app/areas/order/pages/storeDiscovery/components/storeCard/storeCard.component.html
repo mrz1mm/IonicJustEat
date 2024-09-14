@@ -10,6 +10,6 @@
 
   <ion-card-content>
     <p>{{ store?.description }}</p>
-    <p>Distanza: {{ store?.distance }} km</p>
+    <p>Distanza: {{ store?.distance | number : "1.2-2" }} km</p>
   </ion-card-content>
 </ion-card>

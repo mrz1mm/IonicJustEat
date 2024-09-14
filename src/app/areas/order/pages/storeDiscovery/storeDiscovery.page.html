@@ -1,6 +1,5 @@
 <ion-content>
-  @for (storeWithDistance of storesWithDistance(); track $index; let i = $index)
-  {
+  @for (storeWithDistance of filteredStores(); track $index; let i = $index) {
   <app-store-card [store]="storeWithDistance"></app-store-card>
   }
   <app-footer></app-footer>
