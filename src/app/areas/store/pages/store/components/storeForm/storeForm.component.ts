@@ -139,8 +139,8 @@ export class StoreFormComponent implements OnInit {
 
       const storeRequest: StoreRequest = {
         ...this.storeForm.value,
-        Latitude: this.latitude(),
-        Longitude: this.longitude(),
+        Latitude: this.latitude()?.toString(),
+        Longitude: this.longitude()?.toString(),
       };
 
       this.storeSvc.addStore(storeRequest);
@@ -160,8 +160,8 @@ export class StoreFormComponent implements OnInit {
         const storeRequest: StoreRequest = {
           ...this.storeForm.value,
           StoreId: this.storeId,
-          Latitude: this.latitude(),
-          Longitude: this.longitude(),
+          Latitude: this.latitude()?.toString(),
+          Longitude: this.longitude()?.toString(),
         };
 
         this.storeSvc.updateStore(this.storeId, storeRequest);
