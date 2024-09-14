@@ -107,12 +107,16 @@ export class StoreFormComponent implements OnInit {
     });
   }
 
-  addCoordinate(address: string, city: string, cap: string): void {
+  async addCoordinate(
+    address: string,
+    city: string,
+    cap: string
+  ): Promise<void> {
     this.storeForm.patchValue({ address });
     this.storeForm.patchValue({ city });
     this.storeForm.patchValue({ cap });
     const completeAddress = address + ' ' + city + ' ' + cap;
-    this.geoSearchSvc.search(completeAddress);
+    await this.geoSearchSvc.search(completeAddress);
   }
 
   getHelperText(controlName: string): string {
@@ -148,12 +152,12 @@ export class StoreFormComponent implements OnInit {
       const city = this.storeForm.value.city;
       const cap = this.storeForm.value.cap;
 
-      this.addCoordinate(address, city, cap);
+      await this.addCoordinate(address, city, cap);
 
       const storeRequest: StoreRequest = {
         ...this.storeForm.value,
-        Latitude: this.latitude,
-        Longitude: this.longitude,
+        Latitude: this.latitude(),
+        Longitude: this.longitude(),
       };
 
       this.storeSvc.addStore(storeRequest);
@@ -173,8 +177,8 @@ export class StoreFormComponent implements OnInit {
         const storeRequest: StoreRequest = {
           ...this.storeForm.value,
           StoreId: this.storeId,
-          Latitude: this.latitude,
-          Longitude: this.longitude,
+          Latitude: this.latitude(),
+          Longitude: this.longitude(),
         };
 
         this.storeSvc.updateStore(this.storeId, storeRequest);

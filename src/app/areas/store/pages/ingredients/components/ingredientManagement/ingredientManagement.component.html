@@ -1,0 +1,14 @@
+<ion-list>
+  @for (ingredient of allIngredients(); track $index; let i = $index) {
+  <ion-item>
+    <div>
+      <h4>
+        {{ ingredient.IngredientName }}
+      </h4>
+      <p>
+        {{ ingredient.IngredientPrice }}
+      </p>
+    </div>
+  </ion-item>
+  }
+</ion-list>

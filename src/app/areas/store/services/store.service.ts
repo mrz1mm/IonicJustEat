@@ -13,7 +13,7 @@ import { StoreResponse } from '../interfaces/StoreResponse.interface';
 export class StoreService {
   private _store = signal<StoreResponse | null>(null);
   private _allStore = signal<StoreResponse[] | null>(null);
-  storeUrl: string = `${environment.apiUrl}/api/`; // ???
+  storeUrl: string = `${environment.apiUrl}/api/StoreManagement/createstore`;
 
   constructor(
     private http: HttpClient,
