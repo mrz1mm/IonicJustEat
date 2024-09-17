@@ -123,11 +123,11 @@ export class ProductFormComponent implements OnInit {
       const product = this.product();
       if (product) {
         this.productForm.patchValue({
-          productTypeId: product.ProductTypeId,
-          ProductName: product.ProductName,
-          productPrice: product.ProductPrice,
-          productDescription: product.ProductDescription,
-          productImg: product.ProductImg,
+          productTypeId: product.productType.productTypeId,
+          ProductName: product.productName,
+          productPrice: product.productPrice,
+          productDescription: product.description,
+          productImg: product.productImg,
         });
       }
     });

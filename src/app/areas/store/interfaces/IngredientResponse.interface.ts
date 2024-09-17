@@ -1,6 +1,8 @@
 export interface IngredientResponse {
-  IngredientId: string;
-  StoreId: string;
-  IngredientName: string;
-  IngredientPrice: number;
+  ingredientId: string;
+  storeId: string;
+  ingredientName: string;
+  ingredientPrice: number;
+  description?: string;
+  isActive: boolean;
 }

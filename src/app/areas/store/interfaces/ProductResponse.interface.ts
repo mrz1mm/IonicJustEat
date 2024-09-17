@@ -1,9 +1,14 @@
+import { IngredientResponse } from './IngredientResponse.interface';
+import { ProductTypeResponse } from './ProductTypeResponse.interface';
+
 export interface ProductResponse {
-  ProductId: string;
-  StoreId: string;
-  ProductTypeId: string;
-  ProductName: string;
-  ProductPrice: number;
-  ProductDescription?: string;
-  ProductImg?: string;
+  productId: string;
+  storeId: string;
+  productName: string;
+  productPrice: number;
+  description?: string;
+  productImg?: string;
+  isActive: boolean;
+  ingredients: IngredientResponse[];
+  productType: ProductTypeResponse;
 }

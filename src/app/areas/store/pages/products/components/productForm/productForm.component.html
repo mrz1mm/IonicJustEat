@@ -32,8 +32,8 @@
             class="ion-margin-vertical"
           >
             @for (productType of productTypes(); track $index; let i = $index) {
-            <ion-select-option [value]="productType.ProductTypeId">
-              {{ productType.ProductTypeName }}
+            <ion-select-option [value]="productType.productTypeId">
+              {{ productType.productTypeName }}
             </ion-select-option>
             }
           </ion-select>

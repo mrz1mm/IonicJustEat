@@ -20,6 +20,7 @@ export enum Path {
   Products = '/products',
   ProductTypes = '/productTypes',
   Store = '/store',
+  StoreManagement = '/storeManagement',
 
   // order
   StoreDiscovery = '/storeDiscovery',

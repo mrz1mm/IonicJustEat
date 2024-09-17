@@ -22,12 +22,11 @@
       [(ngModel)]="_selectedCategories"
       (ionChange)="onCategoryChange($event)"
     >
-      <ion-select-option
-        *ngFor="let category of allCategories()"
-        [value]="category.id"
-      >
-        {{ category.name }}
+      @for (category of allCategories(); track $index; let i = $index) {
+      <ion-select-option [value]="category.categoryId">
+        {{ category.categoryName }}
       </ion-select-option>
+      }
     </ion-select>
   </ion-item>
 

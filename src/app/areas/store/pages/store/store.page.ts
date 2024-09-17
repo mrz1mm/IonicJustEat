@@ -1,14 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, computed, OnInit } from '@angular/core';
+import { FooterComponent } from 'src/app/layout/footer/footer.component';
 import { IonContent } from '@ionic/angular/standalone';
-import { StoreFormComponent } from './components/storeForm/storeForm.component';
-import { FooterComponent } from '../../../../layout/footer/footer.component';
+import { ActivatedRoute } from '@angular/router';
+import { StoreService } from '../../services/store.service';
 
 @Component({
   selector: 'app-store',
   templateUrl: './store.page.html',
   standalone: true,
-  imports: [IonContent, StoreFormComponent, FooterComponent],
+  imports: [IonContent, IonContent, FooterComponent],
 })
-export class StorePage {
-  constructor() {}
+export class StorePage implements OnInit {
+  storeId: string | null = null;
+  store = computed(() => this.storeSvc.store());
+
+  constructor(private route: ActivatedRoute, private storeSvc: StoreService) {}
+
+  ngOnInit() {
+    this.storeId = this.route.snapshot.paramMap.get('id');
+
+    if (this.storeId) {
+      this.storeSvc.getStoreById(this.storeId);
+    }
+  }
 }

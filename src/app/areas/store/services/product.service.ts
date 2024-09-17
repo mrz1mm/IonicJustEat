@@ -10,13 +10,13 @@ import { ProductResponse } from '../interfaces/ProductResponse.interface';
   providedIn: 'root',
 })
 export class ProductService {
-  private _product = signal<ProductRequest | null>(null);
+  private _product = signal<ProductResponse | null>(null);
   private _allProducts = signal<ProductResponse[] | null>(null);
   productUrl: string = `${environment.apiUrl}/api/`; // ???
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  get product(): Signal<ProductRequest | null> {
+  get product(): Signal<ProductResponse | null> {
     return this._product.asReadonly();
   }
 

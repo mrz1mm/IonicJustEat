@@ -1,4 +1,4 @@
 export interface ProductTypeResponse {
-  ProductTypeId: string;
-  ProductTypeName: string;
+  productTypeId: string;
+  productTypeName: string;
 }

@@ -90,7 +90,7 @@ export class StoreService {
   }
 
   getStoreById(id: string): void {
-    firstValueFrom(this.http.get<StoreResponse>(`${this.storeUrl}/${id}`))
+    firstValueFrom(this.http.get<StoreResponse>(`${this.tempUrl}/${id}`))
       .then((response) => {
         console.log('Store retrieved');
         this._store.set(response);

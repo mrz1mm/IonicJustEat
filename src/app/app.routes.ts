@@ -93,9 +93,16 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'store',
+    path: 'store/:id',
     loadComponent: () =>
       import('./areas/store/pages/store/store.page').then((m) => m.StorePage),
+  },
+  {
+    path: 'storeManagement',
+    loadComponent: () =>
+      import('./areas/store/pages/storeManagement/storeManagement.page').then(
+        (m) => m.StoreManagementPage
+      ),
   },
   {
     path: 'storeDiscovery',

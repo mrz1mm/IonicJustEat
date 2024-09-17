@@ -82,8 +82,8 @@ export class IngredientFormComponent implements OnInit {
       const ingredient = this.ingredient();
       if (ingredient) {
         this.ingredientForm.patchValue({
-          IngredientName: ingredient.IngredientName,
-          ingredientPrice: ingredient.IngredientPrice,
+          IngredientName: ingredient.ingredientName,
+          ingredientPrice: ingredient.ingredientPrice,
         });
       }
     });

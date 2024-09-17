@@ -1,5 +1,7 @@
+import { Path } from 'src/app/library/utils/Path';
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import {
   IonCard,
   IonCardHeader,
@@ -21,9 +23,11 @@ import { IStoreWithDistance } from 'src/app/areas/store/interfaces/iStoreWithDis
     IonCardHeader,
     IonCard,
     CommonModule,
+    RouterModule,
   ],
 })
 export class StoreCardComponent {
+  Path = Path;
   @Input() store: IStoreWithDistance | null = null;
   constructor() {}
 }
