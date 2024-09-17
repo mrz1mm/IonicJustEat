@@ -7,12 +7,13 @@ import { CategoryService } from 'src/app/areas/admin/service/category.service';
 import { ActivatedRoute } from '@angular/router';
 import { GeosearchService } from 'src/app/library/maps/services/geoSearch.service';
 import { IStoreWithDistance } from 'src/app/areas/store/interfaces/iStoreWithDistance.interface';
+import { FiltersComponent } from './components/filters/filters.component';
 
 @Component({
   selector: 'app-store-discovery',
   templateUrl: './storeDiscovery.page.html',
   standalone: true,
-  imports: [IonContent, FooterComponent, StoreCardComponent],
+  imports: [IonContent, FooterComponent, StoreCardComponent, FiltersComponent],
 })
 export class StoreDiscoveryPage implements OnInit {
   allCategories = computed(() => this.categorySvc.allCategories());

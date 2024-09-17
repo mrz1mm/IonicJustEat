@@ -1,0 +1,42 @@
+<ion-content>
+  <!-- Filtro per distanza -->
+  <ion-item>
+    <ion-range
+      min="0"
+      max="20"
+      step="1"
+      [(ngModel)]="_selectedDistance"
+      (ionChange)="onDistanceChange($event)"
+    >
+      <ion-label slot="start">0 km</ion-label>
+      <ion-label slot="end">20 km</ion-label>
+    </ion-range>
+    <ion-label>Fino a {{ _selectedDistance() }} km</ion-label>
+  </ion-item>
+
+  <!-- Filtro per categorie -->
+  <ion-item>
+    <ion-label>Categorie</ion-label>
+    <ion-select
+      multiple="true"
+      [(ngModel)]="_selectedCategories"
+      (ionChange)="onCategoryChange($event)"
+    >
+      <ion-select-option
+        *ngFor="let category of allCategories()"
+        [value]="category.id"
+      >
+        {{ category.name }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Filtro per ricerca -->
+  <ion-item>
+    <ion-input
+      placeholder="Cerca negozi"
+      [(ngModel)]="_searchValue"
+      (ionInput)="onSearchChange($event)"
+    ></ion-input>
+  </ion-item>
+</ion-content>

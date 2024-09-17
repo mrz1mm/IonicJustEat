@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { computed, effect, Injectable, Signal, signal } from '@angular/core';
+import { computed, Injectable, Signal, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { StoreRequest } from '../interfaces/StoreRequest.interface';
@@ -17,9 +17,8 @@ export class StoreService {
   private _store = signal<StoreResponse | null>(null);
   private _allStores = signal<StoreResponse[] | null>(null);
   private _storesWithDistance = signal<IStoreWithDistance[] | null>(null);
-  private _filterCriteria: Partial<IStoreWithDistance> = {};
-  _filteredStores = signal<IStoreWithDistance[] | null>(null);
-
+  private _filterCriteria = signal<Partial<IStoreWithDistance>>({});
+  private _filteredStores = signal<IStoreWithDistance[] | null>(null);
   coords = computed(() => this.geosearchSvc.coordinates());
   storeUrl: string = `${environment.apiUrl}/api/StoreManagement/createstore`;
   tempUrl: string = `${environment.apiUrl}/api/OrderProcessing/stores`;
@@ -42,6 +41,32 @@ export class StoreService {
 
   get filteredStores(): Signal<IStoreWithDistance[] | null> {
     return this._filteredStores.asReadonly();
+  }
+
+  // Getter per filterCriteria
+  get filterCriteria(): Signal<Partial<IStoreWithDistance>> {
+    return this._filterCriteria.asReadonly();
+  }
+
+  // Setter per filterCriteria
+  setFilterCriteria(
+    key: keyof IStoreWithDistance,
+    value: string | number | null
+  ): void {
+    const currentCriteria = this._filterCriteria();
+    const newCriteria = { ...currentCriteria };
+
+    // Aggiungi o rimuovi il criterio di filtro
+    if (value === null || value === undefined) {
+      delete newCriteria[key];
+    } else {
+      // Cast il tipo di value in modo che TypeScript non dia errore
+      newCriteria[key] = value as any;
+    }
+
+    // Aggiorna _filterCriteria
+    this._filterCriteria.set(newCriteria);
+    this.applyFilters();
   }
 
   getAllStores(): void {
@@ -144,14 +169,13 @@ export class StoreService {
     // Calcola la distanza per ciascun ristorante e aggiungila a IStoreWithDistance
     const storesWithDistance = stores
       .map((store) => {
-        // Converti latitude e longitude in numeri
         const storeLat = parseFloat(store.latitude);
         const storeLon = parseFloat(store.longitude);
 
         // Verifica se la conversione è riuscita
         if (isNaN(storeLat) || isNaN(storeLon)) {
           console.error('Invalid coordinates for store:', store);
-          return null; // Salta questo store se le coordinate non sono valide
+          return null;
         }
 
         const distance = this.distanceSvc.calculateDistance(
@@ -161,29 +185,27 @@ export class StoreService {
           storeLon
         );
 
-        return { ...store, distance: distance }; // Aggiungi la distanza direttamente all'oggetto IStoreWithDistance
+        return { ...store, distance: distance };
       })
       .filter((store): store is IStoreWithDistance => store !== null); // Filtra gli store non validi
 
-    // Aggiorna il signal privato
     this._storesWithDistance.set(storesWithDistance);
   }
 
-  // Metodo per applicare i filtri
   private applyFilters(): void {
     const stores = this._storesWithDistance();
 
     if (!stores) {
       console.warn('No stores available or stores array is empty.');
-      this._filteredStores.set(null); // Imposta null se i dati non sono disponibili
+      this._filteredStores.set(null);
       return;
     }
 
     // Effettua il filtro basato sui criteri
     const filteredStores = stores.filter((store) => {
-      for (const key in this._filterCriteria) {
+      for (const key in this.filterCriteria()) {
         const k = key as keyof IStoreWithDistance;
-        const filterValue = this._filterCriteria[k];
+        const filterValue = this.filterCriteria()[k];
 
         if (filterValue === undefined || filterValue === null) {
           continue; // Salta se il valore del filtro non è definito
@@ -204,27 +226,23 @@ export class StoreService {
           return false;
         }
       }
-      return true; // Tutti i criteri di filtro sono stati soddisfatti
+      return true;
     });
 
     console.log('Filtered stores:', filteredStores);
     this._filteredStores.set(filteredStores);
   }
 
-  // Metodo per aggiungere, aggiornare o rimuovere un filtro
   updateFilter<K extends keyof IStoreWithDistance>(
     property: K,
     value: IStoreWithDistance[K] | null
   ): void {
     if (value === null || value === undefined) {
-      // Rimuovi il filtro se il valore è null o undefined
-      delete this._filterCriteria[property];
+      delete this.filterCriteria()[property];
     } else {
-      // Aggiungi o aggiorna il filtro
-      this._filterCriteria[property] = value;
+      this.filterCriteria()[property] = value;
     }
 
-    // Riapplica i filtri dopo aver aggiornato i criteri
     this.applyFilters();
   }
 }
