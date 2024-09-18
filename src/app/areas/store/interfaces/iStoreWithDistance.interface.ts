@@ -8,17 +8,17 @@ export interface IStoreWithDistance {
   cap: string;
   categories: CategoryResponse[];
   city: string;
-  coverImg?: string;
-  description?: string;
+  coverImg: string;
+  description: string;
   isActive: boolean;
   latitude: string;
   logoImg?: string;
   longitude: string;
   phoneNumber: string;
-  products?: ProductResponse[];
+  products: ProductResponse[];
   storeId: string;
   storeName: string;
-  storeTag?: string;
+  storeTag: string;
   workingDays: WorkingDayResponse[];
   distance: number;
 }

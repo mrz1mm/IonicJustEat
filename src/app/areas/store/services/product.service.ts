@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { firstValueFrom } from 'rxjs';
 import { ProductRequest } from '../interfaces/ProductRequest.interface';
 import { ProductResponse } from '../interfaces/ProductResponse.interface';
+import { StoreResponse } from '../interfaces/StoreResponse.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,10 @@ export class ProductService {
 
   get allProducts(): Signal<ProductResponse[] | null> {
     return this._allProducts.asReadonly();
+  }
+
+  getStoreProducts(response: StoreResponse): void {
+    this._allProducts.set(response.products);
   }
 
   getAllProducts(): void {

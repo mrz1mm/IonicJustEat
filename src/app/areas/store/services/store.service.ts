@@ -9,6 +9,10 @@ import { StoreResponse } from '../interfaces/StoreResponse.interface';
 import { DistanceService } from 'src/app/library/maps/services/distance.service';
 import { GeosearchService } from 'src/app/library/maps/services/geoSearch.service';
 import { IStoreWithDistance } from '../interfaces/iStoreWithDistance.interface';
+import { CategoryService } from '../../admin/service/category.service';
+import { ProductService } from './product.service';
+import { ProductTypeService } from './productType.service';
+import { IngredientService } from './ingredient.service';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +32,11 @@ export class StoreService {
     private router: Router,
     private authSvc: AuthService,
     private distanceSvc: DistanceService,
-    private geosearchSvc: GeosearchService
+    private geosearchSvc: GeosearchService,
+    private categorySvc: CategoryService,
+    private productSvc: ProductService,
+    private productTypeSvc: ProductTypeService,
+    private ingredientSvc: IngredientService
   ) {}
 
   get store(): Signal<StoreResponse | null> {
@@ -43,12 +51,10 @@ export class StoreService {
     return this._filteredStores.asReadonly();
   }
 
-  // Getter per filterCriteria
   get filterCriteria(): Signal<Partial<IStoreWithDistance>> {
     return this._filterCriteria.asReadonly();
   }
 
-  // Setter per filterCriteria
   setFilterCriteria(
     key: keyof IStoreWithDistance,
     value: string | number | null
@@ -56,15 +62,12 @@ export class StoreService {
     const currentCriteria = this._filterCriteria();
     const newCriteria = { ...currentCriteria };
 
-    // Aggiungi o rimuovi il criterio di filtro
     if (value === null || value === undefined) {
       delete newCriteria[key];
     } else {
-      // Cast il tipo di value in modo che TypeScript non dia errore
       newCriteria[key] = value as any;
     }
 
-    // Aggiorna _filterCriteria
     this._filterCriteria.set(newCriteria);
     this.applyFilters();
   }
@@ -76,10 +79,7 @@ export class StoreService {
         this._allStores.set(response);
 
         if (this.coords()) {
-          // Calcola le distanze una volta recuperati gli store
           this.calculateStoresWithDistance();
-
-          // Applica i filtri per popolare filteredStores
           this.applyFilters();
         }
       })
@@ -94,6 +94,10 @@ export class StoreService {
       .then((response) => {
         console.log('Store retrieved');
         this._store.set(response);
+        this.categorySvc.getStoreCategories(response);
+        this.productSvc.getStoreProducts(response);
+        this.productTypeSvc.getStoreProductTypes(response);
+        this.ingredientSvc.getStoreIngredients(response);
       })
       .catch((error) => {
         console.error('Error retrieving store', error);
@@ -156,13 +160,13 @@ export class StoreService {
 
     if (!stores || stores.length === 0) {
       console.warn('No stores available or stores array is empty.');
-      this._storesWithDistance.set(null); // Imposta null se i dati non sono disponibili
+      this._storesWithDistance.set(null);
       return;
     }
 
     if (!coords || !coords.Latitude || !coords.Longitude) {
       console.warn('Coordinates are not available or are invalid.');
-      this._storesWithDistance.set(null); // Imposta null se le coordinate non sono disponibili
+      this._storesWithDistance.set(null);
       return;
     }
 
@@ -187,7 +191,7 @@ export class StoreService {
 
         return { ...store, distance: distance };
       })
-      .filter((store): store is IStoreWithDistance => store !== null); // Filtra gli store non validi
+      .filter((store): store is IStoreWithDistance => store !== null);
 
     this._storesWithDistance.set(storesWithDistance);
   }
@@ -201,14 +205,13 @@ export class StoreService {
       return;
     }
 
-    // Effettua il filtro basato sui criteri
     const filteredStores = stores.filter((store) => {
       for (const key in this.filterCriteria()) {
         const k = key as keyof IStoreWithDistance;
         const filterValue = this.filterCriteria()[k];
 
         if (filterValue === undefined || filterValue === null) {
-          continue; // Salta se il valore del filtro non è definito
+          continue;
         }
 
         // Se il filtro è sulla distanza, effettua un confronto numerico

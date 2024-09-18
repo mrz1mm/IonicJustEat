@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { firstValueFrom } from 'rxjs';
 import { CategoryRequest } from '../interfaces/CategoryRequest.interface';
 import { CategoryResponse } from '../interfaces/CategoryResponse.interface';
+import { StoreResponse } from '../../store/interfaces/StoreResponse.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,6 @@ export class CategoryService {
   private _category = signal<CategoryResponse | null>(null);
   private _allCategories = signal<CategoryResponse[]>([]);
   categoryUrl: string = `${environment.apiUrl}/api/`; // ???
-  tempUrl: string = `${environment.apiUrl}/api/OrderProcessing/stores`;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -25,8 +25,12 @@ export class CategoryService {
     return this._category.asReadonly();
   }
 
+  getStoreCategories(response: StoreResponse): void {
+    this._allCategories.set(response.categories);
+  }
+
   getAllCategories(): void {
-    firstValueFrom(this.http.get<CategoryResponse[]>(this.tempUrl))
+    firstValueFrom(this.http.get<CategoryResponse[]>(this.categoryUrl))
       .then((response) => {
         console.log('categorys retrieved');
         this._allCategories.set(response);
